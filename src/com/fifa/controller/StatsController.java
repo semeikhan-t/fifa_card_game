@@ -1,45 +1,37 @@
 package com.fifa.controller;
 
 import com.fifa.dao.MatchDAO;
-import com.fifa.dao.TeamDAO;
 import com.fifa.model.MatchResult;
-import com.fifa.model.Team;
 import com.fifa.util.SceneManager;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
-import java.util.List;
+import java.time.format.DateTimeFormatter;
 
 public class StatsController {
-
     @FXML private TableView<MatchResult> statsTable;
     @FXML private TableColumn<MatchResult, String> dateCol;
-    @FXML private TableColumn<MatchResult, String> matchCol;
+    @FXML private TableColumn<MatchResult, String> homeCol;
     @FXML private TableColumn<MatchResult, String> scoreCol;
+    @FXML private TableColumn<MatchResult, String> awayCol;
 
     private MatchDAO matchDAO = new MatchDAO();
-    private TeamDAO teamDAO = new TeamDAO();
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     @FXML
     public void initialize() {
-        dateCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getPlayedAt().toString()));
-        matchCol.setCellValueFactory(data -> {
-            Team home = teamDAO.findById(data.getValue().getHomeId());
-            Team away = teamDAO.findById(data.getValue().getAwayId());
-            String homeName = home != null ? home.getName() : "Unknown";
-            String awayName = away != null ? away.getName() : "Unknown";
-            return new SimpleStringProperty(homeName + " vs " + awayName);
-        });
+        dateCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getPlayedAt().format(formatter)));
+        homeCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getHomeName()));
         scoreCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getHomeScore() + " - " + data.getValue().getAwayScore()));
+        awayCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getAwayName()));
 
-        List<MatchResult> matches = matchDAO.findAll();
-        statsTable.getItems().addAll(matches);
+        statsTable.setItems(FXCollections.observableArrayList(matchDAO.findAll()));
     }
 
     @FXML
-    private void handleBack() {
-        SceneManager.loadScene("MainMenu.fxml", "FIFA Card Game 2026 - Main Menu");
+    private void onBackClicked() {
+        SceneManager.loadScene("MainMenu.fxml", "FIFA Card Game 2026");
     }
 }

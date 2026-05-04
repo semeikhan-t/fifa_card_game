@@ -1,48 +1,225 @@
 package com.fifa.controller;
 
 import com.fifa.model.Player;
+import com.fifa.model.Team;
 import com.fifa.service.SquadService;
 import com.fifa.util.SceneManager;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+import java.util.stream.Collectors;
+
+import javafx.scene.input.*;
+import javafx.scene.layout.*;
+import javafx.scene.Node;
+import javafx.fxml.FXMLLoader;
+import java.util.*;
 
 public class SquadController {
+    @FXML private Label startersCountLabel;
+    @FXML private AnchorPane starterSlotsPane;
+    @FXML private HBox benchBox;
+    @FXML private Button playButton;
 
-    @FXML
-    private Label teamLabel;
+    private SquadService squadService = new SquadService();
+    private Team currentTeam;
+    private List<Player> starters = new ArrayList<>();
+    private List<Player> bench = new ArrayList<>();
 
-    @FXML
-    private Label opponentLabel;
+    // Positions for 4-3-3 Formation
+    private static final Map<String, Position> FORMATION_433 = new LinkedHashMap<>() {{
+        put("GK", new Position(460, 340));
+        put("LB", new Position(100, 280));
+        put("LCB", new Position(350, 300));
+        put("RCB", new Position(570, 300));
+        put("RB", new Position(820, 280));
+        put("LCM", new Position(250, 180));
+        put("CM", new Position(460, 160));
+        put("RCM", new Position(670, 180));
+        put("LW", new Position(200, 50));
+        put("ST", new Position(460, 30));
+        put("RW", new Position(720, 50));
+    }};
 
-    @FXML
-    private ListView<String> startersListView;
-
-    @FXML
-    private ListView<String> subsListView;
+    private Map<String, Player> pitchPlayers = new HashMap<>();
 
     @FXML
     public void initialize() {
-        SquadService service = SquadService.getInstance();
-        teamLabel.setText("Your Team: " + service.getSelectedTeam().getName());
-        opponentLabel.setText("Opponent: " + service.getOpponentTeam().getName());
+        currentTeam = SceneManager.getUserTeam();
+        if (currentTeam == null) return;
 
-        for (Player p : service.getSquad()) {
+        squadService.loadSquad(currentTeam);
+
+        // Separate starters and bench - CLEAR FIRST
+        starters.clear();
+        bench.clear();
+        for (Player p : currentTeam.getPlayers()) {
             if (p.isStarter()) {
-                startersListView.getItems().add(p.toString());
+                starters.add(p);
             } else {
-                subsListView.getItems().add(p.toString());
+                bench.add(p);
             }
+        }
+
+        refreshUI();
+    }
+
+    private void refreshUI() {
+        starterSlotsPane.getChildren().clear();
+        benchBox.getChildren().clear();
+        pitchPlayers.clear();
+
+        // Setup pitch slots
+        int starterIdx = 0;
+        List<Map.Entry<String, Position>> formationEntries = new ArrayList<>(FORMATION_433.entrySet());
+        
+        for (Map.Entry<String, Position> entry : formationEntries) {
+            String posName = entry.getKey();
+            Position pos = entry.getValue();
+
+            VBox slot = createSlot(posName, pos);
+            starterSlotsPane.getChildren().add(slot);
+
+            if (starterIdx < starters.size()) {
+                Player p = starters.get(starterIdx);
+                pitchPlayers.put(posName, p);
+                Node card = createPlayerCard(p);
+                slot.getChildren().add(card);
+                starterIdx++;
+            }
+        }
+
+        // Setup bench
+        for (Player p : bench) {
+            Node card = createPlayerCard(p);
+            benchBox.getChildren().add(card);
+        }
+
+        updateLabels();
+    }
+
+    private VBox createSlot(String posName, Position pos) {
+        VBox slot = new VBox();
+        slot.setAlignment(javafx.geometry.Pos.CENTER);
+        slot.setPrefSize(80, 110);
+        AnchorPane.setLeftAnchor(slot, pos.x);
+        AnchorPane.setTopAnchor(slot, pos.y);
+        
+        Label lbl = new Label(posName);
+        lbl.setStyle("-fx-text-fill: rgba(255,255,255,0.3); -fx-font-weight: bold;");
+        slot.getChildren().add(lbl);
+
+        // Drag and Drop handlers for slot
+        slot.setOnDragOver(e -> {
+            if (e.getGestureSource() != slot && e.getDragboard().hasString()) {
+                e.acceptTransferModes(TransferMode.MOVE);
+            }
+            e.consume();
+        });
+
+        slot.setOnDragDropped(e -> {
+            Dragboard db = e.getDragboard();
+            if (db.hasString()) {
+                int playerId = Integer.parseInt(db.getString());
+                handlePlayerMove(playerId, posName);
+                e.setDropCompleted(true);
+            }
+            e.consume();
+        });
+
+        return slot;
+    }
+
+    private Node createPlayerCard(Player p) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PlayerCard.fxml"));
+            Node card = loader.load();
+            
+            Label ratingLabel = (Label) card.lookup("#ratingLabel");
+            Label posLabel = (Label) card.lookup("#posLabel");
+            Label nameLabel = (Label) card.lookup("#nameLabel");
+            javafx.scene.shape.Rectangle cardBg = (javafx.scene.shape.Rectangle) card.lookup("#cardBg");
+
+            ratingLabel.setText(String.valueOf(p.getOverall()));
+            posLabel.setText(p.getPosition());
+            nameLabel.setText(p.getName());
+
+            // Gold/Silver theme based on rating
+            if (p.getOverall() < 80) {
+                cardBg.getStyleClass().add("player-card-bg-silver");
+            }
+
+            card.setOnDragDetected(e -> {
+                Dragboard db = card.startDragAndDrop(TransferMode.MOVE);
+                ClipboardContent content = new ClipboardContent();
+                content.putString(String.valueOf(p.getId()));
+                db.setContent(content);
+                e.consume();
+            });
+
+            return card;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Label(p.getName());
         }
     }
 
-    @FXML
-    private void handlePlayMatch() {
-        SceneManager.loadScene("Match.fxml", "Match");
+
+    private void handlePlayerMove(int playerId, String targetPos) {
+        Player movingPlayer = currentTeam.getPlayers().stream()
+                .filter(p -> p.getId() == playerId)
+                .findFirst().orElse(null);
+
+        if (movingPlayer == null) return;
+
+        // If player was on pitch, swap or move
+        Player playerAtTarget = pitchPlayers.get(targetPos);
+        
+        if (playerAtTarget != null) {
+            // Swap
+            playerAtTarget.setStarter(movingPlayer.isStarter());
+            movingPlayer.setStarter(true);
+        } else {
+            movingPlayer.setStarter(true);
+        }
+
+        // Re-calculate starters and bench lists
+        starters.clear();
+        bench.clear();
+        for (Player p : currentTeam.getPlayers()) {
+            if (p.isStarter()) starters.add(p);
+            else bench.add(p);
+        }
+
+        // Limit starters to 11
+        if (starters.size() > 11) {
+            movingPlayer.setStarter(false);
+            starters.remove(movingPlayer);
+            bench.add(movingPlayer);
+        }
+
+        refreshUI();
+    }
+
+    private void updateLabels() {
+        startersCountLabel.setText("Selected: " + starters.size() + "/11");
+        playButton.setDisable(starters.size() != 11);
     }
 
     @FXML
-    private void handleBack() {
-        SceneManager.loadScene("CountrySelection.fxml", "Select Country");
+    private void onPlayClicked() {
+        SceneManager.loadScene("OpponentSelection.fxml", "Выбор соперника");
+    }
+
+    @FXML
+    private void onBackClicked() {
+        SceneManager.loadScene("CountrySelection.fxml", "Выбор сборной");
+    }
+
+    private static class Position {
+        double x, y;
+        Position(double x, double y) { this.x = x; this.y = y; }
     }
 }
+

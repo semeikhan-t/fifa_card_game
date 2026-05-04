@@ -1,23 +1,29 @@
 package com.fifa.controller;
 
 import com.fifa.util.SceneManager;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 
 public class MainMenuController {
-
     @FXML
-    private void handlePlay() {
-        SceneManager.loadScene("CountrySelection.fxml", "Select Country");
+    public void initialize() {
+        System.out.println("MainMenuController initialized!");
     }
 
     @FXML
-    private void handleStats() {
-        SceneManager.loadScene("Stats.fxml", "Statistics");
+    private void onPlayClicked() {
+        System.out.println("PLAY button clicked!");
+        SceneManager.loadScene("CountrySelection.fxml", "Выбор сборной");
     }
 
     @FXML
-    private void handleExit() {
-        System.exit(0);
+    private void onStatsClicked() {
+        System.out.println("STATS button clicked!");
+        SceneManager.loadScene("Stats.fxml", "Статистика матчей");
+    }
+
+    @FXML
+    private void onExitClicked() {
+        Platform.exit();
     }
 }

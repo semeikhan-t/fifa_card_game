@@ -2,30 +2,24 @@ package com.fifa.model;
 
 public class MatchEvent {
     private int minute;
-    private Player player;
-    private Team team;
-    private String type; // e.g. "GOAL"
+    private String playerName;
+    private String type; // GOAL, YELLOW_CARD, RED_CARD
+    private boolean isHomeTeam;
 
-    public MatchEvent(int minute, Player player, Team team, String type) {
+    public MatchEvent(int minute, String playerName, String type, boolean isHomeTeam) {
         this.minute = minute;
-        this.player = player;
-        this.team = team;
+        this.playerName = playerName;
         this.type = type;
+        this.isHomeTeam = isHomeTeam;
     }
 
-    public int getMinute() {
-        return minute;
-    }
+    public int getMinute() { return minute; }
+    public String getPlayerName() { return playerName; }
+    public String getType() { return type; }
+    public boolean isHomeTeam() { return isHomeTeam; }
 
-    public Player getPlayer() {
-        return player;
-    }
-
-    public Team getTeam() {
-        return team;
-    }
-
-    public String getType() {
-        return type;
+    @Override
+    public String toString() {
+        return minute + "'' - " + type + ": " + playerName;
     }
 }

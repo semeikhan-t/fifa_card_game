@@ -5,48 +5,34 @@ public class Player extends Entity {
     private int countryId;
     private String position;
     private int overall;
-    private boolean starter;
+    private boolean isStarter;
 
-    public String getName() {
-        return name;
-    }
+    public Player() {}
 
-    public void setName(String name) {
+    public Player(String name, int countryId, String position, int overall, boolean isStarter) {
         this.name = name;
-    }
-
-    public int getCountryId() {
-        return countryId;
-    }
-
-    public void setCountryId(int countryId) {
         this.countryId = countryId;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
         this.position = position;
-    }
-
-    public int getOverall() {
-        return overall;
-    }
-
-    public void setOverall(int overall) {
         this.overall = overall;
+        this.isStarter = isStarter;
     }
 
-    public boolean isStarter() {
-        return starter;
-    }
+    // Getters and Setters
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public void setStarter(boolean starter) {
-        this.starter = starter;
-    }
-    
+    public int getCountryId() { return countryId; }
+    public void setCountryId(int countryId) { this.countryId = countryId; }
+
+    public String getPosition() { return position; }
+    public void setPosition(String position) { this.position = position; }
+
+    public int getOverall() { return overall; }
+    public void setOverall(int overall) { this.overall = overall; }
+
+    public boolean isStarter() { return isStarter; }
+    public void setStarter(boolean starter) { isStarter = starter; }
+
     @Override
     public String toString() {
         return name + " (" + position + ") - " + overall;

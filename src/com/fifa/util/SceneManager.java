@@ -1,5 +1,7 @@
 package com.fifa.util;
 
+import com.fifa.model.MatchResult;
+import com.fifa.model.Team;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,28 +10,48 @@ import java.io.IOException;
 
 public class SceneManager {
     private static Stage primaryStage;
+    private static Team userTeam;
+    private static Team opponentTeam;
+    private static MatchResult lastResult;
 
     public static void setPrimaryStage(Stage stage) {
         primaryStage = stage;
     }
-    
-    public static Stage getPrimaryStage() {
-        return primaryStage;
-    }
 
-    public static Object loadScene(String fxmlPath, String title) {
+    public static void loadScene(String fxmlFile, String title) {
         try {
-            FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource("/fxml/" + fxmlPath));
+            var fxmlUrl = SceneManager.class.getResource("/fxml/" + fxmlFile);
+            if (fxmlUrl == null) {
+                System.err.println("FXML file NOT FOUND: /fxml/" + fxmlFile);
+                return;
+            }
+            
+            FXMLLoader loader = new FXMLLoader(fxmlUrl);
             Parent root = loader.load();
-            Scene scene = new Scene(root, 800, 600);
-            scene.getStylesheets().add(SceneManager.class.getResource("/css/style.css").toExternalForm());
-            primaryStage.setScene(scene);
+            Scene scene = new Scene(root);
+            
+            var cssUrl = SceneManager.class.getResource("/css/style.css");
+            if (cssUrl != null) {
+                scene.getStylesheets().add(cssUrl.toExternalForm());
+            } else {
+                System.err.println("CSS file NOT FOUND: /css/style.css");
+            }
+
             primaryStage.setTitle(title);
+            primaryStage.setScene(scene);
             primaryStage.show();
-            return loader.getController();
-        } catch (IOException e) {
+        } catch (Exception e) {
+            System.err.println("Error loading scene: " + fxmlFile);
             e.printStackTrace();
-            return null;
         }
     }
+
+    public static Team getUserTeam() { return userTeam; }
+    public static void setUserTeam(Team team) { userTeam = team; }
+
+    public static Team getOpponentTeam() { return opponentTeam; }
+    public static void setOpponentTeam(Team team) { opponentTeam = team; }
+
+    public static MatchResult getLastResult() { return lastResult; }
+    public static void setLastResult(MatchResult result) { lastResult = result; }
 }

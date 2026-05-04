@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      alignment="CENTER" spacing="2" styleClass="player-card-container" 
+      prefWidth="80" prefHeight="110">
+    <StackPane styleClass="player-card-main">
+        <!-- Card Background -->
+        <Rectangle fx:id="cardBg" width="80" height="110" arcWidth="15" arcHeight="15" styleClass="player-card-bg" />
+        
+        <VBox alignment="CENTER" spacing="5">
+            <padding>
+                <Insets top="8" right="5" bottom="8" left="5"/>
+            </padding>
+            <HBox alignment="CENTER" spacing="8">
+                <VBox alignment="CENTER" spacing="0">
+                    <Label fx:id="ratingLabel" text="85" styleClass="player-card-rating" />
+                    <Label fx:id="posLabel" text="ST" styleClass="player-card-pos-small" />
+                </VBox>
+                <!-- Player photo placeholder with ring -->
+                <StackPane>
+                    <Circle radius="22" fill="#222" stroke="#d4af37" strokeWidth="1" />
+                    <Circle radius="20" fill="#333" />
+                </StackPane>
+            </HBox>
+            <Separator prefWidth="60" style="-fx-opacity: 0.2; -fx-background-color: white;" />
+            <Label fx:id="nameLabel" text="PLAYER" styleClass="player-card-name-label" />
+        </VBox>
+    </StackPane>
+
+</VBox>

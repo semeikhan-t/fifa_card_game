@@ -1,34 +1,44 @@
 package com.fifa.dao;
 
 import com.fifa.model.Player;
-import com.fifa.util.DatabaseManager;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerDAO extends AbstractDAO<Player> {
-
     @Override
     public Player findById(int id) {
-        // Implementation if needed
+        String sql = "SELECT * FROM players WHERE id = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Player p = new Player(rs.getString("name"), rs.getInt("country_id"), 
+                                     rs.getString("position"), rs.getInt("overall"), 
+                                     rs.getBoolean("is_starter"));
+                p.setId(rs.getInt("id"));
+                return p;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
-    @Override
-    public List<Player> findAll() {
-        return null;
-    }
-
-    public List<Player> findByCountryId(int countryId) {
+    public List<Player> findByCountry(int countryId) {
         List<Player> players = new ArrayList<>();
         String sql = "SELECT * FROM players WHERE country_id = ?";
-        try (Connection conn = DatabaseManager.getConnection();
+        try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, countryId);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                players.add(mapRow(rs));
+                Player p = new Player(rs.getString("name"), rs.getInt("country_id"), 
+                                     rs.getString("position"), rs.getInt("overall"), 
+                                     rs.getBoolean("is_starter"));
+                p.setId(rs.getInt("id"));
+                players.add(p);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -37,17 +47,15 @@ public class PlayerDAO extends AbstractDAO<Player> {
     }
 
     @Override
+    public List<Player> findAll() {
+        return null; // Not needed for now
+    }
+
+    @Override
     public void save(Player entity) {
     }
 
-    private Player mapRow(ResultSet rs) throws SQLException {
-        Player player = new Player();
-        player.setId(rs.getInt("id"));
-        player.setName(rs.getString("name"));
-        player.setCountryId(rs.getInt("country_id"));
-        player.setPosition(rs.getString("position"));
-        player.setOverall(rs.getInt("overall"));
-        player.setStarter(rs.getBoolean("is_starter"));
-        return player;
+    @Override
+    public void delete(int id) {
     }
 }
