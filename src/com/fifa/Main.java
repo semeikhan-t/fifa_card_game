@@ -1,0 +1,17 @@
+package com.fifa;
+
+import com.fifa.util.SceneManager;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+    @Override
+    public void start(Stage primaryStage) {
+        SceneManager.setPrimaryStage(primaryStage);
+        SceneManager.loadScene("MainMenu.fxml", "FIFA Card Game 2026 - Main Menu");
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}

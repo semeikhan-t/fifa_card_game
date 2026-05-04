@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="15" styleClass="main-menu" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fifa.controller.StatsController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    <Label text="Match Statistics" styleClass="title-label"/>
+    
+    <TableView fx:id="statsTable" prefHeight="400" prefWidth="600">
+        <columns>
+            <TableColumn fx:id="dateCol" text="Date" prefWidth="200"/>
+            <TableColumn fx:id="matchCol" text="Match" prefWidth="300"/>
+            <TableColumn fx:id="scoreCol" text="Score" prefWidth="100"/>
+        </columns>
+    </TableView>
+    
+    <Button text="Back" onAction="#handleBack" styleClass="menu-btn"/>
+</VBox>

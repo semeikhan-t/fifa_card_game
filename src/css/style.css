@@ -1,0 +1,19 @@
+.main-menu {
+    -fx-background-color: #1a1a2e;
+}
+.title-label {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #e94560;
+}
+.menu-btn {
+    -fx-background-color: #0f3460;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 40px;
+    -fx-cursor: hand;
+}
+.menu-btn:hover {
+    -fx-background-color: #e94560;
+}
