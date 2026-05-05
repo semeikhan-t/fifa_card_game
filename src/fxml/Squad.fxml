@@ -38,7 +38,7 @@
                 <children>
                     <ImageView fitWidth="960" fitHeight="430" preserveRatio="false" layoutX="0" layoutY="0">
                         <image>
-                            <Image url="@../images/pitch.png" />
+                            <Image url="@/images/pitch.png" />
                         </image>
 
                         <effect>

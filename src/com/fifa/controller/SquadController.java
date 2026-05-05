@@ -9,6 +9,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.util.stream.Collectors;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
@@ -20,7 +22,10 @@ public class SquadController {
     @FXML private Label startersCountLabel;
     @FXML private AnchorPane starterSlotsPane;
     @FXML private HBox benchBox;
+    @FXML private VBox benchContainer;
     @FXML private Button playButton;
+    
+    private boolean isBenchVisible = false;
 
     private SquadService squadService = new SquadService();
     private Team currentTeam;
@@ -136,19 +141,12 @@ public class SquadController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PlayerCard.fxml"));
             Node card = loader.load();
             
-            Label ratingLabel = (Label) card.lookup("#ratingLabel");
-            Label posLabel = (Label) card.lookup("#posLabel");
-            Label nameLabel = (Label) card.lookup("#nameLabel");
-            javafx.scene.shape.Rectangle cardBg = (javafx.scene.shape.Rectangle) card.lookup("#cardBg");
-
-            ratingLabel.setText(String.valueOf(p.getOverall()));
-            posLabel.setText(p.getPosition());
-            nameLabel.setText(p.getName());
-
-            // Gold/Silver theme based on rating
-            if (p.getOverall() < 80) {
-                cardBg.getStyleClass().add("player-card-bg-silver");
-            }
+            PlayerCardController controller = loader.getController();
+            
+            // Get country name for flag. We already have currentTeam which is the team of all these players!
+            String countryName = currentTeam.getName().toLowerCase();
+            
+            controller.setPlayer(p, countryName, p.getPhotoPath());
 
             card.setOnDragDetected(e -> {
                 Dragboard db = card.startDragAndDrop(TransferMode.MOVE);
@@ -215,6 +213,19 @@ public class SquadController {
     @FXML
     private void onBackClicked() {
         SceneManager.loadScene("CountrySelection.fxml", "Выбор сборной");
+    }
+
+    @FXML
+    private void onToggleBenchClicked() {
+        TranslateTransition tt = new TranslateTransition(Duration.millis(300), benchContainer);
+        if (isBenchVisible) {
+            tt.setToY(250); // Hide
+            isBenchVisible = false;
+        } else {
+            tt.setToY(0); // Show
+            isBenchVisible = true;
+        }
+        tt.play();
     }
 
     private static class Position {

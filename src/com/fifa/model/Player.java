@@ -6,15 +6,17 @@ public class Player extends Entity {
     private String position;
     private int overall;
     private boolean isStarter;
+    private String photoPath;
 
     public Player() {}
 
-    public Player(String name, int countryId, String position, int overall, boolean isStarter) {
+    public Player(String name, int countryId, String position, int overall, boolean isStarter, String photoPath) {
         this.name = name;
         this.countryId = countryId;
         this.position = position;
         this.overall = overall;
         this.isStarter = isStarter;
+        this.photoPath = photoPath;
     }
 
     // Getters and Setters
@@ -32,6 +34,9 @@ public class Player extends Entity {
 
     public boolean isStarter() { return isStarter; }
     public void setStarter(boolean starter) { isStarter = starter; }
+
+    public String getPhotoPath() { return photoPath; }
+    public void setPhotoPath(String photoPath) { this.photoPath = photoPath; }
 
     @Override
     public String toString() {

@@ -16,7 +16,7 @@ public class PlayerDAO extends AbstractDAO<Player> {
             if (rs.next()) {
                 Player p = new Player(rs.getString("name"), rs.getInt("country_id"), 
                                      rs.getString("position"), rs.getInt("overall"), 
-                                     rs.getBoolean("is_starter"));
+                                     rs.getBoolean("is_starter"), rs.getString("photo_path"));
                 p.setId(rs.getInt("id"));
                 return p;
             }
@@ -36,7 +36,7 @@ public class PlayerDAO extends AbstractDAO<Player> {
             while (rs.next()) {
                 Player p = new Player(rs.getString("name"), rs.getInt("country_id"), 
                                      rs.getString("position"), rs.getInt("overall"), 
-                                     rs.getBoolean("is_starter"));
+                                     rs.getBoolean("is_starter"), rs.getString("photo_path"));
                 p.setId(rs.getInt("id"));
                 players.add(p);
             }

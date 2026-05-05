@@ -101,6 +101,13 @@
     -fx-cursor: hand;
 }
 
+.player-card-bg-gold {
+    -fx-fill: linear-gradient(to bottom right, #efd100, #e2a200); /* GOLD */
+    -fx-stroke: white;
+    -fx-stroke-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(226, 162, 0, 0.5), 15, 0, 0, 0);
+}
+
 .player-card-bg {
     -fx-fill: linear-gradient(to bottom right, #efd100, #e2a200); /* GOLD */
     -fx-stroke: white;
@@ -113,6 +120,13 @@
     -fx-stroke: white;
     -fx-stroke-width: 1;
     -fx-effect: dropshadow(gaussian, rgba(160, 160, 160, 0.5), 15, 0, 0, 0);
+}
+
+.player-card-bg-bronze {
+    -fx-fill: linear-gradient(to bottom right, #cd7f32, #8b4513); /* BRONZE */
+    -fx-stroke: white;
+    -fx-stroke-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(205, 127, 50, 0.5), 15, 0, 0, 0);
 }
 
 .player-card-rating {
@@ -144,4 +158,17 @@
 
 .dark-list-view {
     -fx-background-color: transparent;
+}
+
+.country-card {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-background-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.2);
+    -fx-border-width: 1;
+    -fx-padding: 10;
+    -fx-cursor: hand;
+}
+.country-card:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 136, 0.3), 10, 0, 0, 0);
 }

@@ -1,37 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.effect.DropShadow?>
 
-
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
-      alignment="CENTER" spacing="2" styleClass="player-card-container" 
-      prefWidth="80" prefHeight="110">
-    <StackPane styleClass="player-card-main">
-        <!-- Card Background -->
-        <Rectangle fx:id="cardBg" width="80" height="110" arcWidth="15" arcHeight="15" styleClass="player-card-bg" />
+<StackPane prefWidth="80" prefHeight="110" styleClass="player-card-container"
+           xmlns="http://javafx.com/javafx/17" 
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.fifa.controller.PlayerCardController">
+    
+    <!-- Фон карточки -->
+    <Rectangle fx:id="cardBg" width="80" height="110" styleClass="player-card-bg" 
+               arcWidth="4" arcHeight="4"/>
+    
+    <VBox spacing="0" alignment="TOP_CENTER" prefWidth="80" prefHeight="110">
         
-        <VBox alignment="CENTER" spacing="5">
-            <padding>
-                <Insets top="8" right="5" bottom="8" left="5"/>
-            </padding>
-            <HBox alignment="CENTER" spacing="8">
-                <VBox alignment="CENTER" spacing="0">
-                    <Label fx:id="ratingLabel" text="85" styleClass="player-card-rating" />
-                    <Label fx:id="posLabel" text="ST" styleClass="player-card-pos-small" />
-                </VBox>
-                <!-- Player photo placeholder with ring -->
-                <StackPane>
-                    <Circle radius="22" fill="#222" stroke="#d4af37" strokeWidth="1" />
-                    <Circle radius="20" fill="#333" />
-                </StackPane>
-            </HBox>
-            <Separator prefWidth="60" style="-fx-opacity: 0.2; -fx-background-color: white;" />
-            <Label fx:id="nameLabel" text="PLAYER" styleClass="player-card-name-label" />
+        <!-- Рейтинг (top-right) -->
+        <StackPane prefHeight="10" prefWidth="80">
+            <Label fx:id="ratingLabel" text="89" 
+                   styleClass="player-card-rating"
+                   style="-fx-font-size: 12px; -fx-padding: 0 4 0 0;"
+                   StackPane.alignment="TOP_RIGHT" />
+        </StackPane>
+        
+        <!-- Фото игрока -->
+        <ImageView fx:id="playerImage" fitWidth="70" fitHeight="70" 
+                   preserveRatio="true" styleClass="player-card-image">
+            <StackPane.margin>
+                <Insets top="2" left="5" right="5"/>
+            </StackPane.margin>
+        </ImageView>
+        
+        <!-- Информация о игроке (внизу) -->
+        <VBox spacing="0" alignment="CENTER" style="-fx-padding: 2;">
+            <!-- Имя -->
+            <Label fx:id="nameLabel" text="Player Name" 
+                   styleClass="player-card-name"
+                   style="-fx-font-size: 8; -fx-font-weight: bold;"/>
+            
+            <!-- Позиция -->
+            <Label fx:id="posLabel" text="GK" 
+                   styleClass="player-card-position"
+                   style="-fx-font-size: 7; -fx-text-fill: #aaa;"/>
         </VBox>
-    </StackPane>
-
-</VBox>
+        
+        <!-- Флаг страны (bottom) -->
+        <ImageView fx:id="flagImage" fitWidth="12" fitHeight="8" 
+                   preserveRatio="true" style="-fx-padding: 1;"/>
+        
+    </VBox>
+    
+    <!-- Тень -->
+    <effect>
+        <DropShadow radius="4" offsetX="0" offsetY="2" color="#00000040"/>
+    </effect>
+    
+</StackPane>

@@ -10,8 +10,9 @@
 
 
 
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="com.fifa.controller.SquadController" styleClass="main-menu-bg" prefHeight="700.0" prefWidth="1000.0">
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="com.fifa.controller.SquadController" styleClass="main-menu-bg" prefHeight="700.0" prefWidth="1000.0">
+    <BorderPane>
     <top>
         <VBox alignment="CENTER" spacing="10">
             <padding>
@@ -38,7 +39,7 @@
                 <children>
                     <ImageView fitWidth="960" fitHeight="430" preserveRatio="false" layoutX="0" layoutY="0">
                         <image>
-                            <Image url="@../images/pitch.png" />
+                            <Image url="@/images/pitch.png" />
                         </image>
 
                         <effect>
@@ -55,26 +56,33 @@
 
         </StackPane>
     </center>
-    <bottom>
-        <VBox spacing="10" styleClass="bench-container">
-            <HBox alignment="CENTER_LEFT" spacing="20">
-                <Label text="SUBSTITUTES / RESERVES" styleClass="header-text" />
+        <bottom>
+            <HBox alignment="CENTER_RIGHT" spacing="20" style="-fx-padding: 20;">
                 <Label fx:id="startersCountLabel" text="Selected: 0/11" style="-fx-text-fill: #aaa; -fx-font-weight: bold;" />
-                <Region HBox.hgrow="ALWAYS" />
+                <Button text="Запасные" onAction="#onToggleBenchClicked" styleClass="menu-button-secondary" />
                 <Button text="BACK" onAction="#onBackClicked" styleClass="menu-button-secondary" />
                 <Button fx:id="playButton" text="READY" onAction="#onPlayClicked" styleClass="menu-button" disable="true" />
             </HBox>
-            <ScrollPane fitToHeight="true" prefHeight="140" styleClass="dark-list-view" vbarPolicy="NEVER" style="-fx-background-color: transparent;">
-                <content>
-                    <HBox fx:id="benchBox" spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: transparent;">
-                        <padding>
-                            <Insets top="10" right="10" bottom="10" left="10"/>
-                        </padding>
-                    </HBox>
-                </content>
-            </ScrollPane>
-        </VBox>
-    </bottom>
-</BorderPane>
+        </bottom>
+    </BorderPane>
+
+    <!-- Выезжающее меню запасных -->
+    <VBox fx:id="benchContainer" spacing="10" styleClass="bench-container" StackPane.alignment="BOTTOM_CENTER" translateY="250" maxHeight="200">
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <Label text="SUBSTITUTES / RESERVES" styleClass="header-text" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="Закрыть" onAction="#onToggleBenchClicked" styleClass="menu-button-secondary" />
+        </HBox>
+        <ScrollPane fitToHeight="true" prefHeight="140" styleClass="dark-list-view" vbarPolicy="NEVER" style="-fx-background-color: transparent;">
+            <content>
+                <HBox fx:id="benchBox" spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: transparent;">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                </HBox>
+            </content>
+        </ScrollPane>
+    </VBox>
+</StackPane>
 
 

@@ -11,7 +11,8 @@ CREATE TABLE IF NOT EXISTS players (
     country_id INT REFERENCES countries(id) ON DELETE CASCADE,
     position VARCHAR(10) NOT NULL, -- GK, DEF, MID, FWD
     overall INT NOT NULL,
-    is_starter BOOLEAN DEFAULT FALSE
+    is_starter BOOLEAN DEFAULT FALSE,
+    photo_path VARCHAR(255)  -- путь к файлу, например "argentina_lionel_messi_154.png"
 );
 
 CREATE TABLE IF NOT EXISTS matches (

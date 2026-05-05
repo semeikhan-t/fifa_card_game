@@ -10,7 +10,7 @@
     <children>
         <ImageView fitHeight="600.0" fitWidth="800.0" preserveRatio="false">
             <image>
-                <Image url="@../images/wc2026.png" />
+                <Image url="@/images/wc2026.png" />
             </image>
         </ImageView>
         <VBox alignment="CENTER" styleClass="menu-overlay">

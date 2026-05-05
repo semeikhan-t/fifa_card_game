@@ -1,5 +1,6 @@
 package com.fifa.controller;
 
+import com.fifa.util.AudioManager;
 import com.fifa.util.SceneManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ public class MainMenuController {
     @FXML
     public void initialize() {
         System.out.println("MainMenuController initialized!");
+        AudioManager.playMusic("main.mp3", 0.2);
     }
 
     @FXML

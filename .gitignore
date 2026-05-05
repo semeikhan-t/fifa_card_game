@@ -4,21 +4,14 @@
 # Log files
 *.log
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
 # Package Files #
-# *.jar  <-- Commented out because this project uses lib/*.jar for dependencies
 *.war
 *.ear
 *.zip
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# virtual machine crash logs
 hs_err_pid*
 
 # IDE Specific
@@ -36,6 +29,7 @@ bin/
 out/
 build/
 target/
+sources.txt
 
 # OS specific
 .DS_Store
@@ -43,4 +37,6 @@ Thumbs.db
 
 # Documentation
 *.docx
-lib/
+
+# Note: lib/ is NOT ignored because it contains necessary jars
+# resources/ is NOT ignored because it contains essential assets

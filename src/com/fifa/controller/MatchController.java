@@ -5,6 +5,7 @@ import com.fifa.model.MatchEvent;
 import com.fifa.model.MatchResult;
 import com.fifa.model.Team;
 import com.fifa.service.MatchService;
+import com.fifa.util.AudioManager;
 import com.fifa.util.SceneManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -43,6 +44,7 @@ public class MatchController {
 
         finalResult = matchService.simulateMatch(home, away);
         
+        AudioManager.playMusic("game.m4a", 0.2);
         startSimulation();
     }
 
@@ -66,6 +68,7 @@ public class MatchController {
             if (event.getMinute() == minute) {
                 addEventToLog(event);
                 if (event.getType().equals("GOAL")) {
+                    AudioManager.playSound("goal.m4a", 1.0);
                     if (event.isHomeTeam()) {
                         homeScore++;
                         homeScoreLabel.setText(String.valueOf(homeScore));
@@ -88,6 +91,7 @@ public class MatchController {
     }
 
     private void onMatchEnd() {
+        AudioManager.playSound("endgame.m4a", 1.0);
         Label endLabel = new Label("ФИНАЛЬНЫЙ СВИСТОК!");
         endLabel.setStyle("-fx-text-fill: #ff0000; -fx-font-weight: bold;");
         eventLog.getChildren().add(0, endLabel);
