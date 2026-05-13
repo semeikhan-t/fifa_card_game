@@ -4,8 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
 
-<StackPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+<StackPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
            fx:controller="com.fifa.controller.MainMenuController">
     <children>
         <ImageView fitHeight="600.0" fitWidth="800.0" preserveRatio="false">
@@ -13,19 +14,41 @@
                 <Image url="@/images/wc2026.png" />
             </image>
         </ImageView>
-        <VBox alignment="CENTER" styleClass="menu-overlay">
-            <children>
-                <Label text="FIFA CARD GAME 2026" styleClass="title-label" />
-                
-                <VBox alignment="CENTER" spacing="20.0" maxWidth="400.0" styleClass="glass-container">
+        
+        <!-- Cinematic gradient overlay -->
+        <Region styleClass="cinematic-overlay" />
+        
+        <BorderPane>
+            <left>
+                <VBox alignment="CENTER_LEFT" spacing="100.0" styleClass="main-menu-container">
+                    <padding>
+                        <Insets left="80.0" top="0.0" />
+                    </padding>
                     <children>
-                        <Button text="ИГРАТЬ" onAction="#onPlayClicked" styleClass="menu-button" prefWidth="300.0" />
-                        <Button text="СТАТИСТИКА" onAction="#onStatsClicked" styleClass="menu-button" prefWidth="300.0" />
-                        <Region prefHeight="10.0" />
-                        <Button text="ВЫХОД" onAction="#onExitClicked" styleClass="menu-button-secondary" prefWidth="200.0" />
+                        <VBox spacing="-15.0">
+                            <Label text="FIFA CARD GAME" styleClass="title-primary" wrapText="false" minWidth="600.0" />
+                            <Label text="2026" styleClass="title-secondary" />
+                        </VBox>
+                        
+                        <VBox spacing="45.0" styleClass="menu-items-box">
+                            <children>
+                                <Button text="ИГРАТЬ" onAction="#onPlayClicked" styleClass="premium-menu-btn" />
+                                <Button text="СТАТИСТИКА" onAction="#onStatsClicked" styleClass="premium-menu-btn" />
+                                <Region prefHeight="50.0" />
+                                <Button text="ВЫХОД" onAction="#onExitClicked" styleClass="premium-menu-btn-exit" />
+                            </children>
+                        </VBox>
                     </children>
                 </VBox>
-            </children>
-        </VBox>
+            </left>
+            <bottom>
+                <HBox alignment="BOTTOM_RIGHT">
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+                    <Label text="v1.0.0 | CYBER-SPORT EDITION" styleClass="version-label" />
+                </HBox>
+            </bottom>
+        </BorderPane>
     </children>
 </StackPane>

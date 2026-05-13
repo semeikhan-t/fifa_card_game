@@ -8,66 +8,80 @@
     -fx-background-color: #050a0f;
 }
 
-/* Overlay for the background to make content readable */
-.menu-overlay {
-    -fx-background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
-    -fx-padding: 50;
-    -fx-alignment: center;
+/* Cinematic overlay to darken the left side for the menu */
+.cinematic-overlay {
+    -fx-background-color: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 35%, transparent 70%);
 }
 
-/* Glassmorphism Container */
-.glass-container {
-    -fx-background-color: rgba(255, 255, 255, 0.05);
-    -fx-background-radius: 20;
-    -fx-border-color: rgba(255, 255, 255, 0.2);
-    -fx-border-width: 1;
-    -fx-padding: 40;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 20, 0, 0, 0);
+.main-menu-container {
+    -fx-min-width: 600px;
 }
 
 /* Typography */
-.title-label {
+.title-primary {
     -fx-text-fill: white;
-    -fx-font-size: 56px;
+    -fx-font-size: 52px;
     -fx-font-weight: 900;
-    -fx-effect: dropshadow(gaussian, rgba(0, 255, 136, 0.5), 15, 0, 0, 0);
-    -fx-padding: 0 0 30 0;
+    -fx-font-style: italic;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.9), 10, 0, 3, 3);
 }
 
-/* Buttons */
-.menu-button {
-    -fx-background-color: linear-gradient(to bottom, #00ff88, #00cc66);
-    -fx-text-fill: #050a0f;
-    -fx-font-size: 18px;
-    -fx-font-weight: bold;
-    -fx-background-radius: 12;
-    -fx-padding: 15 40;
+.title-secondary {
+    -fx-text-fill: #00ff88;
+    -fx-font-size: 78px;
+    -fx-font-weight: 900;
+    -fx-font-style: italic;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 10, 0, 3, 3);
+}
+
+/* Premium Buttons */
+.premium-menu-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-font-size: 32px;
+    -fx-font-weight: 800;
+    -fx-font-style: italic;
+    -fx-alignment: center-left;
+    -fx-padding: 0;
     -fx-cursor: hand;
-    -fx-transition: all 0.3s;
-    -fx-effect: dropshadow(gaussian, rgba(0, 255, 136, 0.3), 10, 0, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.9), 8, 0, 2, 2);
+    -fx-transition: all 0.2s;
 }
 
-.menu-button:hover {
-    -fx-background-color: #00ffaa;
+.premium-menu-btn:hover {
+    -fx-text-fill: white;
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
-    -fx-effect: dropshadow(gaussian, rgba(0, 255, 136, 0.6), 20, 0, 0, 0);
+    -fx-translate-x: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 136, 0.6), 15, 0, 0, 0);
 }
 
-.menu-button-secondary {
+.premium-menu-btn-exit {
     -fx-background-color: transparent;
-    -fx-border-color: rgba(255, 255, 255, 0.4);
-    -fx-border-width: 2;
-    -fx-text-fill: white;
-    -fx-font-size: 16px;
-    -fx-background-radius: 12;
-    -fx-padding: 12 35;
+    -fx-text-fill: rgba(150, 150, 150, 0.8);
+    -fx-font-size: 26px;
+    -fx-font-weight: 800;
+    -fx-font-style: italic;
+    -fx-alignment: center-left;
+    -fx-padding: 0;
     -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 2, 2);
+    -fx-transition: all 0.2s;
 }
 
-.menu-button-secondary:hover {
-    -fx-background-color: rgba(255, 255, 255, 0.1);
-    -fx-border-color: white;
+.premium-menu-btn-exit:hover {
+    -fx-text-fill: #ff4444;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-translate-x: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 68, 68, 0.5), 15, 0, 0, 0);
+}
+
+.version-label {
+    -fx-text-fill: rgba(255, 255, 255, 0.4);
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 2px;
 }
 
 /* Tabs */
