@@ -5,21 +5,66 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
-      fx:controller="com.fifa.controller.StatsController" styleClass="main-menu-bg" prefHeight="600.0" prefWidth="800.0">
-    <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
-    </padding>
+<StackPane prefHeight="600.0" prefWidth="800.0" styleClass="main-menu-bg" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fifa.controller.StatsController">
     <children>
-        <Label text="MATCH HISTORY" styleClass="title-label" />
-        <TableView fx:id="statsTable" VBox.vgrow="ALWAYS" styleClass="dark-table-view">
-            <columns>
-                <TableColumn fx:id="dateCol" text="Date" prefWidth="150" />
-                <TableColumn fx:id="homeCol" text="Home" prefWidth="200" />
-                <TableColumn fx:id="scoreCol" text="Score" prefWidth="100" />
-                <TableColumn fx:id="awayCol" text="Away" prefWidth="200" />
-            </columns>
-        </TableView>
-        <Button text="MAIN MENU" onAction="#onBackClicked" styleClass="menu-button" />
+        <!-- Background Layer -->
+        <Pane styleClass="country-selection-bg" />
+        <Pane styleClass="cinematic-overlay" />
+        
+        <!-- Content Layer -->
+        <VBox spacing="30.0">
+            <padding>
+                <Insets bottom="40.0" left="50.0" right="50.0" top="40.0" />
+            </padding>
+            <children>
+                <!-- Header -->
+                <VBox spacing="5">
+                    <Label styleClass="title-primary" text="MATCH" />
+                    <Label styleClass="title-secondary" text="STATISTICS" />
+                </VBox>
+                
+                <!-- Summary Dashboard -->
+                <HBox spacing="20.0" alignment="CENTER">
+                    <children>
+                        <VBox alignment="CENTER" spacing="5.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                            <Label text="TOTAL MATCHES" styleClass="stat-label" />
+                            <Label fx:id="totalMatchesLabel" text="0" styleClass="stat-value" />
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="5.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                            <Label text="WINS" styleClass="stat-label" />
+                            <Label fx:id="winsLabel" text="0" styleClass="stat-value-win" />
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="5.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                            <Label text="LOSSES" styleClass="stat-label" />
+                            <Label fx:id="lossesLabel" text="0" styleClass="stat-value-loss" />
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="5.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                            <Label text="WIN RATE" styleClass="stat-label" />
+                            <Label fx:id="winRateLabel" text="0%" styleClass="stat-value-accent" />
+                        </VBox>
+                    </children>
+                </HBox>
+                
+                <!-- Table Section -->
+                <TableView fx:id="statsTable" VBox.vgrow="ALWAYS" styleClass="premium-table-view">
+                    <columns>
+                        <TableColumn fx:id="dateCol" prefWidth="120" text="DATE" />
+                        <TableColumn fx:id="outcomeCol" prefWidth="100" text="OUTCOME" />
+                        <TableColumn fx:id="homeCol" prefWidth="180" text="HOME TEAM" />
+                        <TableColumn fx:id="scoreCol" prefWidth="100" text="SCORE" />
+                        <TableColumn fx:id="awayCol" prefWidth="180" text="AWAY TEAM" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+
+                
+                <!-- Footer Navigation -->
+                <HBox alignment="CENTER_LEFT">
+                    <Button onAction="#onBackClicked" styleClass="premium-menu-btn-exit" text="← RETURN TO MAIN MENU" />
+                </HBox>
+            </children>
+        </VBox>
     </children>
-</VBox>
+</StackPane>
