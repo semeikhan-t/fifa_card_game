@@ -174,7 +174,7 @@ public class SquadController {
     private VBox createSlot(String posName, Position pos) {
         VBox slot = new VBox();
         slot.setAlignment(javafx.geometry.Pos.CENTER);
-        slot.setPrefSize(130, 190);
+        slot.setPrefSize(100, 145);
         AnchorPane.setLeftAnchor(slot, pos.x);
         AnchorPane.setTopAnchor(slot, pos.y);
         

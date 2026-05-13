@@ -13,8 +13,7 @@
     <!-- LAYER 1: Deep Stadium Background -->
     <ImageView fx:id="stadiumBg" fitWidth="1366.0" fitHeight="768.0" preserveRatio="false">
         <image>
-            <!-- We will assume pitch.png or a new stadium_bg.png, we use pitch.png as fallback but scaled -->
-            <Image url="@/images/pitch.png" />
+            <Image url="@/images/stadium_bg.png" />
         </image>
         <effect>
             <ColorAdjust brightness="-0.5" contrast="0.2" saturation="-0.2" />
@@ -104,11 +103,11 @@
                     <Button fx:id="playButton" text="READY" onAction="#onPlayClicked" styleClass="action-btn-ready" disable="true" />
                 </HBox>
                 
-                <ScrollPane fitToHeight="true" prefHeight="160" styleClass="custom-scroll-pane" vbarPolicy="NEVER" hbarPolicy="AS_NEEDED">
+                <ScrollPane fitToHeight="true" minHeight="185" prefHeight="185" maxHeight="185" styleClass="custom-scroll-pane" vbarPolicy="NEVER" hbarPolicy="AS_NEEDED">
                     <content>
-                        <HBox fx:id="benchBox" spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: transparent;">
+                        <HBox fx:id="benchBox" spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: transparent;" minHeight="160" maxHeight="160">
                             <padding>
-                                <Insets top="10" right="20" bottom="20" left="20"/>
+                                <Insets top="5" right="20" bottom="5" left="20"/>
                             </padding>
                         </HBox>
                     </content>

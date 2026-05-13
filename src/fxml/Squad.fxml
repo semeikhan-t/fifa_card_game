@@ -103,11 +103,11 @@
                     <Button fx:id="playButton" text="READY" onAction="#onPlayClicked" styleClass="action-btn-ready" disable="true" />
                 </HBox>
                 
-                <ScrollPane fitToHeight="true" prefHeight="160" styleClass="custom-scroll-pane" vbarPolicy="NEVER" hbarPolicy="AS_NEEDED">
+                <ScrollPane fitToHeight="true" minHeight="185" prefHeight="185" maxHeight="185" styleClass="custom-scroll-pane" vbarPolicy="NEVER" hbarPolicy="AS_NEEDED">
                     <content>
-                        <HBox fx:id="benchBox" spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: transparent;">
+                        <HBox fx:id="benchBox" spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: transparent;" minHeight="160" maxHeight="160">
                             <padding>
-                                <Insets top="10" right="20" bottom="20" left="20"/>
+                                <Insets top="5" right="20" bottom="5" left="20"/>
                             </padding>
                         </HBox>
                     </content>
