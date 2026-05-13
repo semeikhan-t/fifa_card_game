@@ -13,6 +13,12 @@
     -fx-background-color: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 45%, transparent 100%);
 }
 
+.country-selection-bg {
+    -fx-background-image: url("../images/stadium_bg.png");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
 .main-menu-container {
     -fx-pref-width: 500px;
 }
@@ -77,6 +83,37 @@
     -fx-border-color: #ff4444;
     -fx-background-color: linear-gradient(to right, rgba(255, 68, 68, 0.15) 0%, transparent 100%);
     -fx-translate-x: 10px;
+}
+
+/* Enhanced Navigation Buttons for Country Selection */
+.premium-nav-btn {
+    -fx-background-color: linear-gradient(to right, rgba(0, 255, 136, 0.4) 0%, rgba(0, 255, 136, 0.1) 100%);
+    -fx-text-fill: white;
+    -fx-font-size: 48px;
+    -fx-font-weight: 900;
+    -fx-font-style: italic;
+    -fx-padding: 25 80;
+    -fx-cursor: hand;
+    -fx-border-color: #00ff88;
+    -fx-border-width: 3 3 3 12px;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 136, 0.6), 25, 0, 0, 0);
+}
+
+.premium-nav-btn:hover {
+    -fx-background-color: linear-gradient(to right, rgba(0, 255, 136, 0.6) 0%, rgba(0, 255, 136, 0.2) 100%);
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 136, 1.0), 40, 0, 0, 0);
+    -fx-translate-y: -8px;
+}
+
+.premium-nav-btn:disabled {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-border-color: rgba(255, 255, 255, 0.2);
+    -fx-border-width: 2;
+    -fx-text-fill: rgba(255, 255, 255, 0.3);
+    -fx-effect: none;
+    -fx-cursor: default;
 }
 
 .version-label {
@@ -160,4 +197,27 @@
 
 .dark-list-view {
     -fx-background-color: transparent;
+}
+
+/* Country Selection Cards */
+.country-card {
+    -fx-background-color: rgba(255, 255, 255, 0.03);
+    -fx-background-radius: 15;
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-radius: 15;
+    -fx-border-width: 2;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0, 0, 5);
+}
+
+.country-card:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+    -fx-border-color: rgba(0, 255, 136, 0.4);
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 136, 0.2), 15, 0, 0, 0);
+}
+
+.country-card-selected {
+    -fx-background-color: rgba(0, 255, 136, 0.1) !important;
+    -fx-border-color: #00ff88 !important;
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 136, 0.5), 20, 0, 0, 0) !important;
 }

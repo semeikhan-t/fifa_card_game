@@ -29,13 +29,14 @@ public class CountrySelectionController {
     }
 
     private VBox createCountryCard(Team team) {
-        VBox card = new VBox(10);
+        VBox card = new VBox(8);
         card.getStyleClass().add("country-card");
         card.setAlignment(javafx.geometry.Pos.CENTER);
-        card.setPrefSize(150, 100);
+        card.setPrefSize(100, 130);
+        card.setPadding(new javafx.geometry.Insets(8));
         
-        Label nameLabel = new Label(team.getName());
-        nameLabel.setStyle("-fx-text-fill: white; -fx-font-weight: bold;");
+        Label nameLabel = new Label(team.getName().toUpperCase());
+        nameLabel.setStyle("-fx-text-fill: white; -fx-font-size: 11px; -fx-font-weight: 900; -fx-font-style: italic; -fx-letter-spacing: 1px;");
         
         ImageView flagView = new ImageView();
         flagView.setFitWidth(60);
@@ -44,15 +45,38 @@ public class CountrySelectionController {
         // "South Korea" -> "south_korea"
         String flagName = team.getName().toLowerCase().replace(" ", "_");
         flagView.setImage(ImageLoader.loadFlag(flagName));
+        flagView.setEffect(new javafx.scene.effect.DropShadow(15, javafx.scene.paint.Color.BLACK));
         
         card.getChildren().addAll(flagView, nameLabel);
         
+        javafx.animation.TranslateTransition hoverIn = new javafx.animation.TranslateTransition(javafx.util.Duration.millis(200), card);
+        hoverIn.setToY(-10);
+        javafx.animation.TranslateTransition hoverOut = new javafx.animation.TranslateTransition(javafx.util.Duration.millis(200), card);
+        hoverOut.setToY(0);
+
+        card.setOnMouseEntered(e -> {
+            if (selectedTeam != team) {
+                hoverIn.playFromStart();
+            }
+        });
+        
+        card.setOnMouseExited(e -> {
+            if (selectedTeam != team) {
+                hoverOut.playFromStart();
+            }
+        });
+
         card.setOnMouseClicked(e -> {
             selectedTeam = team;
             nextButton.setDisable(false);
+            
             // Highlight selected card
-            countriesPane.getChildren().forEach(n -> n.setStyle("-fx-border-color: transparent;"));
-            card.setStyle("-fx-border-color: #d4af37; -fx-border-width: 3; -fx-border-radius: 5;");
+            countriesPane.getChildren().forEach(n -> {
+                n.getStyleClass().remove("country-card-selected");
+                n.setTranslateY(0);
+            });
+            card.getStyleClass().add("country-card-selected");
+            card.setTranslateY(-15);
         });
         
         return card;

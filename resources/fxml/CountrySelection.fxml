@@ -5,23 +5,41 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
-      fx:controller="com.fifa.controller.CountrySelectionController" styleClass="main-menu-bg" prefHeight="600.0" prefWidth="800.0">
-    <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
-    </padding>
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="com.fifa.controller.CountrySelectionController" 
+           styleClass="country-selection-bg" prefHeight="600.0" prefWidth="800.0">
     <children>
-        <Label text="ВЫБЕРИТЕ ВАШУ СБОРНУЮ" styleClass="title-label">
-            <font>
-                <Font name="System Bold" size="24.0" />
-            </font>
-        </Label>
-        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
-            <TilePane fx:id="countriesPane" alignment="CENTER" hgap="20.0" vgap="20.0" prefColumns="4" />
-        </ScrollPane>
-        <HBox alignment="CENTER" spacing="20.0">
-            <Button text="НАЗАД" onAction="#onBackClicked" styleClass="menu-button-secondary" />
-            <Button fx:id="nextButton" text="ДАЛЕЕ" onAction="#onNextClicked" styleClass="menu-button" disable="true" />
-        </HBox>
+        <!-- Background Overlay for depth and darkening -->
+        <Pane style="-fx-background-color: rgba(0, 0, 0, 0.75);" />
+        
+        <VBox alignment="TOP_CENTER" spacing="15.0">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+            <children>
+                <VBox alignment="CENTER" spacing="-2">
+                    <Label text="ВЫБЕРИТЕ ВАШУ" style="-fx-text-fill: rgba(255, 255, 255, 0.6); -fx-font-size: 16px; -fx-font-weight: bold; -fx-letter-spacing: 3px;"/>
+                    <Label text="СБОРНУЮ" styleClass="title-secondary">
+                        <font>
+                            <Font name="System Bold Italic" size="42.0" />
+                        </font>
+                    </Label>
+                </VBox>
+                
+                <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background-color: transparent; -fx-background: transparent;" vbarPolicy="NEVER" hbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                    <TilePane fx:id="countriesPane" alignment="CENTER" hgap="15.0" vgap="15.0" prefColumns="5">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                    </TilePane>
+                </ScrollPane>
+                
+                <HBox alignment="CENTER" spacing="20.0">
+                    <Button text="НАЗАД" onAction="#onBackClicked" styleClass="premium-nav-btn" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Button fx:id="nextButton" text="ДАЛЕЕ" onAction="#onNextClicked" styleClass="premium-nav-btn" disable="true" />
+                </HBox>
+            </children>
+        </VBox>
     </children>
-</VBox>
+</StackPane>
