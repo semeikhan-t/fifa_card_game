@@ -11,15 +11,15 @@
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
     <children>
-        <Label text="ИСТОРИЯ МАТЧЕЙ" styleClass="title-label" />
+        <Label text="MATCH HISTORY" styleClass="title-label" />
         <TableView fx:id="statsTable" VBox.vgrow="ALWAYS" styleClass="dark-table-view">
             <columns>
-                <TableColumn fx:id="dateCol" text="Дата" prefWidth="150" />
-                <TableColumn fx:id="homeCol" text="Хозяева" prefWidth="200" />
-                <TableColumn fx:id="scoreCol" text="Счёт" prefWidth="100" />
-                <TableColumn fx:id="awayCol" text="Гости" prefWidth="200" />
+                <TableColumn fx:id="dateCol" text="Date" prefWidth="150" />
+                <TableColumn fx:id="homeCol" text="Home" prefWidth="200" />
+                <TableColumn fx:id="scoreCol" text="Score" prefWidth="100" />
+                <TableColumn fx:id="awayCol" text="Away" prefWidth="200" />
             </columns>
         </TableView>
-        <Button text="В МЕНЮ" onAction="#onBackClicked" styleClass="menu-button" />
+        <Button text="MAIN MENU" onAction="#onBackClicked" styleClass="menu-button" />
     </children>
 </VBox>

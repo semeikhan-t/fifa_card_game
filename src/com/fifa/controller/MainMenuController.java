@@ -15,13 +15,13 @@ public class MainMenuController {
     @FXML
     private void onPlayClicked() {
         System.out.println("PLAY button clicked!");
-        SceneManager.loadScene("CountrySelection.fxml", "Выбор сборной");
+        SceneManager.loadScene("CountrySelection.fxml", "Select Nation");
     }
 
     @FXML
     private void onStatsClicked() {
         System.out.println("STATS button clicked!");
-        SceneManager.loadScene("Stats.fxml", "Статистика матчей");
+        SceneManager.loadScene("Stats.fxml", "Match Stats");
     }
 
     @FXML

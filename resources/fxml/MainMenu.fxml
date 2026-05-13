@@ -30,12 +30,12 @@
                             <Label text="2026" styleClass="title-secondary" />
                         </VBox>
                         
-                        <VBox spacing="45.0" styleClass="menu-items-box">
+                        <VBox spacing="15.0" styleClass="menu-items-box">
                             <children>
-                                <Button text="ИГРАТЬ" onAction="#onPlayClicked" styleClass="premium-menu-btn" />
-                                <Button text="СТАТИСТИКА" onAction="#onStatsClicked" styleClass="premium-menu-btn" />
-                                <Region prefHeight="50.0" />
-                                <Button text="ВЫХОД" onAction="#onExitClicked" styleClass="premium-menu-btn-exit" />
+                                <Button text="PLAY" onAction="#onPlayClicked" styleClass="premium-menu-btn" />
+                                <Button text="STATS" onAction="#onStatsClicked" styleClass="premium-menu-btn" />
+                                <Region prefHeight="20.0" />
+                                <Button text="EXIT" onAction="#onExitClicked" styleClass="premium-menu-btn-exit" />
                             </children>
                         </VBox>
                     </children>
