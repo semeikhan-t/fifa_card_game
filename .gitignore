@@ -10,10 +10,11 @@
 *.zip
 *.tar.gz
 *.rar
-
+/.javafx*
 # virtual machine crash logs
 hs_err_pid*
 
+/lib
 # IDE Specific
 .vscode/
 .idea/
