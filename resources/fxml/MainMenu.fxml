@@ -36,7 +36,7 @@
                             <Region prefHeight="40.0" />
                         </VBox>
                         
-                        <VBox spacing="15.0" styleClass="menu-items-box">
+                        <VBox fx:id="menuItemsBox" spacing="15.0" styleClass="menu-items-box">
                             <children>
                                 <Button text="PLAY" onAction="#onPlayClicked" styleClass="premium-menu-btn" />
                                 <Button text="STATS" onAction="#onStatsClicked" styleClass="premium-menu-btn" />
@@ -48,11 +48,14 @@
                 </VBox>
             </left>
             <bottom>
-                <HBox alignment="BOTTOM_RIGHT">
+                <HBox alignment="BOTTOM_RIGHT" spacing="15.0">
                     <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                     </padding>
-                    <Label text="v1.0.0 | CYBER-SPORT EDITION" styleClass="version-label" />
+                    <children>
+                        <Button fx:id="replayButton" text="REPLAY" onAction="#onReplayClicked" styleClass="replay-btn-small" visible="false" />
+                        <Label text="v1.0.0 | CYBER-SPORT EDITION" styleClass="version-label" />
+                    </children>
                 </HBox>
             </bottom>
         </BorderPane>

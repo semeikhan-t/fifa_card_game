@@ -4,10 +4,16 @@ import com.fifa.util.AudioManager;
 import com.fifa.util.SceneManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
+import javafx.animation.ScaleTransition;
+import javafx.util.Duration;
 import java.net.URL;
 
 public class MainMenuController {
@@ -17,14 +23,21 @@ public class MainMenuController {
     @FXML
     private ImageView fallbackImageView;
 
+    @FXML
+    private VBox menuItemsBox;
+
+    @FXML
+    private Button replayButton;
+
+    private static boolean hasPlayedVideo = false;
     private MediaPlayer mediaPlayer;
+    private ScaleTransition pulse;
 
     @FXML
     public void initialize() {
         System.out.println("MainMenuController initialized!");
         AudioManager.stopAll(); // Ensure no other music plays on main menu
-        // AudioManager.playMusic("main.mp3", 0.2); // Removed to use video sound
-
+        
         // Setup background video
         boolean videoLoaded = false;
         try {
@@ -33,34 +46,55 @@ public class MainMenuController {
                 Media media = new Media(videoUrl.toExternalForm());
                 mediaPlayer = new MediaPlayer(media);
                 
-                // If we reach here, player is created. Now listen for actual readiness.
                 mediaPlayer.setOnReady(() -> {
-                    System.out.println("Video is ready to play!");
+                    System.out.println("Video is ready!");
                     fallbackImageView.setVisible(false);
+                    
+                    if (hasPlayedVideo) {
+                        // Skip to end if already played once
+                        mediaPlayer.seek(media.getDuration());
+                        menuItemsBox.setOpacity(1.0);
+                        replayButton.setVisible(true);
+                        startPulsingEffect();
+                    } else {
+                        // First time: play and dim buttons
+                        menuItemsBox.setOpacity(0.4);
+                        replayButton.setVisible(false);
+                        mediaPlayer.play();
+                        hasPlayedVideo = true;
+                    }
+                });
+
+                mediaPlayer.setOnEndOfMedia(() -> {
+                    System.out.println("Video reached the end. Starting pulse effect!");
+                    replayButton.setVisible(true);
+                    startPulsingEffect();
                 });
 
                 mediaPlayer.setOnError(() -> {
                     System.err.println("MediaPlayer error: " + mediaPlayer.getError().getMessage());
                     fallbackImageView.setVisible(true);
+                    replayButton.setVisible(false);
                 });
 
-                mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-                mediaPlayer.setMute(false); // Enable sound from video
-                mediaPlayer.setVolume(0.4); // Adjust volume as needed
+                mediaPlayer.setCycleCount(1);
+                mediaPlayer.setMute(false);
+                mediaPlayer.setVolume(0.4);
                 backgroundMediaView.setMediaPlayer(mediaPlayer);
-                mediaPlayer.play();
                 videoLoaded = true;
             } else {
                 System.err.println("Video file not found in resources!");
             }
         } catch (Throwable t) {
-            // Use Throwable to catch even Error (like UnsatisfiedLinkError)
             System.err.println("Could not initialize video system: " + t.getMessage());
         }
 
         if (!videoLoaded) {
             fallbackImageView.setVisible(true);
             backgroundMediaView.setVisible(false);
+            menuItemsBox.setOpacity(1.0);
+            replayButton.setVisible(true);
+            startPulsingEffect();
         }
     }
 
@@ -79,16 +113,48 @@ public class MainMenuController {
     }
 
     @FXML
+    private void onReplayClicked() {
+        System.out.println("REPLAY button clicked!");
+        if (mediaPlayer != null) {
+            if (pulse != null) pulse.stop();
+            menuItemsBox.setOpacity(0.4);
+            replayButton.setVisible(false);
+            mediaPlayer.seek(Duration.ZERO);
+            mediaPlayer.play();
+        }
+    }
+
+    @FXML
     private void onExitClicked() {
         stopVideo();
         Platform.exit();
     }
 
     private void stopVideo() {
+        if (pulse != null) pulse.stop();
         if (mediaPlayer != null) {
             mediaPlayer.stop();
-            mediaPlayer.dispose(); // Release resources
+            mediaPlayer.dispose();
         }
-        AudioManager.stopAll(); // Stop any other playing music
+        AudioManager.stopAll();
+    }
+
+    private void startPulsingEffect() {
+        if (pulse != null) pulse.stop();
+
+        // First, smoothly increase brightness (opacity)
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1.5), menuItemsBox);
+        fadeIn.setFromValue(menuItemsBox.getOpacity());
+        fadeIn.setToValue(1.0);
+        
+        // Then start the pulsing effect
+        pulse = new ScaleTransition(Duration.seconds(1.2), menuItemsBox);
+        pulse.setToX(1.05);
+        pulse.setToY(1.05);
+        pulse.setCycleCount(Animation.INDEFINITE);
+        pulse.setAutoReverse(true);
+        
+        fadeIn.setOnFinished(e -> pulse.play());
+        fadeIn.play();
     }
 }
