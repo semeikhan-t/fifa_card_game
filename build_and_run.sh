@@ -29,10 +29,12 @@ mkdir -p "$OUT_DIR/css"
 mkdir -p "$OUT_DIR/fxml"
 mkdir -p "$OUT_DIR/images"
 mkdir -p "$OUT_DIR/sounds"
+mkdir -p "$OUT_DIR/video"
 
 cp -r resources/css/* "$OUT_DIR/css/" 2>/dev/null || true
 cp -r resources/fxml/* "$OUT_DIR/fxml/" 2>/dev/null || true
 cp -r resources/images/* "$OUT_DIR/images/" 2>/dev/null || true
+cp -r resources/video/* "$OUT_DIR/video/" 2>/dev/null || true
 cp -r src/main/resources/sounds/* "$OUT_DIR/sounds/" 2>/dev/null || true
 
 if [ -d "src/main/resources/images" ]; then

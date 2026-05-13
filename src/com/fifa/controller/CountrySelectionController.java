@@ -21,6 +21,7 @@ public class CountrySelectionController {
 
     @FXML
     public void initialize() {
+        com.fifa.util.AudioManager.playMusic("main.mp3", 0.2, 11.0);
         List<Team> teams = teamDAO.findAll();
         for (Team team : teams) {
             VBox card = createCountryCard(team);

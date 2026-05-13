@@ -12,7 +12,11 @@ public class AudioManager {
     private static MediaPlayer backgroundMusic;
 
     public static void playMusic(String fileName, double volume) {
-        System.out.println("Trying to play music: " + fileName);
+        playMusic(fileName, volume, 0);
+    }
+
+    public static void playMusic(String fileName, double volume, double startSeconds) {
+        System.out.println("Trying to play music: " + fileName + " from " + startSeconds + "s");
         if (backgroundMusic != null) {
             backgroundMusic.stop();
         }
@@ -21,7 +25,7 @@ public class AudioManager {
         if (player != null) {
             player.setVolume(volume);
             player.setCycleCount(MediaPlayer.INDEFINITE);
-            player.seek(Duration.ZERO);
+            player.seek(Duration.seconds(startSeconds));
             player.play();
             backgroundMusic = player;
             System.out.println("Music playing: " + fileName);

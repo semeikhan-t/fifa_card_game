@@ -32,6 +32,7 @@ public class StatsController {
 
     @FXML
     public void initialize() {
+        com.fifa.util.AudioManager.playMusic("main.mp3", 0.2, 11.0);
         dateCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getPlayedAt().format(formatter)));
         homeCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getHomeName()));
         scoreCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getHomeScore() + " - " + data.getValue().getAwayScore()));

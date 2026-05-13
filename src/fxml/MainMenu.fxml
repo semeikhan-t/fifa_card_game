@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.media.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -9,11 +10,15 @@
 <StackPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
            fx:controller="com.fifa.controller.MainMenuController">
     <children>
-        <ImageView fitHeight="600.0" fitWidth="800.0" preserveRatio="false">
+        <!-- Fallback background image -->
+        <ImageView fx:id="fallbackImageView" fitHeight="600.0" fitWidth="800.0" preserveRatio="false">
             <image>
                 <Image url="@/images/wc2026.png" />
             </image>
         </ImageView>
+
+        <MediaView fx:id="backgroundMediaView" fitHeight="600.0" fitWidth="800.0" preserveRatio="false" />
+
         
         <!-- Cinematic gradient overlay -->
         <Region styleClass="cinematic-overlay" />
@@ -43,7 +48,10 @@
                 </VBox>
             </left>
             <bottom>
-                <HBox alignment="BOTTOM_RIGHT" padding="20.0">
+                <HBox alignment="BOTTOM_RIGHT">
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
                     <Label text="v1.0.0 | CYBER-SPORT EDITION" styleClass="version-label" />
                 </HBox>
             </bottom>
