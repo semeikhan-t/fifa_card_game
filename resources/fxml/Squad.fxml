@@ -67,13 +67,13 @@
     </BorderPane>
 
     <!-- Выезжающее меню запасных -->
-    <VBox fx:id="benchContainer" spacing="10" styleClass="bench-container" StackPane.alignment="BOTTOM_CENTER" translateY="250" maxHeight="200">
+    <VBox fx:id="benchContainer" spacing="10" styleClass="bench-container" StackPane.alignment="BOTTOM_CENTER" translateY="300" maxHeight="280">
         <HBox alignment="CENTER_LEFT" spacing="20">
             <Label text="SUBSTITUTES / RESERVES" styleClass="header-text" />
             <Region HBox.hgrow="ALWAYS" />
             <Button text="Закрыть" onAction="#onToggleBenchClicked" styleClass="menu-button-secondary" />
         </HBox>
-        <ScrollPane fitToHeight="true" prefHeight="140" styleClass="dark-list-view" vbarPolicy="NEVER" style="-fx-background-color: transparent;">
+        <ScrollPane fitToHeight="true" prefHeight="180" styleClass="dark-list-view" vbarPolicy="NEVER" style="-fx-background-color: transparent;">
             <content>
                 <HBox fx:id="benchBox" spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: transparent;">
                     <padding>

@@ -64,7 +64,7 @@
                 <Button text="BACK" onAction="#onBackClicked" styleClass="menu-button-secondary" />
                 <Button fx:id="playButton" text="READY" onAction="#onPlayClicked" styleClass="menu-button" disable="true" />
             </HBox>
-            <ScrollPane fitToHeight="true" prefHeight="140" styleClass="dark-list-view" vbarPolicy="NEVER" style="-fx-background-color: transparent;">
+            <ScrollPane fitToHeight="true" prefHeight="180" styleClass="dark-list-view" vbarPolicy="NEVER" style="-fx-background-color: transparent;">
                 <content>
                     <HBox fx:id="benchBox" spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: transparent;">
                         <padding>

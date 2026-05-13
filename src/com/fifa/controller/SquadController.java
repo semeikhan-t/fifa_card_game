@@ -219,7 +219,7 @@ public class SquadController {
     private void onToggleBenchClicked() {
         TranslateTransition tt = new TranslateTransition(Duration.millis(300), benchContainer);
         if (isBenchVisible) {
-            tt.setToY(250); // Hide
+            tt.setToY(300); // Hide
             isBenchVisible = false;
         } else {
             tt.setToY(0); // Show
