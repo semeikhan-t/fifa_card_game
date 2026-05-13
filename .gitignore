@@ -16,6 +16,10 @@ hs_err_pid*
 
 /lib/
 
+javafx-sdk-*
+javafx-sdk-21.0.2/
+lib/
+
 # IDE Specific
 .vscode/
 .idea/

@@ -48,6 +48,7 @@ public class SquadController {
     }};
 
     private Map<String, Player> pitchPlayers = new HashMap<>();
+    private Map<Integer, String> playerSlotAssignment = new HashMap<>();
 
     @FXML
     public void initialize() {
@@ -75,10 +76,18 @@ public class SquadController {
         benchBox.getChildren().clear();
         pitchPlayers.clear();
 
-        // Setup pitch slots
-        int starterIdx = 0;
         List<Map.Entry<String, Position>> formationEntries = new ArrayList<>(FORMATION_433.entrySet());
-        
+        normalizeStarterAssignments(formationEntries);
+
+        Map<String, Player> assigned = new LinkedHashMap<>();
+        for (Map.Entry<String, Position> entry : formationEntries) {
+            String posName = entry.getKey();
+            Player player = findPlayerAssignedToSlot(posName);
+            if (player != null) {
+                assigned.put(posName, player);
+            }
+        }
+
         for (Map.Entry<String, Position> entry : formationEntries) {
             String posName = entry.getKey();
             Position pos = entry.getValue();
@@ -86,16 +95,14 @@ public class SquadController {
             VBox slot = createSlot(posName, pos);
             starterSlotsPane.getChildren().add(slot);
 
-            if (starterIdx < starters.size()) {
-                Player p = starters.get(starterIdx);
+            Player p = assigned.get(posName);
+            if (p != null) {
                 pitchPlayers.put(posName, p);
                 Node card = createPlayerCard(p);
                 slot.getChildren().add(card);
-                starterIdx++;
             }
         }
 
-        // Setup bench
         for (Player p : bench) {
             Node card = createPlayerCard(p);
             benchBox.getChildren().add(card);
@@ -118,7 +125,11 @@ public class SquadController {
         // Drag and Drop handlers for slot
         slot.setOnDragOver(e -> {
             if (e.getGestureSource() != slot && e.getDragboard().hasString()) {
-                e.acceptTransferModes(TransferMode.MOVE);
+                int playerId = Integer.parseInt(e.getDragboard().getString());
+                Player dragged = findPlayerById(playerId);
+                if (dragged != null && canPlaySlot(dragged, posName)) {
+                    e.acceptTransferModes(TransferMode.MOVE);
+                }
             }
             e.consume();
         });
@@ -127,8 +138,11 @@ public class SquadController {
             Dragboard db = e.getDragboard();
             if (db.hasString()) {
                 int playerId = Integer.parseInt(db.getString());
-                handlePlayerMove(playerId, posName);
-                e.setDropCompleted(true);
+                if (handlePlayerMove(playerId, posName)) {
+                    e.setDropCompleted(true);
+                } else {
+                    e.setDropCompleted(false);
+                }
             }
             e.consume();
         });
@@ -164,40 +178,143 @@ public class SquadController {
     }
 
 
-    private void handlePlayerMove(int playerId, String targetPos) {
-        Player movingPlayer = currentTeam.getPlayers().stream()
-                .filter(p -> p.getId() == playerId)
-                .findFirst().orElse(null);
-
-        if (movingPlayer == null) return;
-
-        // If player was on pitch, swap or move
-        Player playerAtTarget = pitchPlayers.get(targetPos);
-        
-        if (playerAtTarget != null) {
-            // Swap
-            playerAtTarget.setStarter(movingPlayer.isStarter());
-            movingPlayer.setStarter(true);
-        } else {
-            movingPlayer.setStarter(true);
+    private boolean handlePlayerMove(int playerId, String targetPos) {
+        Player movingPlayer = findPlayerById(playerId);
+        if (movingPlayer == null || !canPlaySlot(movingPlayer, targetPos)) {
+            return false;
         }
 
-        // Re-calculate starters and bench lists
+        String currentSlot = playerSlotAssignment.get(playerId);
+        Player playerAtTarget = findPlayerAssignedToSlot(targetPos);
+
+        if (playerAtTarget != null) {
+            if (movingPlayer.isStarter()) {
+                playerSlotAssignment.put(playerId, targetPos);
+                playerSlotAssignment.put(playerAtTarget.getId(), currentSlot == null ? targetPos : currentSlot);
+            } else {
+                playerAtTarget.setStarter(false);
+                playerSlotAssignment.remove(playerAtTarget.getId());
+                movingPlayer.setStarter(true);
+                playerSlotAssignment.put(playerId, targetPos);
+            }
+        } else {
+            if (movingPlayer.isStarter()) {
+                playerSlotAssignment.put(playerId, targetPos);
+            } else {
+                movingPlayer.setStarter(true);
+                playerSlotAssignment.put(playerId, targetPos);
+            }
+        }
+
+        List<Map.Entry<String, Position>> formationEntries = new ArrayList<>(FORMATION_433.entrySet());
+        normalizeStarterAssignments(formationEntries);
+        refreshUI();
+        return true;
+    }
+
+    private void normalizeStarterAssignments(List<Map.Entry<String, Position>> formationEntries) {
+        Iterator<Map.Entry<Integer, String>> iterator = playerSlotAssignment.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Integer, String> entry = iterator.next();
+            Player p = findPlayerById(entry.getKey());
+            if (p == null || !p.isStarter() || !canPlaySlot(p, entry.getValue())) {
+                iterator.remove();
+            }
+        }
+
+        Set<Integer> assignedPlayers = new HashSet<>(playerSlotAssignment.keySet());
+        Set<String> usedSlots = new HashSet<>(playerSlotAssignment.values());
+
+        for (Player p : currentTeam.getPlayers()) {
+            if (!p.isStarter() || assignedPlayers.contains(p.getId())) continue;
+            for (Map.Entry<String, Position> entry : formationEntries) {
+                String posName = entry.getKey();
+                if (!usedSlots.contains(posName) && canPlaySlot(p, posName)) {
+                    playerSlotAssignment.put(p.getId(), posName);
+                    assignedPlayers.add(p.getId());
+                    usedSlots.add(posName);
+                    break;
+                }
+            }
+        }
+
+        for (Player p : currentTeam.getPlayers()) {
+            if (p.isStarter() && !playerSlotAssignment.containsKey(p.getId())) {
+                p.setStarter(false);
+            }
+        }
+
+        playerSlotAssignment.entrySet().removeIf(entry -> {
+            Player p = findPlayerById(entry.getKey());
+            return p == null || !p.isStarter();
+        });
+
         starters.clear();
         bench.clear();
         for (Player p : currentTeam.getPlayers()) {
             if (p.isStarter()) starters.add(p);
             else bench.add(p);
         }
+    }
 
-        // Limit starters to 11
-        if (starters.size() > 11) {
-            movingPlayer.setStarter(false);
-            starters.remove(movingPlayer);
-            bench.add(movingPlayer);
-        }
+    private Player findPlayerAssignedToSlot(String slotName) {
+        return playerSlotAssignment.entrySet().stream()
+                .filter(entry -> entry.getValue().equals(slotName))
+                .map(entry -> findPlayerById(entry.getKey()))
+                .filter(Objects::nonNull)
+                .findFirst().orElse(null);
+    }
 
-        refreshUI();
+    private boolean canPlaySlot(Player player, String slotName) {
+        String playerGroup = normalizePositionGroup(player.getPosition());
+        String slotGroup = normalizeSlotGroup(slotName);
+        return playerGroup != null && playerGroup.equals(slotGroup);
+    }
+
+    private String normalizePositionGroup(String position) {
+        if (position == null) return null;
+        String pos = position.trim().toUpperCase();
+        return switch (pos) {
+            case "GK" -> "GK";
+            case "DEF", "DF" -> "DEF";
+            case "MID" -> "MID";
+            case "FWD", "FW" -> "FWD";
+            default -> {
+                if (pos.matches(".*GK.*")) yield "GK";
+                if (pos.matches(".*DEF.*") || pos.matches("LB|LCB|CB|RCB|RB|RWB|LWB")) yield "DEF";
+                if (pos.matches(".*MID.*") || pos.matches("CM|LCM|RCM|CDM|CAM")) yield "MID";
+                if (pos.matches(".*FWD.*") || pos.matches("ST|LW|RW|CF|LF|RF")) yield "FWD";
+                yield null;
+            }
+        };
+    }
+
+    private String normalizeSlotGroup(String slotName) {
+        if (slotName == null) return null;
+        return switch (slotName.toUpperCase()) {
+            case "GK" -> "GK";
+            case "LB", "LCB", "RCB", "RB" -> "DEF";
+            case "LCM", "CM", "RCM" -> "MID";
+            case "LW", "ST", "RW" -> "FWD";
+            default -> null;
+        };
+    }
+
+    private int positionPriority(Player p) {
+        String group = normalizePositionGroup(p.getPosition());
+        return switch (group) {
+            case "GK" -> 0;
+            case "DEF" -> 1;
+            case "MID" -> 2;
+            case "FWD" -> 3;
+            default -> 4;
+        };
+    }
+
+    private Player findPlayerById(int playerId) {
+        return currentTeam.getPlayers().stream()
+                .filter(p -> p.getId() == playerId)
+                .findFirst().orElse(null);
     }
 
     private void updateLabels() {
