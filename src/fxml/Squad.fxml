@@ -13,8 +13,7 @@
     <!-- LAYER 1: Deep Stadium Background -->
     <ImageView fx:id="stadiumBg" fitWidth="1366.0" fitHeight="768.0" preserveRatio="false">
         <image>
-            <!-- We will assume pitch.png or a new stadium_bg.png, we use pitch.png as fallback but scaled -->
-            <Image url="@/images/pitch.png" />
+            <Image url="@/images/stadium_bg.png" />
         </image>
         <effect>
             <ColorAdjust brightness="-0.5" contrast="0.2" saturation="-0.2" />

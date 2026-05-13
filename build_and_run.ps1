@@ -43,9 +43,12 @@ if (!(Test-Path "out\fxml")) { New-Item -ItemType Directory -Force -Path "out\fx
 if (!(Test-Path "out\images")) { New-Item -ItemType Directory -Force -Path "out\images" | Out-Null }
 if (!(Test-Path "out\sounds")) { New-Item -ItemType Directory -Force -Path "out\sounds" | Out-Null }
 
+if (!(Test-Path "out\video")) { New-Item -ItemType Directory -Force -Path "out\video" | Out-Null }
+
 Copy-Item -Path "resources\css\*" -Destination "out\css" -Recurse -Force
 Copy-Item -Path "resources\fxml\*" -Destination "out\fxml" -Recurse -Force
 Copy-Item -Path "resources\images\*" -Destination "out\images" -Recurse -Force
+Copy-Item -Path "resources\video\*" -Destination "out\video" -Recurse -Force
 Copy-Item -Path "src\main\resources\sounds\*" -Destination "out\sounds" -Recurse -Force
 
 if (Test-Path "src\main\resources\images") {

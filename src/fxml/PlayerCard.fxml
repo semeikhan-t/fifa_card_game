@@ -6,6 +6,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
 
 <!-- The outer container has the drop shadow and handles the hover scaling -->
 <StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
