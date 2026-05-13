@@ -83,41 +83,46 @@
                 </Pane>
             </StackPane>
         </center>
-        
-        <!-- BOTTOM: Glassmorphism Bench Area -->
-        <bottom>
-            <VBox styleClass="bench-glass-container" spacing="15">
-                <HBox alignment="CENTER_LEFT" spacing="30">
-                    <Button text="BACK" onAction="#onBackClicked" styleClass="action-btn-back" />
-                    <Label text="SUBSTITUTES" styleClass="status-label" />
-                    <Label fx:id="startersCountLabel" text="SELECTED: 0/11" styleClass="status-label, text-neon" />
-                    
-                    <!-- Rating Circle Placeholder -->
-                    <StackPane fx:id="ratingCircleContainer">
-                        <Circle radius="20" fill="transparent" stroke="#00ff66" strokeWidth="3" opacity="0.3"/>
-                        <Circle fx:id="ratingProgressRing" radius="20" fill="transparent" stroke="#00ff66" strokeWidth="3" strokeDashArray="120" strokeDashOffset="30"/>
-                        <Label fx:id="teamRatingLabel" text="85" style="-fx-text-fill: white; -fx-font-weight: 900; -fx-font-size: 14px;"/>
-                    </StackPane>
-
-                    <Region HBox.hgrow="ALWAYS" />
-                    <Button fx:id="playButton" text="READY" onAction="#onPlayClicked" styleClass="action-btn-ready" disable="true" />
-                </HBox>
-                
-                <ScrollPane fitToHeight="true" minHeight="185" prefHeight="185" maxHeight="185" styleClass="custom-scroll-pane" vbarPolicy="NEVER" hbarPolicy="AS_NEEDED">
-                    <content>
-                        <HBox fx:id="benchBox" spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: transparent;" minHeight="160" maxHeight="160">
-                            <padding>
-                                <Insets top="5" right="20" bottom="5" left="20"/>
-                            </padding>
-                        </HBox>
-                    </content>
-                </ScrollPane>
-            </VBox>
-        </bottom>
-        
     </BorderPane>
 
     <!-- LAYER 5: Cinematic Vignette Overlay (Darkens edges) -->
     <Region styleClass="vignette-overlay" mouseTransparent="true" />
     
+    <!-- LAYER 6: Slide-out Bench Overlay -->
+    <VBox fx:id="benchDrawer" alignment="BOTTOM_CENTER" StackPane.alignment="BOTTOM_CENTER" pickOnBounds="false">
+        
+        <!-- Toggle Button Container -->
+        <HBox alignment="CENTER" pickOnBounds="false">
+            <Button fx:id="toggleBenchBtn" text="▼ SUBSTITUTES ▼" onAction="#onToggleBenchClicked" styleClass="action-btn-back" style="-fx-font-size: 12px; -fx-padding: 5 20; -fx-background-color: rgba(0,0,0,0.6);" />
+        </HBox>
+
+        <!-- Actual Bench Container -->
+        <VBox fx:id="benchContainer" styleClass="bench-glass-container" spacing="15" minHeight="200" maxHeight="200">
+            <HBox alignment="CENTER_LEFT" spacing="30">
+                <Button text="BACK" onAction="#onBackClicked" styleClass="action-btn-back" />
+                <Label text="SUBSTITUTES" styleClass="status-label" />
+                <Label fx:id="startersCountLabel" text="SELECTED: 0/11" styleClass="status-label, text-neon" />
+                
+                <!-- Rating Circle Placeholder -->
+                <StackPane fx:id="ratingCircleContainer">
+                    <Circle radius="20" fill="transparent" stroke="#00ff66" strokeWidth="3" opacity="0.3"/>
+                    <Circle fx:id="ratingProgressRing" radius="20" fill="transparent" stroke="#00ff66" strokeWidth="3" strokeDashArray="120" strokeDashOffset="30"/>
+                    <Label fx:id="teamRatingLabel" text="85" style="-fx-text-fill: white; -fx-font-weight: 900; -fx-font-size: 14px;"/>
+                </StackPane>
+
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="playButton" text="READY" onAction="#onPlayClicked" styleClass="action-btn-ready" disable="true" />
+            </HBox>
+            
+            <ScrollPane fitToHeight="true" minHeight="145" prefHeight="145" maxHeight="145" styleClass="custom-scroll-pane" vbarPolicy="NEVER" hbarPolicy="AS_NEEDED">
+                <content>
+                    <HBox fx:id="benchBox" spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: transparent;" minHeight="125" maxHeight="125">
+                        <padding>
+                            <Insets top="5" right="20" bottom="5" left="20"/>
+                        </padding>
+                    </HBox>
+                </content>
+            </ScrollPane>
+        </VBox>
+    </VBox>
 </StackPane>

@@ -35,6 +35,10 @@ public class SquadController {
     @FXML private Circle ratingProgressRing;
     @FXML private Label teamRatingLabel;
 
+    @FXML private VBox benchContainer;
+    @FXML private Button toggleBenchBtn;
+    private boolean isBenchOpen = true;
+
     private SquadService squadService = new SquadService();
     private Team currentTeam;
     private List<Player> starters = new ArrayList<>();
@@ -174,7 +178,7 @@ public class SquadController {
     private VBox createSlot(String posName, Position pos) {
         VBox slot = new VBox();
         slot.setAlignment(javafx.geometry.Pos.CENTER);
-        slot.setPrefSize(100, 145);
+        slot.setPrefSize(80, 116);
         AnchorPane.setLeftAnchor(slot, pos.x);
         AnchorPane.setTopAnchor(slot, pos.y);
         
@@ -413,7 +417,21 @@ public class SquadController {
 
     @FXML
     private void onBackClicked() {
-        SceneManager.loadScene("CountrySelection.fxml", "Выбор сборной");
+        SceneManager.loadScene("CountrySelection.fxml", "Select Nation");
+    }
+
+    @FXML
+    private void onToggleBenchClicked() {
+        isBenchOpen = !isBenchOpen;
+        TranslateTransition tt = new TranslateTransition(Duration.millis(300), benchContainer);
+        if (isBenchOpen) {
+            tt.setToY(0);
+            toggleBenchBtn.setText("▼ SUBSTITUTES ▼");
+        } else {
+            tt.setToY(200); // Height of the benchContainer
+            toggleBenchBtn.setText("▲ SUBSTITUTES ▲");
+        }
+        tt.play();
     }
 
     private static class Position {
