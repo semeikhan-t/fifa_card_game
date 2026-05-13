@@ -86,6 +86,25 @@
     -fx-letter-spacing: 2px;
 }
 
+.replay-btn-small {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-text-fill: rgba(255, 255, 255, 0.5);
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-border-color: rgba(0, 255, 136, 0.3);
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 4 10;
+    -fx-cursor: hand;
+}
+
+.replay-btn-small:hover {
+    -fx-background-color: rgba(0, 255, 136, 0.1);
+    -fx-text-fill: white;
+    -fx-border-color: #00ff88;
+}
+
 /* Tabs */
 .tab-button {
     -fx-background-color: transparent;
