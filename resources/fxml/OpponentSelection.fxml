@@ -17,7 +17,7 @@
         </ScrollPane>
         <HBox alignment="CENTER" spacing="20.0">
             <Button text="НАЗАД" onAction="#onBackClicked" styleClass="menu-button-secondary" />
-            <Button fx:id="nextButton" text="НАЧАТЬ МАТЧ" onAction="#onNextClicked" styleClass="menu-button" disable="true" />
+            <Button fx:id="nextButton" text="ПРОСМОТР СОСТАВА" onAction="#onNextClicked" styleClass="menu-button" disable="true" />
         </HBox>
     </children>
 </VBox>

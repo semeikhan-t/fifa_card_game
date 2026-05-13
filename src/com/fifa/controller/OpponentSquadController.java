@@ -12,14 +12,19 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.Node;
 import javafx.fxml.FXMLLoader;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 import java.util.*;
 
 public class OpponentSquadController {
     @FXML private Label teamNameLabel;
     @FXML private AnchorPane starterSlotsPane;
     @FXML private HBox benchBox;
+    @FXML private VBox benchContainer;
     @FXML private Button backButton;
     @FXML private Button startMatchButton;
+
+    private boolean isBenchVisible = false;
 
     private SquadService squadService = new SquadService();
     private Team opponentTeam;
@@ -128,6 +133,19 @@ public class OpponentSquadController {
             e.printStackTrace();
             return new Label(p.getName());
         }
+    }
+
+    @FXML
+    private void onToggleBenchClicked() {
+        TranslateTransition tt = new TranslateTransition(Duration.millis(300), benchContainer);
+        if (isBenchVisible) {
+            tt.setToY(250); // Hide
+            isBenchVisible = false;
+        } else {
+            tt.setToY(0); // Show
+            isBenchVisible = true;
+        }
+        tt.play();
     }
 
     @FXML

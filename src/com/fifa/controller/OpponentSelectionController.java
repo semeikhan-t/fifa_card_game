@@ -65,7 +65,7 @@ public class OpponentSelectionController {
     private void onNextClicked() {
         squadService.loadSquad(selectedOpponent); // Загружаем игроков соперника для симуляции
         SceneManager.setOpponentTeam(selectedOpponent);
-        SceneManager.loadScene("Match.fxml", "МАТЧ: " + SceneManager.getUserTeam().getName() + " vs " + selectedOpponent.getName());
+        SceneManager.loadScene("OpponentSquad.fxml", "Состав соперника: " + selectedOpponent.getName());
     }
 
     @FXML
