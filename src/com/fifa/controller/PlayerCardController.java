@@ -2,49 +2,87 @@ package com.fifa.controller;
 
 import com.fifa.model.Player;
 import com.fifa.util.ImageLoader;
+import javafx.animation.Animation;
+import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 /**
- * Контроллер для карточки игрока (PlayerCard.fxml)
- * 
- * Отображает:
- * - Фото игрока
- * - Рейтинг overall
- * - Имя и позицию
- * - Флаг страны
+ * AAA Cinematic Player Card Controller
  */
 public class PlayerCardController {
     
+    @FXML private StackPane cardRoot;
+    @FXML private StackPane cardBody;
     @FXML private ImageView playerImage;
     @FXML private ImageView flagImage;
     @FXML private Label ratingLabel;
     @FXML private Label nameLabel;
     @FXML private Label posLabel;
     @FXML private Rectangle cardBg;
+    @FXML private Rectangle reflectionOverlay;
+    @FXML private Rectangle selectionOutline;
 
-    /**
-     * Инициализировать карточку для игрока
-     */
+    private TranslateTransition idleFloat;
+    private ScaleTransition hoverScale;
+    
+    private boolean isSelected = false;
+
+    @FXML
+    public void initialize() {
+        setupAnimations();
+    }
+
+    private void setupAnimations() {
+        // Idle floating animation (subtle continuous vertical movement)
+        idleFloat = new TranslateTransition(Duration.millis(1500 + Math.random() * 500), cardBody);
+        idleFloat.setByY(-5f); // Move up slightly
+        idleFloat.setCycleCount(Animation.INDEFINITE);
+        idleFloat.setAutoReverse(true);
+        idleFloat.play();
+
+        // Hover scale animation
+        hoverScale = new ScaleTransition(Duration.millis(200), cardRoot);
+        
+        cardRoot.setOnMouseEntered(e -> {
+            idleFloat.pause();
+            hoverScale.setToX(1.08);
+            hoverScale.setToY(1.08);
+            hoverScale.play();
+            // Subtle shift in reflection for depth
+            reflectionOverlay.setTranslateX(10);
+            reflectionOverlay.setTranslateY(-10);
+        });
+
+        cardRoot.setOnMouseExited(e -> {
+            hoverScale.setToX(1.0);
+            hoverScale.setToY(1.0);
+            hoverScale.play();
+            reflectionOverlay.setTranslateX(0);
+            reflectionOverlay.setTranslateY(0);
+            idleFloat.play();
+        });
+    }
+
     public void setPlayer(Player player, String countryName, String photoFileName) {
         nameLabel.setText(player.getName());
         ratingLabel.setText(String.valueOf(player.getOverall()));
         posLabel.setText(player.getPosition());
         
-        // Загрузить фото игрока
         if (photoFileName != null && !photoFileName.isEmpty()) {
             var playerImg = ImageLoader.loadPlayer(photoFileName);
             if (playerImg != null) {
                 playerImage.setImage(playerImg);
             }
         } else {
-            // Если фото не указано — покажется placeholder
             playerImage.setImage(ImageLoader.loadPlayer(""));
         }
         
-        // Загрузить флаг страны
         if (countryName != null && !countryName.isEmpty()) {
             var flagImg = ImageLoader.loadFlag(countryName);
             if (flagImg != null) {
@@ -52,29 +90,33 @@ public class PlayerCardController {
             }
         }
         
-        // Цветной фон в зависимости от рейтинга
         applyCardTheme(player.getOverall());
     }
 
-    /**
-     * Изменить цвет фона карточки в зависимости от рейтинга
-     */
     private void applyCardTheme(int overall) {
-        cardBg.getStyleClass().clear();
-        cardBg.getStyleClass().add("player-card-bg");
+        cardBg.getStyleClass().removeAll("player-card-bg-gold", "player-card-bg-silver", "player-card-bg-bronze");
         
-        if (overall >= 85) {
+        if (overall >= 75) {
             cardBg.getStyleClass().add("player-card-bg-gold");
-        } else if (overall >= 80) {
+        } else if (overall >= 65) {
             cardBg.getStyleClass().add("player-card-bg-silver");
         } else {
             cardBg.getStyleClass().add("player-card-bg-bronze");
         }
     }
 
-    /**
-     * Получить фото игрока (для drag-and-drop)
-     */
+    public void setSelected(boolean selected) {
+        this.isSelected = selected;
+        selectionOutline.setVisible(selected);
+        if (selected) {
+            cardRoot.setScaleX(1.05);
+            cardRoot.setScaleY(1.05);
+        } else {
+            cardRoot.setScaleX(1.0);
+            cardRoot.setScaleY(1.0);
+        }
+    }
+
     public ImageView getPlayerImage() {
         return playerImage;
     }

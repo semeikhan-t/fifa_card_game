@@ -3,78 +3,122 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="com.fifa.controller.SquadController" styleClass="main-menu-bg" prefHeight="768.0" prefWidth="1366.0">
 
+    <!-- LAYER 1: Deep Stadium Background -->
+    <ImageView fx:id="stadiumBg" fitWidth="1366.0" fitHeight="768.0" preserveRatio="false">
+        <image>
+            <!-- We will assume pitch.png or a new stadium_bg.png, we use pitch.png as fallback but scaled -->
+            <Image url="@/images/pitch.png" />
+        </image>
+        <effect>
+            <ColorAdjust brightness="-0.5" contrast="0.2" saturation="-0.2" />
+        </effect>
+    </ImageView>
 
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="com.fifa.controller.SquadController" styleClass="main-menu-bg" prefHeight="700.0" prefWidth="1000.0">
-    <top>
-        <VBox alignment="CENTER" spacing="10">
-            <padding>
-                <Insets top="10" right="20" bottom="10" left="20"/>
-            </padding>
-            <HBox alignment="CENTER_LEFT" spacing="20">
-                <Label text="TEAM MANAGEMENT" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" />
-                <Separator orientation="VERTICAL" prefHeight="20" style="-fx-opacity: 0.3;" />
-                <HBox spacing="10">
-                    <Button text="Squad" styleClass="tab-button, tab-button-active" />
-                    <Button text="Tactics" styleClass="tab-button" />
-                    <Button text="Assignments" styleClass="tab-button" />
+    <!-- LAYER 2: Moving Light Beams / Fog (Managed in Controller) -->
+    <Pane fx:id="ambientFxPane" prefWidth="1366.0" prefHeight="768.0" mouseTransparent="true">
+        <!-- Generated programmatically for AAA feel -->
+    </Pane>
+
+    <!-- LAYER 3: Pitch Surface overlay to give it a glowing tech feel -->
+    <Region styleClass="pitch-glow" mouseTransparent="true"/>
+
+    <!-- LAYER 4: The Main BorderPane containing the interactive UI -->
+    <BorderPane>
+        
+        <!-- TOP NAVIGATION -->
+        <top>
+            <VBox spacing="15">
+                <padding>
+                    <Insets top="30" right="40" bottom="0" left="40"/>
+                </padding>
+                
+                <HBox alignment="CENTER_LEFT" spacing="30">
+                    <Label text="TEAM MANAGEMENT" styleClass="squad-title-primary" />
+                    
+                    <Region HBox.hgrow="ALWAYS" />
+                    
+                    <Button text="CLOSE" onAction="#onBackClicked" styleClass="close-btn" />
                 </HBox>
-            </HBox>
-        </VBox>
-    </top>
-    <center>
-        <StackPane>
-            <padding>
-                <Insets top="10" right="20" bottom="10" left="20"/>
-            </padding>
-            <!-- Football Pitch with Perspective Image -->
-            <Pane fx:id="pitchPane" styleClass="pitch-container" prefHeight="450">
-                <children>
-                    <ImageView fitWidth="960" fitHeight="430" preserveRatio="false" layoutX="0" layoutY="0">
+                
+                <HBox alignment="CENTER_LEFT" spacing="0">
+                    <Button text="Squad" styleClass="top-nav-btn, top-nav-btn-active" />
+                    <Button text="Tactics" styleClass="top-nav-btn" disable="true" />
+                    <Button text="Assignments" styleClass="top-nav-btn" disable="true" />
+                </HBox>
+                
+                <Separator style="-fx-opacity: 0.1;" />
+            </VBox>
+        </top>
+        
+        <!-- CENTER: Pitch and Players -->
+        <center>
+            <StackPane>
+                <padding>
+                    <Insets top="20" right="40" bottom="20" left="40"/>
+                </padding>
+                
+                <!-- The Pitch Area -->
+                <Pane fx:id="pitchPane" prefWidth="1286" prefHeight="500">
+                    <!-- Perspective Pitch Grid or Image -->
+                    <ImageView fitWidth="1286" fitHeight="480" preserveRatio="false" layoutY="10">
                         <image>
                             <Image url="@/images/pitch.png" />
                         </image>
-
                         <effect>
-                            <GaussianBlur radius="2" />
+                            <PerspectiveTransform ulx="200" uly="0" urx="1086" ury="0" lrx="1286" lry="480" llx="0" lly="480" />
                         </effect>
                     </ImageView>
                     
                     <!-- Player Slots (Containers for cards) -->
-                    <AnchorPane fx:id="starterSlotsPane" prefWidth="1000" prefHeight="450">
+                    <!-- We scale it up slightly for the larger resolution -->
+                    <AnchorPane fx:id="starterSlotsPane" prefWidth="1286" prefHeight="500">
                         <!-- Positions will be added dynamically -->
                     </AnchorPane>
-                </children>
-            </Pane>
+                </Pane>
+            </StackPane>
+        </center>
+        
+        <!-- BOTTOM: Glassmorphism Bench Area -->
+        <bottom>
+            <VBox styleClass="bench-glass-container" spacing="15">
+                <HBox alignment="CENTER_LEFT" spacing="30">
+                    <Button text="BACK" onAction="#onBackClicked" styleClass="action-btn-back" />
+                    <Label text="SUBSTITUTES" styleClass="status-label" />
+                    <Label fx:id="startersCountLabel" text="SELECTED: 0/11" styleClass="status-label, text-neon" />
+                    
+                    <!-- Rating Circle Placeholder -->
+                    <StackPane fx:id="ratingCircleContainer">
+                        <Circle radius="20" fill="transparent" stroke="#00ff66" strokeWidth="3" opacity="0.3"/>
+                        <Circle fx:id="ratingProgressRing" radius="20" fill="transparent" stroke="#00ff66" strokeWidth="3" strokeDashArray="120" strokeDashOffset="30"/>
+                        <Label fx:id="teamRatingLabel" text="85" style="-fx-text-fill: white; -fx-font-weight: 900; -fx-font-size: 14px;"/>
+                    </StackPane>
 
-        </StackPane>
-    </center>
-    <bottom>
-        <VBox spacing="10" styleClass="bench-container">
-            <HBox alignment="CENTER_LEFT" spacing="20">
-                <Label text="SUBSTITUTES / RESERVES" styleClass="header-text" />
-                <Label fx:id="startersCountLabel" text="Selected: 0/11" style="-fx-text-fill: #aaa; -fx-font-weight: bold;" />
-                <Region HBox.hgrow="ALWAYS" />
-                <Button text="BACK" onAction="#onBackClicked" styleClass="menu-button-secondary" />
-                <Button fx:id="playButton" text="READY" onAction="#onPlayClicked" styleClass="menu-button" disable="true" />
-            </HBox>
-            <ScrollPane fitToHeight="true" prefHeight="180" styleClass="dark-list-view" vbarPolicy="NEVER" style="-fx-background-color: transparent;">
-                <content>
-                    <HBox fx:id="benchBox" spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: transparent;">
-                        <padding>
-                            <Insets top="10" right="10" bottom="10" left="10"/>
-                        </padding>
-                    </HBox>
-                </content>
-            </ScrollPane>
-        </VBox>
-    </bottom>
-</BorderPane>
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Button fx:id="playButton" text="READY" onAction="#onPlayClicked" styleClass="action-btn-ready" disable="true" />
+                </HBox>
+                
+                <ScrollPane fitToHeight="true" prefHeight="160" styleClass="custom-scroll-pane" vbarPolicy="NEVER" hbarPolicy="AS_NEEDED">
+                    <content>
+                        <HBox fx:id="benchBox" spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: transparent;">
+                            <padding>
+                                <Insets top="10" right="20" bottom="20" left="20"/>
+                            </padding>
+                        </HBox>
+                    </content>
+                </ScrollPane>
+            </VBox>
+        </bottom>
+        
+    </BorderPane>
 
-
+    <!-- LAYER 5: Cinematic Vignette Overlay (Darkens edges) -->
+    <Region styleClass="vignette-overlay" mouseTransparent="true" />
+    
+</StackPane>

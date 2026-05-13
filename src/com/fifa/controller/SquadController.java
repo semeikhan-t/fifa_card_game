@@ -4,60 +4,70 @@ import com.fifa.model.Player;
 import com.fifa.model.Team;
 import com.fifa.service.SquadService;
 import com.fifa.util.SceneManager;
+import javafx.animation.*;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import java.util.stream.Collectors;
-import javafx.animation.TranslateTransition;
-import javafx.util.Duration;
-
-import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.Node;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Polygon;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
+import javafx.scene.paint.Color;
+import javafx.scene.effect.GaussianBlur;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.*;
+import javafx.util.Duration;
+
 import java.util.*;
 
 public class SquadController {
+    
+    // UI Elements
     @FXML private Label startersCountLabel;
     @FXML private AnchorPane starterSlotsPane;
     @FXML private HBox benchBox;
-    @FXML private VBox benchContainer;
     @FXML private Button playButton;
+    @FXML private Pane ambientFxPane;
     
-    private boolean isBenchVisible = false;
+    // Rating UI
+    @FXML private Circle ratingProgressRing;
+    @FXML private Label teamRatingLabel;
 
     private SquadService squadService = new SquadService();
     private Team currentTeam;
     private List<Player> starters = new ArrayList<>();
     private List<Player> bench = new ArrayList<>();
 
-    // Positions for 4-3-3 Formation
+    // Expanded Positions for 4-3-3 Formation to match larger UI (1286x480)
     private static final Map<String, Position> FORMATION_433 = new LinkedHashMap<>() {{
-        put("GK", new Position(460, 340));
-        put("LB", new Position(100, 280));
-        put("LCB", new Position(350, 300));
-        put("RCB", new Position(570, 300));
-        put("RB", new Position(820, 280));
-        put("LCM", new Position(250, 180));
-        put("CM", new Position(460, 160));
-        put("RCM", new Position(670, 180));
-        put("LW", new Position(200, 50));
-        put("ST", new Position(460, 30));
-        put("RW", new Position(720, 50));
+        put("GK", new Position(603, 380));
+        put("LB", new Position(200, 280));
+        put("LCB", new Position(450, 320));
+        put("RCB", new Position(756, 320));
+        put("RB", new Position(1006, 280));
+        put("LCM", new Position(350, 180));
+        put("CM", new Position(603, 160));
+        put("RCM", new Position(856, 180));
+        put("LW", new Position(250, 40));
+        put("ST", new Position(603, 20));
+        put("RW", new Position(956, 40));
     }};
 
     private Map<String, Player> pitchPlayers = new HashMap<>();
     private Map<Integer, String> playerSlotAssignment = new HashMap<>();
+    private Map<Integer, PlayerCardController> cardControllers = new HashMap<>();
 
     @FXML
     public void initialize() {
+        startCinematicEffects();
+
         currentTeam = SceneManager.getUserTeam();
         if (currentTeam == null) return;
 
         squadService.loadSquad(currentTeam);
 
-        // Separate starters and bench - CLEAR FIRST
         starters.clear();
         bench.clear();
         for (Player p : currentTeam.getPlayers()) {
@@ -70,11 +80,61 @@ public class SquadController {
 
         refreshUI();
     }
+    
+    private void startCinematicEffects() {
+        // 1. Moving Light Beams in the background
+        createLightBeam(400, 0, 15000);
+        createLightBeam(800, 100, 18000);
+        createLightBeam(600, 200, 20000);
+        
+        // 2. Play Button Pulse
+        ScaleTransition st = new ScaleTransition(Duration.millis(1000), playButton);
+        st.setByX(0.05);
+        st.setByY(0.05);
+        st.setAutoReverse(true);
+        st.setCycleCount(Animation.INDEFINITE);
+        st.play();
+    }
+    
+    private void createLightBeam(double startX, double offset, double durationMillis) {
+        Polygon beam = new Polygon();
+        beam.getPoints().addAll(new Double[]{
+            0.0, 0.0,
+            100.0, 0.0,
+            300.0, 800.0,
+            -200.0, 800.0
+        });
+        
+        LinearGradient lg = new LinearGradient(0, 0, 0, 1, true, javafx.scene.paint.CycleMethod.NO_CYCLE,
+                new Stop(0, Color.web("#00ff66", 0.08)),
+                new Stop(1, Color.TRANSPARENT)
+        );
+        beam.setFill(lg);
+        beam.setEffect(new GaussianBlur(30));
+        beam.setMouseTransparent(true);
+        
+        ambientFxPane.getChildren().add(beam);
+        
+        TranslateTransition tt = new TranslateTransition(Duration.millis(durationMillis), beam);
+        tt.setFromX(startX - 200);
+        tt.setToX(startX + 200);
+        tt.setAutoReverse(true);
+        tt.setCycleCount(Animation.INDEFINITE);
+        tt.play();
+        
+        FadeTransition ft = new FadeTransition(Duration.millis(durationMillis/2), beam);
+        ft.setFromValue(0.3);
+        ft.setToValue(1.0);
+        ft.setAutoReverse(true);
+        ft.setCycleCount(Animation.INDEFINITE);
+        ft.play();
+    }
 
     private void refreshUI() {
         starterSlotsPane.getChildren().clear();
         benchBox.getChildren().clear();
         pitchPlayers.clear();
+        cardControllers.clear();
 
         List<Map.Entry<String, Position>> formationEntries = new ArrayList<>(FORMATION_433.entrySet());
         normalizeStarterAssignments(formationEntries);
@@ -114,15 +174,31 @@ public class SquadController {
     private VBox createSlot(String posName, Position pos) {
         VBox slot = new VBox();
         slot.setAlignment(javafx.geometry.Pos.CENTER);
-        slot.setPrefSize(80, 110);
+        slot.setPrefSize(130, 190);
         AnchorPane.setLeftAnchor(slot, pos.x);
         AnchorPane.setTopAnchor(slot, pos.y);
         
+        // Futuristic slot placeholder
         Label lbl = new Label(posName);
-        lbl.setStyle("-fx-text-fill: rgba(255,255,255,0.3); -fx-font-weight: bold;");
-        slot.getChildren().add(lbl);
+        lbl.setStyle("-fx-text-fill: rgba(0, 255, 102, 0.3); -fx-font-weight: 900; -fx-font-size: 18px; -fx-effect: dropshadow(gaussian, rgba(0,255,102,0.5), 10, 0, 0, 0);");
+        
+        Circle slotRing = new Circle(30, Color.TRANSPARENT);
+        slotRing.setStroke(Color.web("#00ff66", 0.2));
+        slotRing.setStrokeWidth(2);
+        slotRing.setStrokeDashOffset(10);
+        slotRing.getStrokeDashArray().addAll(10d, 5d);
+        
+        // Pulse animation for empty slots
+        ScaleTransition pulse = new ScaleTransition(Duration.millis(1500), slotRing);
+        pulse.setByX(0.1);
+        pulse.setByY(0.1);
+        pulse.setAutoReverse(true);
+        pulse.setCycleCount(Animation.INDEFINITE);
+        pulse.play();
 
-        // Drag and Drop handlers for slot
+        StackPane emptyIndicator = new StackPane(slotRing, lbl);
+        slot.getChildren().add(emptyIndicator);
+
         slot.setOnDragOver(e -> {
             if (e.getGestureSource() != slot && e.getDragboard().hasString()) {
                 int playerId = Integer.parseInt(e.getDragboard().getString());
@@ -156,10 +232,9 @@ public class SquadController {
             Node card = loader.load();
             
             PlayerCardController controller = loader.getController();
+            cardControllers.put(p.getId(), controller);
             
-            // Get country code for flag.
             String countryCode = currentTeam.getCode();
-            
             controller.setPlayer(p, countryCode, p.getPhotoPath());
 
             card.setOnDragDetected(e -> {
@@ -167,7 +242,12 @@ public class SquadController {
                 ClipboardContent content = new ClipboardContent();
                 content.putString(String.valueOf(p.getId()));
                 db.setContent(content);
+                controller.setSelected(true);
                 e.consume();
+            });
+            
+            card.setOnDragDone(e -> {
+                controller.setSelected(false);
             });
 
             return card;
@@ -176,7 +256,6 @@ public class SquadController {
             return new Label(p.getName());
         }
     }
-
 
     private boolean handlePlayerMove(int playerId, String targetPos) {
         Player movingPlayer = findPlayerById(playerId);
@@ -300,17 +379,6 @@ public class SquadController {
         };
     }
 
-    private int positionPriority(Player p) {
-        String group = normalizePositionGroup(p.getPosition());
-        return switch (group) {
-            case "GK" -> 0;
-            case "DEF" -> 1;
-            case "MID" -> 2;
-            case "FWD" -> 3;
-            default -> 4;
-        };
-    }
-
     private Player findPlayerById(int playerId) {
         return currentTeam.getPlayers().stream()
                 .filter(p -> p.getId() == playerId)
@@ -318,8 +386,24 @@ public class SquadController {
     }
 
     private void updateLabels() {
-        startersCountLabel.setText("Selected: " + starters.size() + "/11");
+        startersCountLabel.setText("SELECTED: " + starters.size() + "/11");
         playButton.setDisable(starters.size() != 11);
+        
+        // Calculate Rating
+        int totalRating = 0;
+        for (Player p : starters) {
+            totalRating += p.getOverall();
+        }
+        int avgRating = starters.isEmpty() ? 0 : totalRating / starters.size();
+        
+        // Animate the rating ring and label
+        teamRatingLabel.setText(String.valueOf(avgRating));
+        double targetDashOffset = 120.0 - ((avgRating / 100.0) * 120.0);
+        
+        Timeline timeline = new Timeline(
+            new KeyFrame(Duration.millis(500), new KeyValue(ratingProgressRing.strokeDashOffsetProperty(), targetDashOffset, Interpolator.EASE_OUT))
+        );
+        timeline.play();
     }
 
     @FXML
@@ -332,22 +416,8 @@ public class SquadController {
         SceneManager.loadScene("CountrySelection.fxml", "Выбор сборной");
     }
 
-    @FXML
-    private void onToggleBenchClicked() {
-        TranslateTransition tt = new TranslateTransition(Duration.millis(300), benchContainer);
-        if (isBenchVisible) {
-            tt.setToY(300); // Hide
-            isBenchVisible = false;
-        } else {
-            tt.setToY(0); // Show
-            isBenchVisible = true;
-        }
-        tt.play();
-    }
-
     private static class Position {
         double x, y;
         Position(double x, double y) { this.x = x; this.y = y; }
     }
 }
-

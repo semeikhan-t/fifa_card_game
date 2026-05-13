@@ -5,33 +5,85 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.*?>
 
+<!-- The outer container has the drop shadow and handles the hover scaling -->
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="com.fifa.controller.PlayerCardController"
+           styleClass="player-card-container" 
+           prefWidth="130" prefHeight="190"
+           fx:id="cardRoot">
+    
+    <!-- Outer Soft Shadow Layer (Rendered below the card) -->
+    <Rectangle width="120" height="180" arcWidth="10" arcHeight="10" fill="black" opacity="0.4" translateY="10">
+        <effect>
+            <GaussianBlur radius="15" />
+        </effect>
+    </Rectangle>
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
-      alignment="CENTER" spacing="2" styleClass="player-card-container" 
-      prefWidth="80" prefHeight="110">
-    <StackPane styleClass="player-card-main">
-        <!-- Card Background -->
-        <Rectangle fx:id="cardBg" width="80" height="110" arcWidth="15" arcHeight="15" styleClass="player-card-bg" />
+    <!-- Main Card Body Layer -->
+    <StackPane fx:id="cardBody" prefWidth="130" prefHeight="190">
+        <!-- 1. Background Gradient (Bronze/Silver/Gold class applied here) -->
+        <Rectangle fx:id="cardBg" width="130" height="190" arcWidth="20" arcHeight="20" styleClass="player-card-bg-gold" />
         
-        <VBox alignment="CENTER" spacing="5">
+        <!-- 2. Metallic Reflection Layer (animated on hover) -->
+        <Rectangle fx:id="reflectionOverlay" width="130" height="190" arcWidth="20" arcHeight="20" mouseTransparent="true">
+            <fill>
+                <LinearGradient startX="0" startY="0" endX="1" endY="1">
+                    <stops>
+                        <Stop offset="0.0" color="rgba(255,255,255,0.4)" />
+                        <Stop offset="0.4" color="transparent" />
+                        <Stop offset="0.6" color="transparent" />
+                        <Stop offset="1.0" color="rgba(0,0,0,0.4)" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+        
+        <!-- 3. Inner Shadow Layer for depth -->
+        <Rectangle width="130" height="190" arcWidth="20" arcHeight="20" fill="transparent" mouseTransparent="true">
+            <effect>
+                <InnerShadow radius="10" color="rgba(0,0,0,0.5)" />
+            </effect>
+        </Rectangle>
+
+        <!-- 4. Content Layer -->
+        <VBox alignment="TOP_CENTER" spacing="5">
             <padding>
-                <Insets top="8" right="5" bottom="8" left="5"/>
+                <Insets top="15" right="10" bottom="10" left="10"/>
             </padding>
-            <HBox alignment="CENTER" spacing="8">
-                <VBox alignment="CENTER" spacing="0">
+            
+            <HBox alignment="TOP_CENTER" spacing="5">
+                <!-- Left Column: Rating, Pos, Flag -->
+                <VBox alignment="TOP_CENTER" spacing="-2">
                     <Label fx:id="ratingLabel" text="85" styleClass="player-card-rating" />
-                    <Label fx:id="posLabel" text="ST" styleClass="player-card-pos-small" />
+                    <Label fx:id="posLabel" text="ST" styleClass="player-card-pos" />
+                    <Region prefHeight="5" />
+                    <ImageView fx:id="flagImage" fitWidth="25" fitHeight="16" preserveRatio="true" />
                 </VBox>
-                <!-- Player photo placeholder with ring -->
+                
+                <!-- Right Column: Player Photo with glow -->
                 <StackPane>
-                    <Circle radius="22" fill="#222" stroke="#d4af37" strokeWidth="1" />
-                    <Circle radius="20" fill="#333" />
+                    <!-- Small bloom behind photo -->
+                    <Circle radius="25" fill="#ffffff" opacity="0.1">
+                        <effect>
+                            <GaussianBlur radius="10" />
+                        </effect>
+                    </Circle>
+                    <ImageView fx:id="playerImage" fitWidth="70" fitHeight="70" preserveRatio="true" />
                 </StackPane>
             </HBox>
-            <Separator prefWidth="60" style="-fx-opacity: 0.2; -fx-background-color: white;" />
-            <Label fx:id="nameLabel" text="PLAYER" styleClass="player-card-name-label" />
+            
+            <Region VBox.vgrow="ALWAYS" />
+            
+            <!-- Separator line -->
+            <Rectangle width="100" height="1" fill="white" opacity="0.3" />
+            
+            <Label fx:id="nameLabel" text="PLAYER" styleClass="player-card-name" />
         </VBox>
-    </StackPane>
+        
+        <!-- 5. Selection Glow Overlay (Hidden by default, shown when selected) -->
+        <Rectangle fx:id="selectionOutline" width="130" height="190" arcWidth="20" arcHeight="20" styleClass="card-selected-outline" visible="false" mouseTransparent="true" />
 
-</VBox>
+    </StackPane>
+</StackPane>
