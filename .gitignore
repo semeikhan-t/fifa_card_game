@@ -14,7 +14,8 @@
 # virtual machine crash logs
 hs_err_pid*
 
-/lib
+/lib/
+
 # IDE Specific
 .vscode/
 .idea/
@@ -39,5 +40,7 @@ Thumbs.db
 # Documentation
 *.docx
 
-# Note: lib/ is NOT ignored because it contains necessary jars
-# resources/ is NOT ignored because it contains essential assets
+# Note: lib/ is ignored to keep the repository size small.
+# JavaFX and other libraries should be managed locally or via build scripts.
+# resources/ contains essential game assets.
+
