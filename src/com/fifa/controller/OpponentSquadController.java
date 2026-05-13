@@ -4,81 +4,71 @@ import com.fifa.model.Player;
 import com.fifa.model.Team;
 import com.fifa.service.SquadService;
 import com.fifa.util.SceneManager;
+import javafx.animation.*;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import java.util.stream.Collectors;
-import javafx.animation.TranslateTransition;
-import javafx.util.Duration;
-
-import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.Node;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Polygon;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
+import javafx.scene.paint.Color;
+import javafx.scene.effect.GaussianBlur;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.*;
+import javafx.util.Duration;
+
 import java.util.*;
 
 public class OpponentSquadController {
-    @FXML private Label teamNameLabel;
+    
+    // UI Elements
+    @FXML private Label startersCountLabel;
     @FXML private AnchorPane starterSlotsPane;
     @FXML private HBox benchBox;
-    @FXML private VBox benchContainer;
-    @FXML private Button backButton;
-    @FXML private Button startMatchButton;
+    @FXML private Button playButton;
+    
+    // Rating UI
+    @FXML private Circle ratingProgressRing;
+    @FXML private Label teamRatingLabel;
 
-    private boolean isBenchVisible = false;
+    @FXML private VBox benchContainer;
+    @FXML private Button toggleBenchBtn;
+    private boolean isBenchOpen = true;
 
     private SquadService squadService = new SquadService();
     private Team opponentTeam;
     private List<Player> starters = new ArrayList<>();
     private List<Player> bench = new ArrayList<>();
 
-    // Positions for 4-3-3 Formation (scaled for opponent squad view)
+    
     private static final Map<String, Position> FORMATION_433 = new LinkedHashMap<>() {{
-        put("GK", new Position(372, 258));
-        put("LB", new Position(81, 213));
-        put("LCB", new Position(283, 228));
-        put("RCB", new Position(461, 228));
-        put("RB", new Position(663, 213));
-        put("LCM", new Position(202, 137));
-        put("CM", new Position(372, 122));
-        put("RCM", new Position(542, 137));
-        put("LW", new Position(162, 38));
-        put("ST", new Position(372, 23));
-        put("RW", new Position(582, 38));
-    }};
+    put("GK",  new Position(603, 380));
+    put("LB",  new Position(200, 280));
+    put("LCB", new Position(450, 320));
+    put("RCB", new Position(756, 320));
+    put("RB",  new Position(1006, 280));
+    put("LCM", new Position(350, 180));
+    put("CM",  new Position(603, 160));
+    put("RCM", new Position(856, 180));
+    put("LW",  new Position(250, 40));
+    put("ST",  new Position(603, 20));
+    put("RW",  new Position(956, 40));
+}};
 
     private Map<String, Player> pitchPlayers = new HashMap<>();
     private Map<Integer, String> playerSlotAssignment = new HashMap<>();
-
-    private String normalizePositionGroup(String position) {
-        if (position == null) return null;
-        String pos = position.trim().toUpperCase();
-        return switch (pos) {
-            case "GK" -> "GK";
-            case "DEF", "DF" -> "DEF";
-            case "MID" -> "MID";
-            case "FWD", "FW" -> "FWD";
-            default -> {
-                if (pos.matches(".*GK.*")) yield "GK";
-                if (pos.matches(".*DEF.*") || pos.matches("LB|LCB|CB|RCB|RB|RWB|LWB")) yield "DEF";
-                if (pos.matches(".*MID.*") || pos.matches("CM|LCM|RCM|CDM|CAM")) yield "MID";
-                if (pos.matches(".*FWD.*") || pos.matches("ST|LW|RW|CF|LF|RF")) yield "FWD";
-                yield null;
-            }
-        };
-    }
+    private Map<Integer, PlayerCardController> cardControllers = new HashMap<>();
 
     @FXML
     public void initialize() {
         opponentTeam = SceneManager.getOpponentTeam();
         if (opponentTeam == null) return;
 
-        teamNameLabel.setText("Состав команды: " + opponentTeam.getName());
-
         squadService.loadSquad(opponentTeam);
 
-        // Separate starters and bench
         starters.clear();
         bench.clear();
         for (Player p : opponentTeam.getPlayers()) {
@@ -96,6 +86,7 @@ public class OpponentSquadController {
         starterSlotsPane.getChildren().clear();
         benchBox.getChildren().clear();
         pitchPlayers.clear();
+        cardControllers.clear();
 
         List<Map.Entry<String, Position>> formationEntries = new ArrayList<>(FORMATION_433.entrySet());
         normalizeStarterAssignments(formationEntries);
@@ -129,25 +120,53 @@ public class OpponentSquadController {
             benchBox.getChildren().add(card);
         }
 
-        // Setup bench drag handlers
-        benchBox.setOnDragOver(e -> {
-            if (e.getGestureSource() != benchBox && e.getDragboard().hasString()) {
-                e.acceptTransferModes(TransferMode.MOVE);
+        updateLabels();
+    }
+
+    private VBox createSlot(String posName, Position pos) {
+        VBox slot = new VBox();
+        slot.setAlignment(javafx.geometry.Pos.CENTER);
+        slot.setPrefSize(80, 116);
+        AnchorPane.setLeftAnchor(slot, pos.x);
+        AnchorPane.setTopAnchor(slot, pos.y);
+        
+        // Futuristic slot placeholder
+        Label lbl = new Label(posName);
+        lbl.setStyle("-fx-text-fill: rgba(0, 255, 102, 0.3); -fx-font-weight: 900; -fx-font-size: 18px; -fx-effect: dropshadow(gaussian, rgba(0,255,102,0.5), 10, 0, 0, 0);");
+        
+        Circle slotRing = new Circle(30, Color.TRANSPARENT);
+        slotRing.setStroke(Color.web("#00ff66", 0.2));
+        slotRing.setStrokeWidth(2);
+        slotRing.setStrokeDashOffset(10);
+        slotRing.getStrokeDashArray().addAll(10d, 5d);
+        
+        // Pulse animation for empty slots
+        ScaleTransition pulse = new ScaleTransition(Duration.millis(1500), slotRing);
+        pulse.setByX(0.1);
+        pulse.setByY(0.1);
+        pulse.setAutoReverse(true);
+        pulse.setCycleCount(Animation.INDEFINITE);
+        pulse.play();
+
+        StackPane emptyIndicator = new StackPane(slotRing, lbl);
+        slot.getChildren().add(emptyIndicator);
+
+        slot.setOnDragOver(e -> {
+            if (e.getGestureSource() != slot && e.getDragboard().hasString()) {
+                int playerId = Integer.parseInt(e.getDragboard().getString());
+                Player dragged = findPlayerById(playerId);
+                if (dragged != null && canPlaySlot(dragged, posName)) {
+                    e.acceptTransferModes(TransferMode.MOVE);
+                }
             }
             e.consume();
         });
 
-        benchBox.setOnDragDropped(e -> {
+        slot.setOnDragDropped(e -> {
             Dragboard db = e.getDragboard();
             if (db.hasString()) {
                 int playerId = Integer.parseInt(db.getString());
-                Player player = findPlayerById(playerId);
-                if (player != null) {
-                    player.setStarter(false);
-                    playerSlotAssignment.remove(playerId);
-                    List<Map.Entry<String, Position>> localFormationEntries = new ArrayList<>(FORMATION_433.entrySet());
-                    normalizeStarterAssignments(localFormationEntries);
-                    refreshUI();
+                if (handlePlayerMove(playerId, posName)) {
                     e.setDropCompleted(true);
                 } else {
                     e.setDropCompleted(false);
@@ -155,6 +174,73 @@ public class OpponentSquadController {
             }
             e.consume();
         });
+
+        return slot;
+    }
+
+    private Node createPlayerCard(Player p) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PlayerCard.fxml"));
+            Node card = loader.load();
+            
+            PlayerCardController controller = loader.getController();
+            cardControllers.put(p.getId(), controller);
+            
+            String countryCode = opponentTeam.getCode();
+            controller.setPlayer(p, countryCode, p.getPhotoPath());
+
+            card.setOnDragDetected(e -> {
+                Dragboard db = card.startDragAndDrop(TransferMode.MOVE);
+                ClipboardContent content = new ClipboardContent();
+                content.putString(String.valueOf(p.getId()));
+                db.setContent(content);
+                controller.setSelected(true);
+                e.consume();
+            });
+            
+            card.setOnDragDone(e -> {
+                controller.setSelected(false);
+            });
+
+            return card;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Label(p.getName());
+        }
+    }
+
+    private boolean handlePlayerMove(int playerId, String targetPos) {
+        Player movingPlayer = findPlayerById(playerId);
+        if (movingPlayer == null || !canPlaySlot(movingPlayer, targetPos)) {
+            return false;
+        }
+
+        String currentSlot = playerSlotAssignment.get(playerId);
+        Player playerAtTarget = findPlayerAssignedToSlot(targetPos);
+
+        if (playerAtTarget != null) {
+            if (movingPlayer.isStarter()) {
+                playerSlotAssignment.put(playerId, targetPos);
+                playerSlotAssignment.put(playerAtTarget.getId(), currentSlot == null ? targetPos : currentSlot);
+            } else {
+                playerAtTarget.setStarter(false);
+                playerSlotAssignment.remove(playerAtTarget.getId());
+                movingPlayer.setStarter(true);
+                playerSlotAssignment.put(playerId, targetPos);
+            }
+        } else {
+            if (movingPlayer.isStarter()) {
+                playerSlotAssignment.put(playerId, targetPos);
+            } else {
+                movingPlayer.setStarter(true);
+                playerSlotAssignment.put(playerId, targetPos);
+            }
+        }
+
+        List<Map.Entry<String, Position>> formationEntries = new ArrayList<>(FORMATION_433.entrySet());
+        normalizeStarterAssignments(formationEntries);
+        refreshUI();
+        return true;
     }
 
     private void normalizeStarterAssignments(List<Map.Entry<String, Position>> formationEntries) {
@@ -216,109 +302,22 @@ public class OpponentSquadController {
         return playerGroup != null && playerGroup.equals(slotGroup);
     }
 
-    private VBox createSlot(String posName, Position pos) {
-        VBox slot = new VBox();
-        slot.setAlignment(javafx.geometry.Pos.CENTER);
-        slot.setPrefSize(80, 110);
-        AnchorPane.setLeftAnchor(slot, pos.x);
-        AnchorPane.setTopAnchor(slot, pos.y);
-
-        Label lbl = new Label(posName);
-        lbl.setStyle("-fx-text-fill: rgba(255,255,255,0.3); -fx-font-weight: bold;");
-        slot.getChildren().add(lbl);
-
-        // Drag and Drop handlers for slot
-        slot.setOnDragOver(e -> {
-            if (e.getGestureSource() != slot && e.getDragboard().hasString()) {
-                int playerId = Integer.parseInt(e.getDragboard().getString());
-                Player dragged = findPlayerById(playerId);
-                if (dragged != null && canPlaySlot(dragged, posName)) {
-                    e.acceptTransferModes(TransferMode.MOVE);
-                }
+    private String normalizePositionGroup(String position) {
+        if (position == null) return null;
+        String pos = position.trim().toUpperCase();
+        return switch (pos) {
+            case "GK" -> "GK";
+            case "DEF", "DF" -> "DEF";
+            case "MID" -> "MID";
+            case "FWD", "FW" -> "FWD";
+            default -> {
+                if (pos.matches(".*GK.*")) yield "GK";
+                if (pos.matches(".*DEF.*") || pos.matches("LB|LCB|CB|RCB|RB|RWB|LWB")) yield "DEF";
+                if (pos.matches(".*MID.*") || pos.matches("CM|LCM|RCM|CDM|CAM")) yield "MID";
+                if (pos.matches(".*FWD.*") || pos.matches("ST|LW|RW|CF|LF|RF")) yield "FWD";
+                yield null;
             }
-            e.consume();
-        });
-
-        slot.setOnDragDropped(e -> {
-            Dragboard db = e.getDragboard();
-            if (db.hasString()) {
-                int playerId = Integer.parseInt(db.getString());
-                if (handlePlayerMove(playerId, posName)) {
-                    e.setDropCompleted(true);
-                } else {
-                    e.setDropCompleted(false);
-                }
-            }
-            e.consume();
-        });
-
-        return slot;
-    }
-
-    private Node createPlayerCard(Player p) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PlayerCard.fxml"));
-            Node card = loader.load();
-
-            PlayerCardController controller = loader.getController();
-
-            String countryCode = opponentTeam.getCode();
-
-            controller.setPlayer(p, countryCode, p.getPhotoPath());
-
-            card.setOnDragDetected(e -> {
-                Dragboard db = card.startDragAndDrop(TransferMode.MOVE);
-                ClipboardContent content = new ClipboardContent();
-                content.putString(String.valueOf(p.getId()));
-                db.setContent(content);
-                e.consume();
-            });
-
-            return card;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new Label(p.getName());
-        }
-    }
-
-    private boolean handlePlayerMove(int playerId, String targetPos) {
-        Player movingPlayer = findPlayerById(playerId);
-        if (movingPlayer == null || !canPlaySlot(movingPlayer, targetPos)) {
-            return false;
-        }
-
-        String currentSlot = playerSlotAssignment.get(playerId);
-        Player playerAtTarget = findPlayerAssignedToSlot(targetPos);
-
-        if (playerAtTarget != null) {
-            if (movingPlayer.isStarter()) {
-                playerSlotAssignment.put(playerId, targetPos);
-                playerSlotAssignment.put(playerAtTarget.getId(), currentSlot == null ? targetPos : currentSlot);
-            } else {
-                playerAtTarget.setStarter(false);
-                playerSlotAssignment.remove(playerAtTarget.getId());
-                movingPlayer.setStarter(true);
-                playerSlotAssignment.put(playerId, targetPos);
-            }
-        } else {
-            if (movingPlayer.isStarter()) {
-                playerSlotAssignment.put(playerId, targetPos);
-            } else {
-                movingPlayer.setStarter(true);
-                playerSlotAssignment.put(playerId, targetPos);
-            }
-        }
-
-        List<Map.Entry<String, Position>> formationEntries = new ArrayList<>(FORMATION_433.entrySet());
-        normalizeStarterAssignments(formationEntries);
-        refreshUI();
-        return true;
-    }
-
-    private Player findPlayerById(int playerId) {
-        return opponentTeam.getPlayers().stream()
-                .filter(p -> p.getId() == playerId)
-                .findFirst().orElse(null);
+        };
     }
 
     private String normalizeSlotGroup(String slotName) {
@@ -332,38 +331,55 @@ public class OpponentSquadController {
         };
     }
 
-    private int positionPriority(Player p) {
-        String group = normalizePositionGroup(p.getPosition());
-        return switch (group) {
-            case "GK" -> 0;
-            case "DEF" -> 1;
-            case "MID" -> 2;
-            case "FWD" -> 3;
-            default -> 4;
-        };
+    private Player findPlayerById(int playerId) {
+        return opponentTeam.getPlayers().stream()
+                .filter(p -> p.getId() == playerId)
+                .findFirst().orElse(null);
+    }
+
+    private void updateLabels() {
+        startersCountLabel.setText("SELECTED: " + starters.size() + "/11");
+        playButton.setDisable(starters.size() != 11);
+        
+        // Calculate Rating
+        int totalRating = 0;
+        for (Player p : starters) {
+            totalRating += p.getOverall();
+        }
+        int avgRating = starters.isEmpty() ? 0 : totalRating / starters.size();
+        
+        // Animate the rating ring and label
+        teamRatingLabel.setText(String.valueOf(avgRating));
+        double targetDashOffset = 120.0 - ((avgRating / 100.0) * 120.0);
+        
+        Timeline timeline = new Timeline(
+            new KeyFrame(Duration.millis(500), new KeyValue(ratingProgressRing.strokeDashOffsetProperty(), targetDashOffset, Interpolator.EASE_OUT))
+        );
+        timeline.play();
     }
 
     @FXML
-    private void onToggleBenchClicked() {
-        TranslateTransition tt = new TranslateTransition(Duration.millis(300), benchContainer);
-        if (isBenchVisible) {
-            tt.setToY(250); // Hide
-            isBenchVisible = false;
-        } else {
-            tt.setToY(0); // Show
-            isBenchVisible = true;
-        }
-        tt.play();
+    private void onPlayClicked() {
+        SceneManager.loadScene("Match.fxml", "МАТЧ: " + SceneManager.getUserTeam().getName() + " vs " + opponentTeam.getName());
     }
 
     @FXML
     private void onBackClicked() {
-        SceneManager.loadScene("OpponentSelection.fxml", "Выберите соперника");
+        SceneManager.loadScene("OpponentSelection.fxml", "Выбери соперника");
     }
 
     @FXML
-    private void onStartMatchClicked() {
-        SceneManager.loadScene("Match.fxml", "МАТЧ: " + SceneManager.getUserTeam().getName() + " vs " + opponentTeam.getName());
+    private void onToggleBenchClicked() {
+        isBenchOpen = !isBenchOpen;
+        TranslateTransition tt = new TranslateTransition(Duration.millis(300), benchContainer);
+        if (isBenchOpen) {
+            tt.setToY(0);
+            toggleBenchBtn.setText("▼ SUBSTITUTES ▼");
+        } else {
+            tt.setToY(160); // Height of the benchContainer
+            toggleBenchBtn.setText("▲ SUBSTITUTES ▲");
+        }
+        tt.play();
     }
 
     private static class Position {
