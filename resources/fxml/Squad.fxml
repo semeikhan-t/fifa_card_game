@@ -10,28 +10,21 @@
 <StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
            fx:controller="com.fifa.controller.SquadController" styleClass="main-menu-bg" prefHeight="768.0" prefWidth="1366.0">
 
-    <!-- LAYER 1: Deep Stadium Background -->
-    <ImageView fx:id="stadiumBg" fitWidth="1366.0" fitHeight="768.0" preserveRatio="false">
+    <!-- Background -->
+    <ImageView fitWidth="1366.0" fitHeight="768.0" preserveRatio="false">
         <image>
             <Image url="@/images/stadium_bg.png" />
         </image>
         <effect>
-            <ColorAdjust brightness="-0.5" contrast="0.2" saturation="-0.2" />
+            <ColorAdjust brightness="-0.3" contrast="0.1" />
         </effect>
     </ImageView>
 
-    <!-- LAYER 2: Moving Light Beams / Fog (Managed in Controller) -->
-    <Pane fx:id="ambientFxPane" prefWidth="1366.0" prefHeight="768.0" mouseTransparent="true">
-        <!-- Generated programmatically for AAA feel -->
-    </Pane>
-
-    <!-- LAYER 3: Pitch Surface overlay to give it a glowing tech feel -->
-    <Region styleClass="pitch-glow" mouseTransparent="true"/>
-
-    <!-- LAYER 4: The Main BorderPane containing the interactive UI -->
+    <!-- LAYER 5: Cinematic Vignette Overlay (Darkens edges) -->
+    <Region styleClass="vignette-overlay" mouseTransparent="true" />
+    
+    <!-- Main BorderPane for layout -->
     <BorderPane>
-        
-        <!-- TOP NAVIGATION -->
         <top>
             <VBox spacing="15">
                 <padding>
@@ -84,11 +77,8 @@
             </StackPane>
         </center>
     </BorderPane>
-
-    <!-- LAYER 5: Cinematic Vignette Overlay (Darkens edges) -->
-    <Region styleClass="vignette-overlay" mouseTransparent="true" />
     
-    <!-- LAYER 6: Slide-out Bench Overlay -->
+    <!-- Slide-out Bench Overlay -->
     <VBox fx:id="benchDrawer" alignment="BOTTOM_CENTER" StackPane.alignment="BOTTOM_CENTER" pickOnBounds="false">
         
         <!-- Toggle Button Container -->

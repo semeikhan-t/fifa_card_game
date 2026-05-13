@@ -29,7 +29,6 @@ public class SquadController {
     @FXML private AnchorPane starterSlotsPane;
     @FXML private HBox benchBox;
     @FXML private Button playButton;
-    @FXML private Pane ambientFxPane;
     
     // Rating UI
     @FXML private Circle ratingProgressRing;
@@ -65,8 +64,6 @@ public class SquadController {
 
     @FXML
     public void initialize() {
-        startCinematicEffects();
-
         currentTeam = SceneManager.getUserTeam();
         if (currentTeam == null) return;
 
@@ -83,55 +80,6 @@ public class SquadController {
         }
 
         refreshUI();
-    }
-    
-    private void startCinematicEffects() {
-        // 1. Moving Light Beams in the background
-        createLightBeam(400, 0, 15000);
-        createLightBeam(800, 100, 18000);
-        createLightBeam(600, 200, 20000);
-        
-        // 2. Play Button Pulse
-        ScaleTransition st = new ScaleTransition(Duration.millis(1000), playButton);
-        st.setByX(0.05);
-        st.setByY(0.05);
-        st.setAutoReverse(true);
-        st.setCycleCount(Animation.INDEFINITE);
-        st.play();
-    }
-    
-    private void createLightBeam(double startX, double offset, double durationMillis) {
-        Polygon beam = new Polygon();
-        beam.getPoints().addAll(new Double[]{
-            0.0, 0.0,
-            100.0, 0.0,
-            300.0, 800.0,
-            -200.0, 800.0
-        });
-        
-        LinearGradient lg = new LinearGradient(0, 0, 0, 1, true, javafx.scene.paint.CycleMethod.NO_CYCLE,
-                new Stop(0, Color.web("#00ff66", 0.08)),
-                new Stop(1, Color.TRANSPARENT)
-        );
-        beam.setFill(lg);
-        beam.setEffect(new GaussianBlur(30));
-        beam.setMouseTransparent(true);
-        
-        ambientFxPane.getChildren().add(beam);
-        
-        TranslateTransition tt = new TranslateTransition(Duration.millis(durationMillis), beam);
-        tt.setFromX(startX - 200);
-        tt.setToX(startX + 200);
-        tt.setAutoReverse(true);
-        tt.setCycleCount(Animation.INDEFINITE);
-        tt.play();
-        
-        FadeTransition ft = new FadeTransition(Duration.millis(durationMillis/2), beam);
-        ft.setFromValue(0.3);
-        ft.setToValue(1.0);
-        ft.setAutoReverse(true);
-        ft.setCycleCount(Animation.INDEFINITE);
-        ft.play();
     }
 
     private void refreshUI() {

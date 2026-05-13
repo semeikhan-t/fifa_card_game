@@ -33,19 +33,19 @@ public class OpponentSquadController {
     private List<Player> starters = new ArrayList<>();
     private List<Player> bench = new ArrayList<>();
 
-    // Positions for 4-3-3 Formation
+    // Positions for 4-3-3 Formation (scaled for opponent squad view)
     private static final Map<String, Position> FORMATION_433 = new LinkedHashMap<>() {{
-        put("GK", new Position(460, 340));
-        put("LB", new Position(100, 280));
-        put("LCB", new Position(350, 300));
-        put("RCB", new Position(570, 300));
-        put("RB", new Position(820, 280));
-        put("LCM", new Position(250, 180));
-        put("CM", new Position(460, 160));
-        put("RCM", new Position(670, 180));
-        put("LW", new Position(200, 50));
-        put("ST", new Position(460, 30));
-        put("RW", new Position(720, 50));
+        put("GK", new Position(372, 258));
+        put("LB", new Position(81, 213));
+        put("LCB", new Position(283, 228));
+        put("RCB", new Position(461, 228));
+        put("RB", new Position(663, 213));
+        put("LCM", new Position(202, 137));
+        put("CM", new Position(372, 122));
+        put("RCM", new Position(542, 137));
+        put("LW", new Position(162, 38));
+        put("ST", new Position(372, 23));
+        put("RW", new Position(582, 38));
     }};
 
     private Map<String, Player> pitchPlayers = new HashMap<>();
