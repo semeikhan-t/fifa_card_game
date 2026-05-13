@@ -143,10 +143,10 @@ public class SquadController {
             
             PlayerCardController controller = loader.getController();
             
-            // Get country name for flag. We already have currentTeam which is the team of all these players!
-            String countryName = currentTeam.getName().toLowerCase();
+            // Get country code for flag.
+            String countryCode = currentTeam.getCode();
             
-            controller.setPlayer(p, countryName, p.getPhotoPath());
+            controller.setPlayer(p, countryCode, p.getPhotoPath());
 
             card.setOnDragDetected(e -> {
                 Dragboard db = card.startDragAndDrop(TransferMode.MOVE);

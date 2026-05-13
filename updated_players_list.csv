@@ -1,0 +1,226 @@
+Country,Name,Position,Rating
+Argentina,L. Martínez,FWD,88
+Argentina,J. Alvarez,FWD,87
+Argentina,A. Mac Allister,MID,87
+Argentina,P. Dybala,FWD,86
+Argentina,L. Messi,FWD,86
+Argentina,E. Martínez,GK,85
+Argentina,R. De Paul,MID,84
+Argentina,E. Fernández,MID,84
+Argentina,E. Palacios,MID,84
+Argentina,G. Rulli,GK,82
+Argentina,G. Lo Celso,MID,82
+Argentina,A. Di María,FWD,82
+Argentina,N. Otamendi,DEF,82
+Argentina,C. Romero,DEF,82
+Argentina,L. Martínez,DEF,81
+Brazil,Vini Jr.,FWD,89
+Brazil,Alisson,GK,89
+Brazil,Raphinha,FWD,89
+Brazil,Gabriel,DEF,88
+Brazil,Marquinhos,DEF,87
+Brazil,B. Guimarães,MID,86
+Brazil,Ederson,GK,85
+Brazil,Rodrygo,FWD,85
+Brazil,Bremer,DEF,85
+Brazil,É. Militão,DEF,84
+Brazil,M. Cunha,FWD,83
+Brazil,Murillo,DEF,83
+Brazil,Joelinton,MID,82
+Brazil,Éderson,MID,82
+Brazil,Malcom,FWD,82
+England,J. Bellingham,MID,90
+England,H. Kane,FWD,89
+England,B. Saka,FWD,88
+England,C. Palmer,MID,87
+England,D. Rice,MID,87
+England,P. Foden,FWD,86
+England,T. Alexander-Arnold,DEF,86
+England,J. Pickford,GK,84
+England,K. Walker,DEF,84
+England,J. Stones,DEF,83
+England,O. Watkins,FWD,83
+England,M. Rashford,FWD,83
+England,J. Grealish,FWD,83
+England,L. Shaw,DEF,82
+England,K. Trippier,DEF,82
+France,K. Mbappé,FWD,91
+France,O. Dembélé,FWD,90
+France,J. Koundé,DEF,87
+France,W. Saliba,DEF,87
+France,M. Maignan,GK,87
+France,T. Hernandez,DEF,87
+France,M. Olise,MID,86
+France,I. Konaté,DEF,86
+France,A. Griezmann,FWD,85
+France,N. Kanté,MID,85
+France,D. Doué,MID,85
+France,M. Thuram,FWD,85
+France,E. Camavinga,MID,83
+France,A. Tchouaméni,MID,84
+France,B. Samba,GK,81
+Germany,J. Kimmich,MID,89
+Germany,F. Wirtz,MID,89
+Germany,J. Musiala,MID,88
+Germany,J. Tah,DEF,87
+Germany,A. Rüdiger,DEF,86
+Germany,M. ter Stegen,GK,86
+Germany,M. Neuer,GK,86
+Germany,N. Schlotterbeck,DEF,85
+Germany,I. Gündoğan,MID,85
+Germany,L. Sané,FWD,85
+Germany,K. Havertz,FWD,84
+Germany,T. Müller,FWD,83
+Germany,S. Gnabry,FWD,82
+Germany,D. Raum,DEF,81
+Germany,B. Henrichs,DEF,80
+Spain,Rodri,MID,90
+Spain,Pedri,MID,86
+Spain,U. Simón,GK,86
+Spain,A. Grimaldo,DEF,86
+Spain,D. Carvajal,DEF,85
+Spain,L. Yamal,FWD,84
+Spain,D. Olmo,MID,84
+Spain,M. Zubimendi,MID,84
+Spain,A. Laporte,DEF,84
+Spain,N. Williams,FWD,83
+Spain,Gavi,MID,83
+Spain,M. Merino,MID,82
+Spain,F. Torres,FWD,82
+Spain,Á. Baena,MID,81
+Spain,P. Cubarsí,DEF,78
+Kazakhstan,B. Zaynutdinov,MID,74
+Kazakhstan,N. Alip,DEF,73
+Kazakhstan,A. Tagybergen,MID,71
+Kazakhstan,M. Samorodov,FWD,70
+Kazakhstan,A. Marochkin,DEF,69
+Kazakhstan,I. Shatskiy,GK,69
+Kazakhstan,A. Aimbetov,FWD,68
+Kazakhstan,I. Chesnokov,MID,68
+Kazakhstan,R. Vorogovskiy,DEF,68
+Kazakhstan,R. Orazov,MID,68
+Kazakhstan,B. Islamkhan,MID,68
+Kazakhstan,S. Maliy,DEF,67
+Kazakhstan,E. Astanov,MID,67
+Kazakhstan,M. Gabyshev,DEF,66
+Kazakhstan,E. Tapalov,DEF,65
+Netherlands,V. van Dijk,DEF,89
+Netherlands,F. de Jong,MID,87
+Netherlands,J. Frimpong,DEF,86
+Netherlands,D. Malen,FWD,85
+Netherlands,T. Koopmeiners,MID,84
+Netherlands,N. Aké,DEF,84
+Netherlands,M. de Ligt,DEF,84
+Netherlands,M. van de Ven,DEF,83
+Netherlands,C. Gakpo,FWD,83
+Netherlands,X. Simons,MID,83
+Netherlands,M. Depay,FWD,82
+Netherlands,D. Dumfries,DEF,82
+Netherlands,B. Verbruggen,GK,81
+Netherlands,J. Schouten,MID,81
+Netherlands,S. Bergwijn,FWD,80
+Portugal,R. Dias,DEF,89
+Portugal,B. Fernandes,MID,88
+Portugal,B. Silva,MID,88
+Portugal,C. Ronaldo,FWD,86
+Portugal,R. Leão,FWD,86
+Portugal,J. Cancelo,DEF,86
+Portugal,D. Jota,FWD,85
+Portugal,Vitinha,MID,85
+Portugal,D. Costa,GK,84
+Portugal,N. Mendes,DEF,83
+Portugal,Otávio,MID,81
+Portugal,Pepe,DEF,81
+Portugal,J. Félix,FWD,81
+Portugal,D. Pereira,DEF,81
+Portugal,G. Ramos,FWD,80
+Morocco,A. Hakimi,DEF,85
+Morocco,Y. Bono,GK,84
+Morocco,B. Díaz,MID,84
+Morocco,N. Aguerd,DEF,81
+Morocco,N. Mazraoui,DEF,81
+Morocco,S. Amrabat,MID,80
+Morocco,H. Ziyech,MID,80
+Morocco,Y. En-Nesyri,FWD,80
+Morocco,R. Saïss,DEF,78
+Morocco,A. Harit,MID,78
+Morocco,A. Ounahi,MID,77
+Morocco,I. Saibari,MID,77
+Morocco,A. Ezzalzouli,FWD,76
+Morocco,S. Rahimi,FWD,76
+Morocco,M. Munir,GK,75
+Senegal,S. Mané,FWD,84
+Senegal,K. Koulibaly,DEF,83
+Senegal,E. Mendy,GK,81
+Senegal,N. Jackson,FWD,79
+Senegal,P. Sarr,MID,79
+Senegal,I. Sarr,FWD,78
+Senegal,I. Gueye,MID,78
+Senegal,M. Niakhaté,DEF,78
+Senegal,B. Dia,FWD,77
+Senegal,K. Diatta,MID,76
+Senegal,H. Diallo,FWD,76
+Senegal,L. Camara,MID,75
+Senegal,F. Mendy,DEF,75
+Senegal,N. Mendy,MID,74
+Senegal,A. Seck,DEF,73
+South Korea,H. Son,FWD,87
+South Korea,M. Kim,DEF,84
+South Korea,K. Lee,MID,81
+South Korea,H. Hwang,FWD,80
+South Korea,I. Hwang,MID,75
+South Korea,G. Cho,FWD,74
+South Korea,J. Lee,MID,74
+South Korea,H. Jo,GK,73
+South Korea,W. Jeong,MID,72
+South Korea,S. Jung,DEF,71
+South Korea,Y. Kim,DEF,71
+South Korea,Y. Seol,DEF,70
+South Korea,S. Moon,FWD,70
+South Korea,Y. Park,MID,69
+South Korea,K. Lee,DEF,68
+USA,C. Pulisic,FWD,81
+USA,G. Reyna,MID,78
+USA,W. McKennie,MID,78
+USA,T. Adams,MID,78
+USA,F. Balogun,FWD,78
+USA,A. Robinson,DEF,78
+USA,S. Dest,DEF,77
+USA,M. Turner,GK,77
+USA,Y. Musah,MID,76
+USA,C. Richards,DEF,76
+USA,T. Ream,DEF,75
+USA,J. Sargent,FWD,75
+USA,H. Wright,FWD,75
+USA,M. Tillman,MID,75
+USA,R. Pepi,FWD,74
+Australia,M. Ryan,GK,76
+Australia,J. Irvine,MID,75
+Australia,M. Boyle,FWD,73
+Australia,C. Goodwin,MID,73
+Australia,C. Burgess,DEF,73
+Australia,H. Souttar,DEF,73
+Australia,R. McGree,MID,72
+Australia,K. Rowles,DEF,72
+Australia,A. Circati,DEF,71
+Australia,J. Bos,DEF,71
+Australia,M. Duke,FWD,71
+Australia,A. Behich,DEF,70
+Australia,C. Metcalfe,MID,70
+Australia,K. Baccus,MID,69
+Australia,N. Irankunda,FWD,68
+Mexico,S. Giménez,FWD,80
+Mexico,E. Álvarez,MID,81
+Mexico,H. Lozano,FWD,79
+Mexico,L. Malagón,GK,77
+Mexico,C. Montes,DEF,76
+Mexico,J. Vásquez,DEF,76
+Mexico,L. Romo,MID,75
+Mexico,C. Rodríguez,MID,75
+Mexico,U. Antuna,FWD,75
+Mexico,O. Pineda,MID,74
+Mexico,J. Sánchez,DEF,73
+Mexico,G. Arteaga,DEF,73
+Mexico,H. Martín,FWD,73
+Mexico,J. Quiñones,FWD,72
+Mexico,A. Vega,FWD,72

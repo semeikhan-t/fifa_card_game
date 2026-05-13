@@ -7,6 +7,7 @@ public class Team extends Entity {
     private String name;
     private int ovrAttack;
     private int ovrDefense;
+    private String code;
     private List<Player> players = new ArrayList<>();
 
     public Team() {}
@@ -20,6 +21,9 @@ public class Team extends Entity {
     // Getters and Setters
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+
+    public String getCode() { return code; }
+    public void setCode(String code) { this.code = code; }
 
     public int getOvrAttack() { return ovrAttack; }
     public void setOvrAttack(int ovrAttack) { this.ovrAttack = ovrAttack; }

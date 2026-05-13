@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
+import com.fifa.util.ImageLoader;
 import java.util.List;
 
 public class OpponentSelectionController {
@@ -38,9 +40,16 @@ public class OpponentSelectionController {
         card.setAlignment(javafx.geometry.Pos.CENTER);
         card.setPrefSize(150, 100);
         
+        ImageView flagView = new ImageView();
+        flagView.setFitWidth(60);
+        flagView.setFitHeight(40);
+        flagView.setPreserveRatio(true);
+        String flagName = team.getName().toLowerCase().replace(" ", "_");
+        flagView.setImage(ImageLoader.loadFlag(flagName));
+        
         Label nameLabel = new Label(team.getName());
         nameLabel.setStyle("-fx-text-fill: white; -fx-font-weight: bold;");
-        card.getChildren().add(nameLabel);
+        card.getChildren().addAll(flagView, nameLabel);
         
         card.setOnMouseClicked(e -> {
             selectedOpponent = team;

@@ -1,25 +1,30 @@
-CREATE TABLE IF NOT EXISTS countries (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    ovr_attack INT DEFAULT 70,
-    ovr_defense INT DEFAULT 70
+DROP TABLE IF EXISTS matches CASCADE;
+DROP TABLE IF EXISTS players CASCADE;
+DROP TABLE IF EXISTS countries CASCADE;
+
+CREATE TABLE countries (
+    id          SERIAL PRIMARY KEY,
+    name        VARCHAR(100) NOT NULL,
+    code        VARCHAR(20)  NOT NULL,
+    ovr_attack  INT NOT NULL,
+    ovr_defense INT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS players (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    country_id INT REFERENCES countries(id) ON DELETE CASCADE,
-    position VARCHAR(10) NOT NULL, -- GK, DEF, MID, FWD
-    overall INT NOT NULL,
-    is_starter BOOLEAN DEFAULT FALSE,
-    photo_path VARCHAR(255)  -- путь к файлу, например "argentina_lionel_messi_154.png"
+CREATE TABLE players (
+    id          SERIAL PRIMARY KEY,
+    name        VARCHAR(100) NOT NULL,
+    country_id  INT REFERENCES countries(id),
+    position    VARCHAR(5)   NOT NULL CHECK (position IN ('GK','DEF','MID','FWD')),
+    overall     INT          NOT NULL CHECK (overall BETWEEN 0 AND 99),
+    is_starter  BOOLEAN      NOT NULL DEFAULT true,
+    photo_path  VARCHAR(255)
 );
 
-CREATE TABLE IF NOT EXISTS matches (
-    id SERIAL PRIMARY KEY,
-    home_id INT REFERENCES countries(id),
-    away_id INT REFERENCES countries(id),
-    home_score INT NOT NULL,
-    away_score INT NOT NULL,
-    played_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE matches (
+    id          SERIAL PRIMARY KEY,
+    home_id     INT REFERENCES countries(id),
+    away_id     INT REFERENCES countries(id),
+    home_score  INT NOT NULL,
+    away_score  INT NOT NULL,
+    played_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

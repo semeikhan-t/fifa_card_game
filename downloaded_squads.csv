@@ -1,0 +1,660 @@
+country,name,position,overall,photo
+kazakhstan,Islam Chesnokov,FWD,87,kazakhstan_islam_chesnokov_37567243.png
+kazakhstan,Damir Kasabulat,MID,86,kazakhstan_damir_kasabulat_24065390.png
+kazakhstan,Bakhtiyar Zaynutdinov,DEF,77,kazakhstan_bakhtiyar_zaynutdinov_135816.png
+kazakhstan,Aleksandr Marochkin,DEF,76,kazakhstan_aleksandr_marochkin_135993.png
+kazakhstan,Sergey Maliy,DEF,78,kazakhstan_sergey_maliy_135504.png
+kazakhstan,Aleksander Zuev,FWD,82,kazakhstan_aleksander_zuev_170264.png
+kazakhstan,Kazhimukan Tolepbergen,GK,77,kazakhstan_kazhimukan_tolepbergen_37575870.png
+kazakhstan,Mukhammedzhan Seysen,GK,75,kazakhstan_mukhammedzhan_seysen_15836965.png
+kazakhstan,Ivan Sviridov,FWD,84,kazakhstan_ivan_sviridov_37548314.png
+kazakhstan,Temirlan Anarbekov,GK,87,kazakhstan_temirlan_anarbekov_37356338.png
+kazakhstan,Erkin Tapalov,DEF,80,kazakhstan_erkin_tapalov_135435.png
+kazakhstan,Zhan-Ali Payruz,FWD,76,kazakhstan_zhanali_payruz_540479.png
+kazakhstan,Adilbek Zhumakhanov,DEF,78,kazakhstan_adilbek_zhumakhanov_37260371.png
+kazakhstan,Sagadat Tursynbay,DEF,75,kazakhstan_sagadat_tursynbay_786364.png
+kazakhstan,Almas Tyulyubay,MID,78,kazakhstan_almas_tyulyubay_37582747.png
+kazakhstan,Georgiy Zhukov,MID,83,kazakhstan_georgiy_zhukov_26788.png
+kazakhstan,Nauryzbek Zhagorov,MID,80,kazakhstan_nauryzbek_zhagorov_135987.png
+kazakhstan,Ramazan Karimov,FWD,82,kazakhstan_ramazan_karimov_15832928.png
+kazakhstan,Dastan Satpaev,FWD,85,kazakhstan_dastan_satpaev_37725233.png
+kazakhstan,Ramazan Orazov,MID,82,kazakhstan_ramazan_orazov_538359.png
+kazakhstan,Ular Zhaksybaev,DEF,86,kazakhstan_ular_zhaksybaev_135884.png
+kazakhstan,Serikzhan Muzhikov,MID,77,kazakhstan_serikzhan_muzhikov_134757.png
+kazakhstan,Stas Pokatilov,GK,79,kazakhstan_stas_pokatilov_135402.png
+kazakhstan,A. Aymbetov,FWD,88,kazakhstan_a_aymbetov_135526.png
+kazakhstan,Askhat Tagybergen,MID,82,kazakhstan_askhat_tagybergen_135148.png
+kazakhstan,Dinmukhammed Kashken,DEF,75,kazakhstan_dinmukhammed_kashken_7713988.png
+kazakhstan,Bekkhan Shayzada,GK,88,kazakhstan_bekkhan_shayzada_7387375.png
+kazakhstan,Sultanbek Astanov,DEF,84,kazakhstan_sultanbek_astanov_5283485.png
+kazakhstan,Artur Shushenachev,FWD,86,kazakhstan_artur_shushenachev_3568538.png
+argentina,Lautaro Rivero,DEF,85,argentina_lautaro_rivero_37748161.png
+argentina,Juan Foyth,DEF,78,argentina_juan_foyth_335705.png
+argentina,Gianluca Prestianni,FWD,84,argentina_gianluca_prestianni_37625767.png
+argentina,Ángel Correa,FWD,81,argentina_ngel_correa_186675.png
+argentina,Julián Alvarez,FWD,83,argentina_julin_alvarez_21394947.png
+argentina,Marcos Senesi,DEF,88,argentina_marcos_senesi_333989.png
+argentina,Leonardo Balerdi,DEF,81,argentina_leonardo_balerdi_13171199.png
+argentina,Germán Pezzella,DEF,79,argentina_germn_pezzella_186733.png
+argentina,Marcos Acuña,DEF,86,argentina_marcos_acua_212976.png
+argentina,Nahuel Molina,DEF,77,argentina_nahuel_molina_455900.png
+argentina,Máximo Perrone,MID,77,argentina_mximo_perrone_37545384.png
+argentina,Leandro Paredes,MID,75,argentina_leandro_paredes_129419.png
+argentina,Franco Mastantuono,FWD,83,argentina_franco_mastantuono_37729623.png
+argentina,Joaquín Panichelli,FWD,75,argentina_joaqun_panichelli_37663291.png
+argentina,José Manuel López,FWD,75,argentina_jos_manuel_lpez_37552296.png
+argentina,Demian Talavera,GK,80,argentina_demian_talavera_38207547.png
+argentina,Kevin Mac Allister,DEF,89,argentina_kevin_mac_allister_215849.png
+argentina,Emiliano Buendía,MID,84,argentina_emiliano_buenda_186660.png
+argentina,Enzo Fernández,MID,89,argentina_enzo_fernndez_29709995.png
+argentina,Giuliano Simeone,FWD,89,argentina_giuliano_simeone_37577657.png
+argentina,Kevin Lomónaco,DEF,85,argentina_kevin_lomnaco_37342991.png
+argentina,Emiliano Martínez,GK,77,argentina_emiliano_martnez_1343.png
+argentina,Facundo Cambeses,GK,88,argentina_facundo_cambeses_456310.png
+argentina,Facundo Medina,DEF,79,argentina_facundo_medina_335521.png
+argentina,Enzo Barrenechea,MID,79,argentina_enzo_barrenechea_37347355.png
+argentina,Alan Varela,MID,75,argentina_alan_varela_37537770.png
+argentina,Benja Domínguez,FWD,85,argentina_benja_domnguez_37607194.png
+argentina,Santiago Castro,FWD,80,argentina_santiago_castro_37567337.png
+argentina,Aníbal Moreno,MID,84,argentina_anbal_moreno_29313859.png
+argentina,Exequiel Palacios,MID,89,argentina_exequiel_palacios_335673.png
+argentina,Lionel Messi ,FWD,82,argentina_lionel_messi_184798.png
+argentina,Gerónimo Rulli,GK,87,argentina_gernimo_rulli_186418.png
+argentina,Nico González,FWD,79,argentina_nico_gonzlez_215532.png
+argentina,Cristian Romero ,DEF,78,argentina_cristian_romero_333731.png
+argentina,Nicolás Otamendi,DEF,82,argentina_nicols_otamendi_1822.png
+argentina,Nicolás Tagliafico,DEF,89,argentina_nicols_tagliafico_188444.png
+argentina,Alexis Mac Allister,MID,82,argentina_alexis_mac_allister_216612.png
+argentina,Thiago Almada,FWD,83,argentina_thiago_almada_19996814.png
+argentina,Walter Benítez,GK,88,argentina_walter_bentez_97383.png
+argentina,Nico Paz,MID,84,argentina_nico_paz_37596384.png
+argentina,Giovani Lo Celso,MID,87,argentina_giovani_lo_celso_97664.png
+argentina,Lautaro Martínez,FWD,85,argentina_lautaro_martnez_333594.png
+argentina,Rodrigo De Paul,MID,78,argentina_rodrigo_de_paul_129798.png
+argentina,Gonzalo Montiel,DEF,86,argentina_gonzalo_montiel_333781.png
+argentina,Valentín Barco,MID,77,argentina_valentn_barco_37577727.png
+brazil,Murillo,DEF,85,brazil_murillo_37627036.png
+brazil,André,MID,77,brazil_andr_37526007.png
+brazil,Casemiro,MID,84,brazil_casemiro_159700.png
+brazil,Joelinton,MID,79,brazil_joelinton_33645.png
+brazil,Paulo Henrique,DEF,80,brazil_paulo_henrique_439266.png
+brazil,Lucas Beraldo,DEF,75,brazil_lucas_beraldo_37562940.png
+brazil,Guilherme Arana,DEF,75,brazil_guilherme_arana_219398.png
+brazil,Gabriel Martinelli,FWD,82,brazil_gabriel_martinelli_10959356.png
+brazil,João Pedro,FWD,80,brazil_joo_pedro_28931574.png
+brazil,Richarlison,FWD,75,brazil_richarlison_219633.png
+brazil,Caio Henrique,DEF,75,brazil_caio_henrique_187557.png
+brazil,John Victor ,GK,81,brazil_john_victor_219900.png
+brazil,Luciano Juba,DEF,80,brazil_luciano_juba_37410288.png
+brazil,Alex Sandro,DEF,78,brazil_alex_sandro_129725.png
+brazil,Vitor Roque,FWD,85,brazil_vitor_roque_37599292.png
+brazil,Éder Militão ,DEF,86,brazil_der_milito_460160.png
+brazil,Gabriel Magalhães,DEF,87,brazil_gabriel_magalhes_97811.png
+brazil,Fabrício Bruno,DEF,84,brazil_fabrcio_bruno_219502.png
+brazil,Rodrygo,FWD,79,brazil_rodrygo_7346228.png
+brazil,Luiz Henrique,FWD,85,brazil_luiz_henrique_37526008.png
+brazil,Lucas Paquetá,MID,78,brazil_lucas_paquet_220052.png
+brazil,Vitinho,DEF,88,brazil_vitinho_9302767.png
+brazil,Jean Lucas,MID,80,brazil_jean_lucas_456593.png
+brazil,Andreas Pereira,MID,86,brazil_andreas_pereira_1004.png
+brazil,Estêvão,FWD,85,brazil_estvo_37701999.png
+brazil,Léo Ortiz,DEF,89,brazil_lo_ortiz_458758.png
+brazil,Carlos Augusto,DEF,84,brazil_carlos_augusto_13591496.png
+brazil,Hugo Souza,GK,82,brazil_hugo_souza_11298640.png
+brazil,Gerson,MID,81,brazil_gerson_129822.png
+brazil,João Gomes,MID,79,brazil_joo_gomes_37402348.png
+brazil,Vanderson,DEF,83,brazil_vanderson_37547795.png
+brazil,Samuel Lino,FWD,83,brazil_samuel_lino_463850.png
+brazil,Alisson,GK,79,brazil_alisson_129820.png
+brazil,Weverton,GK,76,brazil_weverton_218295.png
+brazil,Lucas Perri,GK,89,brazil_lucas_perri_460159.png
+brazil,Alexsandro,DEF,88,brazil_alexsandro_29809271.png
+brazil,Éderson,MID,81,brazil_derson_545244.png
+brazil,Raphinha,FWD,81,brazil_raphinha_160258.png
+brazil,Endrick,FWD,86,brazil_endrick_37647009.png
+brazil,Igor Jesus,FWD,82,brazil_igor_jesus_29328429.png
+brazil,Antony,FWD,76,brazil_antony_12393293.png
+brazil,Kaio Jorge ,FWD,86,brazil_kaio_jorge_23301876.png
+brazil,Savinho,FWD,88,brazil_savinho_37527169.png
+brazil,Marquinhos,DEF,76,brazil_marquinhos_96208.png
+brazil,Bruno Guimarães,MID,80,brazil_bruno_guimares_459145.png
+brazil,Bento,GK,78,brazil_bento_32031865.png
+brazil,Wesley,DEF,85,brazil_wesley_37608995.png
+brazil,Matheus Cunha,FWD,78,brazil_matheus_cunha_1846739.png
+brazil,Ederson,GK,86,brazil_ederson_159142.png
+brazil,Douglas Santos,DEF,76,brazil_douglas_santos_32614.png
+brazil,Fabinho,MID,88,brazil_fabinho_96099.png
+brazil,Danilo,DEF,76,brazil_danilo_159208.png
+brazil,Vinicius Junior,FWD,80,brazil_vinicius_junior_600687.png
+brazil,Andrey Santos,MID,76,brazil_andrey_santos_37562129.png
+france,Dayot Upamecano,DEF,81,france_dayot_upamecano_33685.png
+france,William Saliba,DEF,77,france_william_saliba_17544737.png
+france,Khéphren Thuram,MID,86,france_khphren_thuram_4545404.png
+france,Jonathan Clauss,DEF,86,france_jonathan_clauss_102002.png
+france,N'Golo Kanté,MID,85,france_ngolo_kant_1193.png
+france,Adrien Rabiot,MID,83,france_adrien_rabiot_95694.png
+france,Rayan Cherki,MID,81,france_rayan_cherki_21072805.png
+france,Aurélien Tchouaméni,MID,75,france_aurlien_tchouamni_5270371.png
+france,Eduardo Camavinga,MID,79,france_eduardo_camavinga_23688922.png
+france,Mattéo Guendouzi,MID,84,france_matto_guendouzi_97087.png
+france,Warren Zaïre-Emery,MID,75,france_warren_zareemery_37593237.png
+france,Manu Koné,MID,85,france_manu_kon_23738800.png
+france,Kingsley Coman,FWD,77,france_kingsley_coman_32659.png
+france,Désiré Doué,FWD,77,france_dsir_dou_37590938.png
+france,Maghnes Akliouche,FWD,86,france_maghnes_akliouche_37530901.png
+france,Marcus Thuram,FWD,78,france_marcus_thuram_99000.png
+france,Ousmane Dembélé,FWD,84,france_ousmane_dembl_32403.png
+france,Hugo Ekitiké,FWD,82,france_hugo_ekitik_37288979.png
+france,Malo Gusto,DEF,88,france_malo_gusto_37317367.png
+france,Lucas Chevalier,GK,85,france_lucas_chevalier_17187774.png
+france,Jules Koundé,DEF,75,france_jules_kound_337394.png
+france,Bradley Barcola,FWD,79,france_bradley_barcola_37317369.png
+france,Christopher Nkunku,FWD,85,france_christopher_nkunku_96884.png
+france,Florian Thauvin,FWD,81,france_florian_thauvin_4237.png
+france,Jean-Philippe Mateta,FWD,84,france_jeanphilippe_mateta_96950.png
+france,Kylian Mbappé,FWD,89,france_kylian_mbapp_96611.png
+france,Randal Kolo Muani,FWD,76,france_randal_kolo_muani_432872.png
+france,Loïc Badé,DEF,80,france_loc_bad_10279739.png
+france,Benjamin Pavard,DEF,87,france_benjamin_pavard_35574.png
+france,Clément Lenglet ,DEF,86,france_clment_lenglet_96741.png
+france,Mike Maignan,GK,84,france_mike_maignan_96227.png
+france,Brice Samba,GK,80,france_brice_samba_96030.png
+france,Lucas Digne,DEF,88,france_lucas_digne_95368.png
+france,Theo Hernández,DEF,88,france_theo_hernndez_186995.png
+france,Ibrahima Konaté,DEF,87,france_ibrahima_konat_100556.png
+france,Michael Olise,FWD,87,france_michael_olise_24799984.png
+france,Lucas Hernández,DEF,81,france_lucas_hernndez_186797.png
+france,Pierre Kalulu,DEF,88,france_pierre_kalulu_14726357.png
+germany,Assan Ouédraogo,MID,87,germany_assan_oudraogo_37645043.png
+germany,Jamie Leweling,FWD,81,germany_jamie_leweling_12426453.png
+germany,Malick Thiaw,DEF,89,germany_malick_thiaw_21762216.png
+germany,Kevin Schade,FWD,78,germany_kevin_schade_27067062.png
+germany,Aleksandar Pavlovic,MID,86,germany_aleksandar_pavlovic_37582044.png
+germany,Felix Nmecha,MID,76,germany_felix_nmecha_6306127.png
+germany,Leon Goretzka,MID,88,germany_leon_goretzka_31824.png
+germany,Jonathan Burkardt,FWD,82,germany_jonathan_burkardt_3862683.png
+germany,Nathaniel Brown,DEF,81,germany_nathaniel_brown_37538035.png
+germany,Ridle Baku,DEF,81,germany_ridle_baku_2483333.png
+germany,Karim Adeyemi,FWD,87,germany_karim_adeyemi_15040126.png
+germany,Nnamdi Collins,DEF,76,germany_nnamdi_collins_37316456.png
+germany,Robert Andrich,MID,87,germany_robert_andrich_34880.png
+germany,Robin Koch,DEF,87,germany_robin_koch_35364.png
+germany,Stefan Ortega,GK,76,germany_stefan_ortega_34594.png
+germany,Marc-André ter Stegen,GK,85,germany_marcandr_ter_stegen_31284.png
+germany,Maximilian Mittelstädt,DEF,75,germany_maximilian_mittelstdt_32384.png
+germany,Robin Gosens,DEF,80,germany_robin_gosens_25242.png
+germany,Tim Kleindienst,FWD,77,germany_tim_kleindienst_34987.png
+germany,Paul Nebel,MID,79,germany_paul_nebel_27066712.png
+germany,Jamal Musiala,MID,86,germany_jamal_musiala_33186829.png
+germany,Said El Mala,FWD,81,germany_said_el_mala_37709599.png
+germany,Yann Bisseck,DEF,89,germany_yann_bisseck_3861835.png
+germany,Thilo Kehrer,DEF,80,germany_thilo_kehrer_32738.png
+germany,Tom Bischof,MID,84,germany_tom_bischof_37582217.png
+germany,Nadiem Amiri,MID,83,germany_nadiem_amiri_32585.png
+germany,Maximilian Beier,FWD,78,germany_maximilian_beier_23277923.png
+germany,Niclas Füllkrug,FWD,87,germany_niclas_fllkrug_31532.png
+germany,Serge Gnabry,FWD,80,germany_serge_gnabry_942.png
+germany,Joshua Kimmich,MID,82,germany_joshua_kimmich_32362.png
+germany,Nick Woltemade,FWD,79,germany_nick_woltemade_32777430.png
+germany,Waldemar Anton,DEF,86,germany_waldemar_anton_32728.png
+germany,Alexander Nübel,GK,86,germany_alexander_nbel_32550.png
+germany,David Raum,DEF,89,germany_david_raum_36119.png
+germany,Oliver Baumann,GK,82,germany_oliver_baumann_31146.png
+germany,Leroy Sané,FWD,82,germany_leroy_san_4783.png
+germany,Deniz Undav,FWD,75,germany_deniz_undav_41077.png
+germany,Jonathan Tah,DEF,86,germany_jonathan_tah_31836.png
+germany,Nico Schlotterbeck,DEF,82,germany_nico_schlotterbeck_3862352.png
+germany,Angelo Stiller,MID,87,germany_angelo_stiller_4536572.png
+germany,Pascal Groß,MID,78,germany_pascal_gro_31504.png
+germany,Florian Wirtz,MID,79,germany_florian_wirtz_37429246.png
+germany,Antonio Rüdiger ,DEF,88,germany_antonio_rdiger_31837.png
+germany,Finn Dahmen,GK,78,germany_finn_dahmen_2483331.png
+spain,Aymeric Laporte,DEF,81,spain_aymeric_laporte_186299.png
+spain,Jorge de Frutos,FWD,76,spain_jorge_de_frutos_447094.png
+spain,Martín Zubimendi,MID,85,spain_martn_zubimendi_530762.png
+spain,Pau Cubarsí,DEF,78,spain_pau_cubars_37656790.png
+spain,Pablo Fornals,MID,84,spain_pablo_fornals_186815.png
+spain,Isco,MID,81,spain_isco_185972.png
+spain,Jesús Rodríguez,FWD,79,spain_jess_rodrguez_37722327.png
+spain,Dean Huijsen,DEF,79,spain_dean_huijsen_37612542.png
+spain,Fermín López,MID,84,spain_fermn_lpez_37596363.png
+spain,Borja Iglesias,FWD,78,spain_borja_iglesias_186864.png
+spain,Dani Olmo,MID,86,spain_dani_olmo_74060.png
+spain,Ferran Torres,FWD,83,spain_ferran_torres_448389.png
+spain,Nico Williams,FWD,83,spain_nico_williams_37297544.png
+spain,Unai Simón,GK,85,spain_unai_simn_187215.png
+spain,Aleix García,MID,86,spain_aleix_garca_4574.png
+spain,Marcos Llorente,DEF,83,spain_marcos_llorente_186795.png
+spain,Fabián Ruiz,MID,83,spain_fabin_ruiz_186735.png
+spain,Álex Baena,FWD,89,spain_lex_baena_7698436.png
+spain,Yéremy Pino,FWD,80,spain_yremy_pino_24468970.png
+spain,Pablo Barrios,MID,83,spain_pablo_barrios_37423008.png
+spain,Mikel Oyarzabal,FWD,81,spain_mikel_oyarzabal_186932.png
+spain,Pedri,MID,83,spain_pedri_37288001.png
+spain,Raúl Asencio,DEF,79,spain_ral_asencio_37596373.png
+spain,Óscar Mingueza,DEF,77,spain_scar_mingueza_537595.png
+spain,Daniel Carvajal ,DEF,82,spain_daniel_carvajal_31647.png
+spain,Rodri,MID,76,spain_rodri_186910.png
+spain,Gavi,MID,83,spain_gavi_37459030.png
+spain,Álvaro Morata,FWD,89,spain_lvaro_morata_129660.png
+spain,Ayoze Pérez,FWD,75,spain_ayoze_prez_1396.png
+spain,Lamine Yamal,FWD,77,spain_lamine_yamal_37656179.png
+spain,Dani Vivian,DEF,85,spain_dani_vivian_3510288.png
+spain,Samu Aghehowa,FWD,80,spain_samu_aghehowa_37622274.png
+spain,Robin Le Normand,DEF,75,spain_robin_le_normand_100580.png
+spain,Mikel Merino,MID,87,spain_mikel_merino_32710.png
+spain,Pedro Porro,DEF,86,spain_pedro_porro_8456257.png
+spain,Alejandro Grimaldo,DEF,88,spain_alejandro_grimaldo_160208.png
+spain,David Raya,GK,89,spain_david_raya_3130.png
+spain,Álex Remiro,GK,81,spain_lex_remiro_187110.png
+spain,Marc Cucurella,DEF,89,spain_marc_cucurella_448448.png
+england,Dan Burn,DEF,75,england_dan_burn_2815.png
+england,Myles Lewis-Skelly,DEF,84,england_myles_lewisskelly_37568815.png
+england,James Trafford,GK,89,england_james_trafford_28575686.png
+england,Tino Livramento,DEF,88,england_tino_livramento_24799911.png
+england,Djed Spence,DEF,87,england_djed_spence_7026573.png
+england,Trent Alexander-Arnold,DEF,87,england_trent_alexanderarnold_1917.png
+england,Kyle Walker,DEF,86,england_kyle_walker_911.png
+england,Jordan Henderson,MID,80,england_jordan_henderson_323.png
+england,Cole Palmer,MID,82,england_cole_palmer_28912747.png
+england,Curtis Jones,MID,83,england_curtis_jones_4545513.png
+england,Conor Gallagher,MID,80,england_conor_gallagher_1494245.png
+england,Ruben Loftus-Cheek ,MID,77,england_ruben_loftuscheek_1953.png
+england,Eberechi Eze,MID,88,england_eberechi_eze_7643.png
+england,Morgan Gibbs-White,MID,84,england_morgan_gibbswhite_7926.png
+england,Anthony Gordon,FWD,76,england_anthony_gordon_9611543.png
+england,Noni Madueke,FWD,79,england_noni_madueke_25217662.png
+england,Ollie Watkins,FWD,79,england_ollie_watkins_12145.png
+england,Ivan Toney,FWD,75,england_ivan_toney_4341.png
+england,Reece James ,DEF,77,england_reece_james_581220.png
+england,Adam Wharton,MID,81,england_adam_wharton_37350704.png
+england,Alex Scott,MID,75,england_alex_scott_37550443.png
+england,Phil Foden,MID,78,england_phil_foden_336133.png
+england,Jude Bellingham,MID,79,england_jude_bellingham_37255840.png
+england,Trevoh Chalobah ,DEF,77,england_trevoh_chalobah_537117.png
+england,Nico O'Reilly,DEF,86,england_nico_oreilly_37562487.png
+england,Ezri Konsa,DEF,77,england_ezri_konsa_7124.png
+england,Morgan Rogers,MID,80,england_morgan_rogers_4592198.png
+england,Jarrod Bowen,FWD,77,england_jarrod_bowen_1592.png
+england,Harry Kane,FWD,87,england_harry_kane_997.png
+england,John Stones,DEF,86,england_john_stones_982.png
+england,Dominic Solanke,FWD,83,england_dominic_solanke_4203.png
+england,Declan Rice,MID,79,england_declan_rice_5273.png
+england,Elliot Anderson,MID,87,england_elliot_anderson_332047.png
+england,Marcus Rashford,FWD,79,england_marcus_rashford_1878.png
+england,Levi Colwill ,DEF,82,england_levi_colwill_37259180.png
+england,Jordan Pickford,GK,87,england_jordan_pickford_1826.png
+england,Marc Guéhi,DEF,85,england_marc_guhi_4536500.png
+england,Jarell Quansah ,DEF,77,england_jarell_quansah_37259163.png
+england,Bukayo Saka,FWD,88,england_bukayo_saka_16827155.png
+england,Dean Henderson,GK,77,england_dean_henderson_12647.png
+portugal,Bruno Fernandes,MID,80,portugal_bruno_fernandes_129602.png
+portugal,Rui Silva,GK,88,portugal_rui_silva_159382.png
+portugal,Gonçalo Inácio,DEF,80,portugal_gonalo_incio_37522785.png
+portugal,Nuno Mendes ,DEF,75,portugal_nuno_mendes_37262099.png
+portugal,Nuno Tavares,DEF,78,portugal_nuno_tavares_9308193.png
+portugal,Diogo Dalot,DEF,80,portugal_diogo_dalot_164061.png
+portugal,Rúben Neves,MID,77,portugal_rben_neves_159699.png
+portugal,Rodrigo Mora,MID,83,portugal_rodrigo_mora_37656803.png
+portugal,Diogo Jota,FWD,79,portugal_diogo_jota_159917.png
+portugal,Pedro Gonçalves,FWD,83,portugal_pedro_gonalves_3169778.png
+portugal,Pedro Neto ,FWD,81,portugal_pedro_neto_496775.png
+portugal,Geovany Quenda,FWD,89,portugal_geovany_quenda_37656652.png
+portugal,Nélson Semedo,DEF,83,portugal_nlson_semedo_160110.png
+portugal,Cristiano Ronaldo,FWD,85,portugal_cristiano_ronaldo_580.png
+portugal,Rafael Leão,FWD,83,portugal_rafael_leo_540251.png
+portugal,Carlos Forbs,FWD,89,portugal_carlos_forbs_37410636.png
+portugal,João Carvalho,GK,89,portugal_joo_carvalho_37617635.png
+portugal,Matheus Nunes,DEF,80,portugal_matheus_nunes_21781428.png
+portugal,João Palhinha,MID,80,portugal_joo_palhinha_160072.png
+portugal,José Sá ,GK,80,portugal_jos_s_159483.png
+portugal,João Cancelo,DEF,82,portugal_joo_cancelo_160956.png
+portugal,Rúben Dias ,DEF,84,portugal_rben_dias_162536.png
+portugal,Francisco Trincão,MID,76,portugal_francisco_trinco_163190.png
+portugal,Francisco Conceição,FWD,77,portugal_francisco_conceio_37328006.png
+portugal,João Félix,FWD,75,portugal_joo_flix_163152.png
+portugal,João Neves,MID,83,portugal_joo_neves_37592729.png
+portugal,Gonçalo Ramos,FWD,86,portugal_gonalo_ramos_23278610.png
+portugal,Diogo Costa,GK,75,portugal_diogo_costa_163094.png
+portugal,António Silva,DEF,88,portugal_antnio_silva_37354828.png
+portugal,Renato Veiga,DEF,76,portugal_renato_veiga_37593154.png
+portugal,Vitinha,MID,88,portugal_vitinha_4545430.png
+portugal,Bernardo Silva,MID,78,portugal_bernardo_silva_96353.png
+netherlands,Brian Brobbey,FWD,85,netherlands_brian_brobbey_7330507.png
+netherlands,Matthijs de Ligt ,DEF,87,netherlands_matthijs_de_ligt_26768.png
+netherlands,Noa Lang,FWD,81,netherlands_noa_lang_31439.png
+netherlands,Lutsharel Geertruida,DEF,87,netherlands_lutsharel_geertruida_4598752.png
+netherlands,Quinten Timber,MID,77,netherlands_quinten_timber_6306068.png
+netherlands,Luciano Valente,MID,82,netherlands_luciano_valente_37570133.png
+netherlands,Emmanuel Emegha ,FWD,87,netherlands_emmanuel_emegha_37400423.png
+netherlands,Robin Roefs,GK,80,netherlands_robin_roefs_37397144.png
+netherlands,Nathan Aké,DEF,76,netherlands_nathan_ak_1869.png
+netherlands,Ryan Gravenberch,MID,88,netherlands_ryan_gravenberch_5270462.png
+netherlands,Frenkie de Jong,MID,82,netherlands_frenkie_de_jong_26536.png
+netherlands,Bart Verbruggen,GK,83,netherlands_bart_verbruggen_37257596.png
+netherlands,Donyell Malen,FWD,87,netherlands_donyell_malen_537758.png
+netherlands,Stefan de Vrij,DEF,76,netherlands_stefan_de_vrij_24015.png
+netherlands,Ian Maatsen,DEF,77,netherlands_ian_maatsen_23311159.png
+netherlands,Kenneth Taylor,MID,75,netherlands_kenneth_taylor_24092545.png
+netherlands,Kjell Scherpen,GK,82,netherlands_kjell_scherpen_29470.png
+netherlands,Mats Wieffer,DEF,76,netherlands_mats_wieffer_24082563.png
+netherlands,Teun Koopmeiners,MID,88,netherlands_teun_koopmeiners_29184.png
+netherlands,Jorrel Hato,DEF,76,netherlands_jorrel_hato_37600243.png
+netherlands,Justin Kluivert ,MID,80,netherlands_justin_kluivert_26803.png
+netherlands,Sem Steijn ,MID,89,netherlands_sem_steijn_21394902.png
+netherlands,Nick Olij,GK,82,netherlands_nick_olij_25482.png
+netherlands,Youri Baas,DEF,84,netherlands_youri_baas_37363315.png
+netherlands,Quilindschy Hartman,DEF,82,netherlands_quilindschy_hartman_37344112.png
+netherlands,Jeremie Frimpong,DEF,75,netherlands_jeremie_frimpong_8403182.png
+netherlands,Denzel Dumfries,DEF,86,netherlands_denzel_dumfries_26027.png
+netherlands,Jurriën Timber,DEF,86,netherlands_jurrin_timber_5270466.png
+netherlands,Virgil van Dijk ,DEF,78,netherlands_virgil_van_dijk_1743.png
+netherlands,Jerdy Schouten ,MID,80,netherlands_jerdy_schouten_26786.png
+netherlands,Cody Gakpo,FWD,81,netherlands_cody_gakpo_30062.png
+netherlands,Micky van de Ven,DEF,79,netherlands_micky_van_de_ven_37296248.png
+netherlands,Xavi Simons ,MID,87,netherlands_xavi_simons_37317392.png
+netherlands,Tijjani Reijnders,MID,75,netherlands_tijjani_reijnders_3156873.png
+netherlands,Mark Flekken,GK,78,netherlands_mark_flekken_34737.png
+netherlands,Memphis Depay ,FWD,80,netherlands_memphis_depay_929.png
+netherlands,Jan Paul van Hecke,DEF,76,netherlands_jan_paul_van_hecke_24818803.png
+netherlands,Wout Weghorst ,FWD,81,netherlands_wout_weghorst_25317.png
+senegal,Mamadou Sarr,DEF,76,senegal_mamadou_sarr_37532344.png
+senegal,Yehvann Diouf,GK,80,senegal_yehvann_diouf_99157.png
+senegal,Baye Assane Ciss,DEF,84,senegal_baye_assane_ciss_37770110.png
+senegal,Antoine Mendy,DEF,76,senegal_antoine_mendy_37569271.png
+senegal,Assane Diao ,FWD,88,senegal_assane_diao_37674290.png
+senegal,Nicolas Jackson,FWD,87,senegal_nicolas_jackson_37540621.png
+senegal,Edouard Mendy,GK,86,senegal_edouard_mendy_99137.png
+senegal,Ismail Jakobs,DEF,75,senegal_ismail_jakobs_3861304.png
+senegal,Krépin Diatta,MID,80,senegal_krpin_diatta_430403.png
+senegal,Ibrahim Mbaye,FWD,81,senegal_ibrahim_mbaye_37726575.png
+senegal,Ismaïla Sarr,FWD,75,senegal_ismala_sarr_96722.png
+senegal,Moussa Niakhaté,DEF,77,senegal_moussa_niakhat_98874.png
+senegal,Pathé Ciss,MID,89,senegal_path_ciss_2511096.png
+senegal,Cherif Ndiaye,FWD,75,senegal_cherif_ndiaye_64188.png
+senegal,Habib Diallo,FWD,85,senegal_habib_diallo_96723.png
+senegal,Sadio Mané,FWD,78,senegal_sadio_man_1389.png
+senegal,Idrissa Gueye,FWD,84,senegal_idrissa_gueye_37712530.png
+senegal,Rassoul Ndiaye,MID,77,senegal_rassoul_ndiaye_22168918.png
+senegal,C. Gomis,FWD,75,senegal_c_gomis_38062968.png
+senegal,Mbaye Ndiaye,DEF,75,senegal_mbaye_ndiaye_37342698.png
+senegal,Joseph Samb,DEF,82,senegal_joseph_samb_37770114.png
+senegal,Bonaventure Fonseca,MID,88,senegal_bonaventure_fonseca_37770116.png
+senegal,Abdou Diallo,DEF,79,senegal_abdou_diallo_62860.png
+senegal,Seyni Mbaye Ndiaye,DEF,88,senegal_seyni_mbaye_ndiaye_38201632.png
+senegal,M. Yaya Ly,MID,81,senegal_m_yaya_ly_38051197.png
+senegal,Pape Badji,MID,85,senegal_pape_badji_38051198.png
+senegal,Moussa Cissé,MID,89,senegal_moussa_ciss_37637270.png
+senegal,Moctar Koïta,MID,76,senegal_moctar_kota_37592394.png
+senegal,A. Niang,MID,79,senegal_a_niang_38051207.png
+senegal,Abdallah Sima,FWD,82,senegal_abdallah_sima_37539430.png
+senegal,Cheikh Sabaly,FWD,77,senegal_cheikh_sabaly_12384553.png
+senegal,Libasse Guèye,FWD,88,senegal_libasse_guye_37603284.png
+senegal,Ababacar Sarr,FWD,75,senegal_ababacar_sarr_37770414.png
+senegal,O. Ba,FWD,82,senegal_o_ba_38051205.png
+senegal,Ilay Camara,DEF,81,senegal_ilay_camara_37637485.png
+senegal,Pape Matar Sarr,MID,85,senegal_pape_matar_sarr_37342694.png
+senegal,Pape Gueye,MID,80,senegal_pape_gueye_433169.png
+senegal,Lamine Camara,MID,83,senegal_lamine_camara_37642676.png
+senegal,Kalidou Koulibaly,DEF,86,senegal_kalidou_koulibaly_61806.png
+senegal,Iliman Ndiaye,FWD,82,senegal_iliman_ndiaye_23661272.png
+senegal,Habib Diarra,MID,84,senegal_habib_diarra_37581992.png
+senegal,Boulaye Dia,FWD,79,senegal_boulaye_dia_2206688.png
+senegal,El Hadji Malick Diouf,DEF,82,senegal_el_hadji_malick_diouf_37685630.png
+senegal,Abdoulaye Seck,DEF,88,senegal_abdoulaye_seck_153244.png
+senegal,Idrissa Gueye,MID,82,senegal_idrissa_gueye_1030.png
+senegal,Mory Diaw,GK,77,senegal_mory_diaw_162164.png
+senegal,Nampalys Mendy,MID,82,senegal_nampalys_mendy_4679.png
+senegal,Moussa N'Diaye,DEF,86,senegal_moussa_ndiaye_30446976.png
+senegal,Ousseynou Fall Seck,MID,82,senegal_ousseynou_fall_seck_37937202.png
+senegal,V. Cissé,MID,80,senegal_v_ciss_38051202.png
+senegal,Dion Lopy,MID,80,senegal_dion_lopy_30446984.png
+senegal,Cheikh Niasse,MID,79,senegal_cheikh_niasse_527534.png
+senegal,A. Coly,DEF,83,senegal_a_coly_38051201.png
+senegal,Cheikh Ndoye,GK,78,senegal_cheikh_ndoye_27796860.png
+senegal,Marc Diouf,GK,83,senegal_marc_diouf_37556321.png
+senegal,Insa Boye,MID,86,senegal_insa_boye_37342689.png
+senegal,Mamadou Lamine Camara,MID,87,senegal_mamadou_lamine_camara_37603706.png
+senegal,S. Mballo,GK,83,senegal_s_mballo_38051189.png
+senegal,Moustapha Mbow,DEF,85,senegal_moustapha_mbow_29336632.png
+senegal,Issa Kane,MID,77,senegal_issa_kane_37712707.png
+mexico,Érick Sánchez,MID,88,mexico_rick_snchez_255156.png
+mexico,Alexis Gutiérrez,MID,82,mexico_alexis_gutirrez_5666523.png
+mexico,Jesús Orozco Chiquete,DEF,82,mexico_jess_orozco_chiquete_37546337.png
+mexico,Jesús Angulo,DEF,77,mexico_jess_angulo_3169754.png
+mexico,Luis Romo,MID,87,mexico_luis_romo_1525361.png
+mexico,Efraín Álvarez,MID,76,mexico_efran_lvarez_2170259.png
+mexico,César Huerta,FWD,84,mexico_csar_huerta_5666528.png
+mexico,Julián Quiñones,FWD,83,mexico_julin_quiones_254057.png
+mexico,Guillermo Ochoa,GK,82,mexico_guillermo_ochoa_95174.png
+mexico,Carlos Rodríguez,MID,76,mexico_carlos_rodrguez_255102.png
+mexico,Jorge Sánchez,DEF,78,mexico_jorge_snchez_253754.png
+mexico,Julián Araujo ,DEF,82,mexico_julin_araujo_23260605.png
+mexico,Jeremy Márquez,MID,80,mexico_jeremy_mrquez_30287102.png
+mexico,Armando González,FWD,81,mexico_armando_gonzlez_37547842.png
+mexico,Carlos Moreno,GK,85,mexico_carlos_moreno_12789591.png
+mexico,Ramón Juárez,DEF,78,mexico_ramn_jurez_37250424.png
+mexico,Gilberto Sepúlveda,DEF,75,mexico_gilberto_seplveda_25939661.png
+mexico,Juan José Purata,DEF,88,mexico_juan_jos_purata_3876654.png
+mexico,Mateo Chávez,DEF,86,mexico_mateo_chvez_37661731.png
+mexico,Kevin Álvarez,DEF,76,mexico_kevin_lvarez_10947888.png
+mexico,Emilio Lara,DEF,86,mexico_emilio_lara_34862161.png
+mexico,Jorge Ruvalcaba,FWD,88,mexico_jorge_ruvalcaba_37600543.png
+mexico,Ángel Sepúlveda,FWD,79,mexico_ngel_seplveda_252509.png
+mexico,Gilberto Mora,MID,85,mexico_gilberto_mora_37739232.png
+mexico,Edson Álvarez,MID,82,mexico_edson_lvarez_254052.png
+mexico,Raúl Rangel,GK,88,mexico_ral_rangel_37530277.png
+mexico,Marcel Ruiz ,MID,85,mexico_marcel_ruiz_20336077.png
+mexico,Raúl Jiménez,FWD,84,mexico_ral_jimnez_160217.png
+mexico,Alexis Vega,FWD,79,mexico_alexis_vega_254021.png
+mexico,Rodrigo Huescas ,DEF,81,mexico_rodrigo_huescas_37565765.png
+mexico,Orbelín Pineda,MID,81,mexico_orbeln_pineda_253683.png
+mexico,Luis Malagón ,GK,89,mexico_luis_malagn_253957.png
+mexico,Israel Reyes,DEF,78,mexico_israel_reyes_37253495.png
+mexico,Jesús Gallardo,DEF,83,mexico_jess_gallardo_253737.png
+mexico,Johan Vásquez,DEF,80,mexico_johan_vsquez_1525399.png
+mexico,Carlos Acevedo,GK,81,mexico_carlos_acevedo_253753.png
+mexico,Roberto Alvarado,FWD,79,mexico_roberto_alvarado_254106.png
+mexico,Santiago Gimenez,FWD,87,mexico_santiago_gimenez_2503729.png
+mexico,Fidel Ambríz,MID,80,mexico_fidel_ambrz_37356489.png
+mexico,Obed Vargas,MID,85,mexico_obed_vargas_37569331.png
+mexico,Germán Berterame,FWD,78,mexico_germn_berterame_455810.png
+mexico,Hirving Lozano,FWD,76,mexico_hirving_lozano_253463.png
+mexico,Érik Lira,MID,85,mexico_rik_lira_21045321.png
+mexico,Luis Chávez,MID,79,mexico_luis_chvez_253833.png
+mexico,César Montes ,DEF,78,mexico_csar_montes_253701.png
+mexico,Diego Lainez,FWD,86,mexico_diego_lainez_254456.png
+usa,Matko Miljevic,MID,75,usa_matko_miljevic_25591385.png
+usa,Indiana Vassilev,FWD,83,usa_indiana_vassilev_5640883.png
+usa,Patrick Agyemang ,FWD,80,usa_patrick_agyemang_1109.png
+usa,Alex Freeman,DEF,76,usa_alex_freeman_37623379.png
+usa,Caden Clark,MID,81,usa_caden_clark_37436336.png
+usa,Damion Downs,FWD,82,usa_damion_downs_37592316.png
+usa,Paxten Aaronson,MID,79,usa_paxten_aaronson_37525731.png
+usa,Brian Gutiérrez,MID,85,usa_brian_gutirrez_37451396.png
+usa,Josh Sargent ,FWD,85,usa_josh_sargent_5640884.png
+usa,Brian White,FWD,81,usa_brian_white_12371879.png
+usa,John Tolkin ,DEF,85,usa_john_tolkin_22514444.png
+usa,Folarin Balogun,FWD,77,usa_folarin_balogun_4969702.png
+usa,Joe Scally,DEF,80,usa_joe_scally_17158438.png
+usa,Emeka Eneli ,MID,80,usa_emeka_eneli_37689167.png
+usa,Jack McGlynn,MID,79,usa_jack_mcglynn_37448754.png
+usa,Luca de la Torre,MID,87,usa_luca_de_la_torre_8333.png
+usa,Tristan Blackmon,DEF,83,usa_tristan_blackmon_787350.png
+usa,George Campbell,DEF,82,usa_george_campbell_17177615.png
+usa,Noahkai Banks,DEF,87,usa_noahkai_banks_37650095.png
+usa,Chris Brady,GK,81,usa_chris_brady_37527137.png
+usa,Walker Zimmerman,DEF,81,usa_walker_zimmerman_262076.png
+usa,Shaq Moore,DEF,81,usa_shaq_moore_448320.png
+usa,Nathan Harriel,DEF,80,usa_nathan_harriel_32013799.png
+usa,Tyler Adams,MID,76,usa_tyler_adams_262324.png
+usa,James Sands ,MID,87,usa_james_sands_1548470.png
+usa,Yunus Musah,MID,80,usa_yunus_musah_28575698.png
+usa,Quinn Sullivan ,MID,89,usa_quinn_sullivan_37525729.png
+usa,Benja Cremaschi,MID,76,usa_benja_cremaschi_37625886.png
+usa,Max Arfsten,FWD,86,usa_max_arfsten_37625843.png
+usa,Sebastian Berhalter,MID,76,usa_sebastian_berhalter_37407279.png
+usa,Cristian Roldán,MID,76,usa_cristian_roldn_262179.png
+usa,Matt Freese,GK,77,usa_matt_freese_785896.png
+usa,Tanner Tessmann,MID,82,usa_tanner_tessmann_27081112.png
+usa,Jonathan Klinsmann ,GK,87,usa_jonathan_klinsmann_474429.png
+usa,Mark McKenzie,DEF,87,usa_mark_mckenzie_281527.png
+usa,Ricardo Pepi,FWD,81,usa_ricardo_pepi_33187441.png
+usa,Cameron Carter-Vickers ,DEF,83,usa_cameron_cartervickers_1712.png
+usa,Chris Richards,DEF,85,usa_chris_richards_18218609.png
+usa,Matt Turner,GK,87,usa_matt_turner_262551.png
+usa,DeJuan Jones ,DEF,78,usa_dejuan_jones_31626030.png
+usa,Zack Steffen,GK,82,usa_zack_steffen_47285.png
+usa,Weston McKennie,MID,76,usa_weston_mckennie_608189.png
+usa,Timothy Weah,MID,85,usa_timothy_weah_537332.png
+usa,Álex Zendejas,FWD,76,usa_lex_zendejas_255002.png
+usa,Johnny Cardoso,MID,88,usa_johnny_cardoso_37261342.png
+usa,Christian Pulisic,FWD,83,usa_christian_pulisic_32438.png
+usa,Marlon Fossey,DEF,86,usa_marlon_fossey_1494698.png
+usa,Malik Tillman,MID,80,usa_malik_tillman_23277869.png
+usa,Brenden Aaronson,MID,81,usa_brenden_aaronson_4552689.png
+usa,Patrick Schulte,GK,88,usa_patrick_schulte_20335123.png
+usa,Giovanni Reyna,MID,78,usa_giovanni_reyna_34432365.png
+usa,Diego Luna,MID,82,usa_diego_luna_37569242.png
+usa,Sergiño Dest,DEF,87,usa_sergio_dest_5640878.png
+usa,Auston Trusty,DEF,81,usa_auston_trusty_262280.png
+usa,Roman Celentano,GK,81,usa_roman_celentano_37614804.png
+usa,Miles Robinson,DEF,79,usa_miles_robinson_608242.png
+usa,Aidan Morris,MID,80,usa_aidan_morris_25548700.png
+usa,Haji Wright,FWD,87,usa_haji_wright_263186.png
+usa,Tim Ream,DEF,83,usa_tim_ream_2454.png
+usa,Timothy Tillman,MID,84,usa_timothy_tillman_539711.png
+morocco,Amine Souane,FWD,77,morocco_amine_souane_37404949.png
+morocco,Salaheddine Chihab,GK,79,morocco_salaheddine_chihab_301814.png
+morocco,Munir El Kajoui,GK,84,morocco_munir_el_kajoui_188803.png
+morocco,Chemsdine Talbi,FWD,85,morocco_chemsdine_talbi_37590634.png
+morocco,Khalid Aït Ouarkhane,MID,75,morocco_khalid_at_ouarkhane_37387700.png
+morocco,Mounir Chouiar,FWD,80,morocco_mounir_chouiar_99069.png
+morocco,Anas El Mahraoui,FWD,78,morocco_anas_el_mahraoui_37771199.png
+morocco,Neil El Aynaoui,MID,76,morocco_neil_el_aynaoui_21803060.png
+morocco,El Mehdi Benabid,GK,89,morocco_el_mehdi_benabid_37308648.png
+morocco,El Mehdi Al Harrar,GK,89,morocco_el_mehdi_al_harrar_37548285.png
+morocco,Brahim Díaz,FWD,78,morocco_brahim_daz_340342.png
+morocco,Zakaria El Ouahdi,DEF,80,morocco_zakaria_el_ouahdi_37540780.png
+morocco,Noussair Mazraoui,DEF,76,morocco_noussair_mazraoui_28716.png
+morocco,Mohamed Rabie Hrimat,MID,82,morocco_mohamed_rabie_hrimat_37308650.png
+morocco,Oussama Targhalline,MID,78,morocco_oussama_targhalline_37541437.png
+morocco,Soufiane Rahimi,FWD,77,morocco_soufiane_rahimi_20316497.png
+morocco,Azzedine Ounahi,MID,83,morocco_azzedine_ounahi_21803033.png
+morocco,Abderrazak Hamdallah,FWD,78,morocco_abderrazak_hamdallah_151014.png
+morocco,Ayoub Mouloua,FWD,80,morocco_ayoub_mouloua_37560947.png
+morocco,Tarik Tissoudali,FWD,87,morocco_tarik_tissoudali_28287.png
+morocco,Hossam Essadak,MID,83,morocco_hossam_essadak_37739785.png
+morocco,Oussama Lamlioui,FWD,85,morocco_oussama_lamlioui_37548304.png
+morocco,Aschraf El Mahdioui,MID,85,morocco_aschraf_el_mahdioui_25769.png
+morocco,Ayoub Khairi,MID,77,morocco_ayoub_khairi_29720396.png
+morocco,Salaheddine Errahouli,FWD,77,morocco_salaheddine_errahouli_37551821.png
+morocco,Youness El Kaabi,FWD,78,morocco_youness_el_kaabi_38201352.png
+morocco,Oussama El Azzouzi,MID,76,morocco_oussama_el_azzouzi_3219641.png
+morocco,Walid El Karti,MID,75,morocco_walid_el_karti_431304.png
+morocco,Eliesse Ben Seghir,FWD,78,morocco_eliesse_ben_seghir_37601342.png
+morocco,Ilias Akhomach,FWD,84,morocco_ilias_akhomach_37459024.png
+morocco,Hamza Igamane,FWD,77,morocco_hamza_igamane_37562510.png
+morocco,Bilal Nadir,MID,85,morocco_bilal_nadir_37541144.png
+morocco,Anas Bach,MID,85,morocco_anas_bach_37317059.png
+morocco,Oussama Tannane,MID,78,morocco_oussama_tannane_24567.png
+morocco,Saifeddine Bouhra,FWD,75,morocco_saifeddine_bouhra_37317244.png
+morocco,Amir Richardson,MID,88,morocco_amir_richardson_37570091.png
+morocco,Amine Zouhzouh,MID,89,morocco_amine_zouhzouh_37656039.png
+morocco,Sabir Bougrine,MID,78,morocco_sabir_bougrine_65464.png
+morocco,Sofiane Diop,FWD,84,morocco_sofiane_diop_10990739.png
+morocco,Osame Sahraoui,FWD,85,morocco_osame_sahraoui_15875734.png
+morocco,Imad Riahi,FWD,88,morocco_imad_riahi_37402320.png
+morocco,Khalid Baba,FWD,80,morocco_khalid_baba_37556305.png
+morocco,Reda Hajji,MID,84,morocco_reda_hajji_37548308.png
+morocco,Hamza Hannouri,FWD,76,morocco_hamza_hannouri_16457409.png
+morocco,Maroan Sannadi,FWD,86,morocco_maroan_sannadi_37544434.png
+morocco,Youssef Mehri,FWD,80,morocco_youssef_mehri_37620075.png
+morocco,Youssef En-Nesyri,FWD,75,morocco_youssef_ennesyri_186982.png
+morocco,Walid Azaro,FWD,78,morocco_walid_azaro_766627.png
+morocco,Karim El Berkaoui,FWD,86,morocco_karim_el_berkaoui_29838727.png
+morocco,Yassine Bounou,GK,81,morocco_yassine_bounou_186591.png
+morocco,Achraf Hakimi,DEF,84,morocco_achraf_hakimi_187260.png
+morocco,Bilal El Khannouss,MID,86,morocco_bilal_el_khannouss_37559109.png
+morocco,Abde Ezzalzouli,FWD,86,morocco_abde_ezzalzouli_37297124.png
+morocco,Ayoub El Kaabi,FWD,89,morocco_ayoub_el_kaabi_10631219.png
+morocco,Abdelhamid Ait Boudlal,DEF,88,morocco_abdelhamid_ait_boudlal_37694961.png
+morocco,Anass Salah-Eddine,DEF,75,morocco_anass_salaheddine_23661347.png
+morocco,Ismael Saibari,MID,79,morocco_ismael_saibari_37317434.png
+morocco,Rachid Ghanimi,GK,86,morocco_rachid_ghanimi_37593906.png
+morocco,Nayef Aguerd,DEF,75,morocco_nayef_aguerd_516291.png
+morocco,Abdel Abqar,DEF,84,morocco_abdel_abqar_21781710.png
+morocco,Romain Saïss,DEF,87,morocco_romain_sass_7144.png
+morocco,Soufiane Bouftini,DEF,87,morocco_soufiane_bouftini_29838710.png
+morocco,Jawad El Yamiq,DEF,85,morocco_jawad_el_yamiq_751551.png
+morocco,Adam Masina,DEF,78,morocco_adam_masina_129704.png
+morocco,Jamal Harkass,DEF,75,morocco_jamal_harkass_37317122.png
+morocco,Marouane Louadni,DEF,76,morocco_marouane_louadni_1872884.png
+morocco,Abdelhak Assal,DEF,78,morocco_abdelhak_assal_37550259.png
+morocco,Marwane Saadane,DEF,77,morocco_marwane_saadane_201863.png
+morocco,Bouchaib Arrassi,DEF,86,morocco_bouchaib_arrassi_37596155.png
+morocco,Mehdi Mchakhchekh,DEF,82,morocco_mehdi_mchakhchekh_37701342.png
+morocco,Souffian El Karouani,DEF,77,morocco_souffian_el_karouani_37257612.png
+morocco,Adam Aznou,DEF,77,morocco_adam_aznou_37650058.png
+morocco,Youssef Belammari,DEF,81,morocco_youssef_belammari_37317062.png
+morocco,Hamza El Moussaoui,DEF,78,morocco_hamza_el_moussaoui_430844.png
+morocco,Mahmoud Bentayg,DEF,77,morocco_mahmoud_bentayg_37548877.png
+morocco,Fouad Zahouani,DEF,88,morocco_fouad_zahouani_37694966.png
+morocco,Omar El Hilali,DEF,89,morocco_omar_el_hilali_37543901.png
+morocco,Mohamed Chibi,DEF,79,morocco_mohamed_chibi_430838.png
+morocco,Mohamed Moufid,DEF,80,morocco_mohamed_moufid_37529362.png
+morocco,Mohamed Boulacsout,DEF,84,morocco_mohamed_boulacsout_37548295.png
+morocco,Sofyan Amrabat,MID,87,morocco_sofyan_amrabat_25489.png
+morocco,Amine Adli,FWD,82,morocco_amine_adli_14004542.png
+australia,Craig Goodwin,FWD,89,australia_craig_goodwin_26030.png
+australia,Aziz Behich,DEF,78,australia_aziz_behich_201467.png
+australia,Jason Davidson,DEF,82,australia_jason_davidson_1228.png
+australia,A. Taggart,FWD,75,australia_a_taggart_173221.png
+australia,Mitchell Duke,FWD,82,australia_mitchell_duke_310200.png
+australia,Fran Karacic,DEF,89,australia_fran_karacic_73932.png
+australia,Marco Tilio,FWD,83,australia_marco_tilio_11705286.png
+australia,Brandon Borrello,FWD,83,australia_brandon_borrello_330583.png
+australia,Riley McGree,MID,78,australia_riley_mcgree_749527.png
+australia,Nick D'Agostino,FWD,76,australia_nick_dagostino_667318.png
+australia,Jackson Irvine,MID,76,australia_jackson_irvine_6605.png
+australia,Callum Elder,DEF,89,australia_callum_elder_3320.png
+australia,Jacob Italiano,DEF,86,australia_jacob_italiano_6006074.png
+australia,Mohamed Touré,FWD,88,australia_mohamed_tour_37359803.png
+australia,Jack Iredale,DEF,78,australia_jack_iredale_2483202.png
+australia,Adrian Segečić,FWD,80,australia_adrian_segei_37407448.png
+australia,Hayden Matthews,DEF,85,australia_hayden_matthews_37632554.png
+australia,Anthony Kalik,MID,76,australia_anthony_kalik_74127.png
+australia,Joe Gauci,GK,77,australia_joe_gauci_24092472.png
+australia,Tom Glover,GK,82,australia_tom_glover_752043.png
+australia,Jordan Bos,DEF,86,australia_jordan_bos_28543793.png
+australia,James Overy,DEF,82,australia_james_overy_37771512.png
+australia,Kasey Bos,DEF,79,australia_kasey_bos_37703571.png
+australia,Max Balard,MID,89,australia_max_balard_37359754.png
+australia,Sam Silvera,FWD,83,australia_sam_silvera_28543925.png
+australia,Ryan Teague,MID,87,australia_ryan_teague_24427745.png
+australia,Kusini Yengi,FWD,84,australia_kusini_yengi_37264177.png
+australia,Lewis Miller,DEF,78,australia_lewis_miller_21036519.png
+australia,Al Hassan Touré,FWD,86,australia_al_hassan_tour_28543784.png
+australia,Nicolas Milanovic,FWD,75,australia_nicolas_milanovic_37364876.png
+australia,Nishan Velupillay,FWD,83,australia_nishan_velupillay_37359724.png
+australia,Daniel Arzani,FWD,80,australia_daniel_arzani_749543.png
+australia,Cameron Burgess,DEF,76,australia_cameron_burgess_5922.png
+australia,Aiden O'Neill,MID,84,australia_aiden_oneill_4666.png
+australia,Anthony Caceres,MID,82,australia_anthony_caceres_329804.png
+australia,Alexander Grant,DEF,80,australia_alexander_grant_6181.png
+australia,Noah Botic,FWD,85,australia_noah_botic_37316556.png
+australia,Kye Rowles,DEF,75,australia_kye_rowles_750014.png
+australia,Martin Boyle,FWD,77,australia_martin_boyle_172795.png
+australia,Cammy Devlin,MID,85,australia_cammy_devlin_20708316.png
+australia,Paul Izzo,GK,78,australia_paul_izzo_329509.png
+australia,Kai Trewin,MID,88,australia_kai_trewin_10990572.png
+australia,Paul Okon-Engstler,MID,80,australia_paul_okonengstler_37611899.png
+australia,Patrick Beach,GK,85,australia_patrick_beach_37618320.png
+australia,Ajdin Hrustic,MID,75,australia_ajdin_hrustic_26935.png
+australia,Nestory Irankunda,FWD,78,australia_nestory_irankunda_37594798.png
+australia,Milos Degenek,DEF,88,australia_milos_degenek_35077.png
+australia,Patrick Yazbek,MID,88,australia_patrick_yazbek_37529350.png
+australia,Jason Geria,DEF,82,australia_jason_geria_330546.png
+australia,Mathew Ryan,GK,77,australia_mathew_ryan_62317.png
+australia,Connor Metcalfe,MID,79,australia_connor_metcalfe_3526183.png
+australia,Alessandro Circati,DEF,89,australia_alessandro_circati_37361402.png

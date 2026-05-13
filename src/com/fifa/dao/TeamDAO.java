@@ -16,6 +16,7 @@ public class TeamDAO extends AbstractDAO<Team> {
             if (rs.next()) {
                 Team team = new Team(rs.getString("name"), rs.getInt("ovr_attack"), rs.getInt("ovr_defense"));
                 team.setId(rs.getInt("id"));
+                team.setCode(rs.getString("code"));
                 return team;
             }
         } catch (SQLException e) {
@@ -34,6 +35,7 @@ public class TeamDAO extends AbstractDAO<Team> {
             while (rs.next()) {
                 Team team = new Team(rs.getString("name"), rs.getInt("ovr_attack"), rs.getInt("ovr_defense"));
                 team.setId(rs.getInt("id"));
+                team.setCode(rs.getString("code"));
                 teams.add(team);
             }
         } catch (SQLException e) {

@@ -1,0 +1,358 @@
+Привет! Проект FIFA Card Game 2026 (JavaFX + PostgreSQL). Нужно сделать 3 задачи.
+
+═══════════════════════════════════════════════
+ЗАДАЧА 1 — ЗАМЕНИТЬ DownloadAssets.java
+═══════════════════════════════════════════════
+
+1. Удали старый DownloadAssets.java из корня проекта
+2. Положи новый DownloadAssets.java (я прикреплю файл) в корень проекта
+3. В строке: private static final String API_KEY = "YOUR_API_KEY_HERE";
+   замени YOUR_API_KEY_HERE на ключ который я скажу отдельно
+4. Удали ВСЕ файлы из папок:
+   src/main/resources/images/players/
+   src/main/resources/images/flags/
+5. Запусти командой:
+   java -cp ".;lib\json-20240303.jar" DownloadAssets
+
+
+═══════════════════════════════════════════════
+ЗАДАЧА 2 — ЗАМЕНИТЬ ImageLoader.java
+═══════════════════════════════════════════════
+
+Удали старый и положи новый ImageLoader.java (я прикреплю файл) в:
+src/main/java/com/fifa/util/ImageLoader.java
+
+
+═══════════════════════════════════════════════
+ЗАДАЧА 3 — ПОЛНОСТЬЮ ПЕРЕСОЗДАТЬ БАЗУ ДАННЫХ
+═══════════════════════════════════════════════
+
+Удали старые init.sql и seed.sql и создай новые.
+
+── init.sql ──────────────────────────────────
+
+DROP TABLE IF EXISTS matches CASCADE;
+DROP TABLE IF EXISTS players CASCADE;
+DROP TABLE IF EXISTS countries CASCADE;
+
+CREATE TABLE countries (
+    id          SERIAL PRIMARY KEY,
+    name        VARCHAR(100) NOT NULL,
+    code        VARCHAR(20)  NOT NULL,
+    ovr_attack  INT NOT NULL,
+    ovr_defense INT NOT NULL
+);
+
+CREATE TABLE players (
+    id          SERIAL PRIMARY KEY,
+    name        VARCHAR(100) NOT NULL,
+    country_id  INT REFERENCES countries(id),
+    position    VARCHAR(5)   NOT NULL CHECK (position IN ('GK','DEF','MID','FWD')),
+    overall     INT          NOT NULL CHECK (overall BETWEEN 0 AND 99),
+    is_starter  BOOLEAN      NOT NULL DEFAULT true,
+    photo_path  VARCHAR(255)
+);
+
+CREATE TABLE matches (
+    id          SERIAL PRIMARY KEY,
+    home_id     INT REFERENCES countries(id),
+    away_id     INT REFERENCES countries(id),
+    home_score  INT NOT NULL,
+    away_score  INT NOT NULL,
+    played_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+── seed.sql ──────────────────────────────────
+
+Заполни seed.sql реальными данными для всех 15 сборных.
+Для каждой сборной: 11 стартовых (is_starter=true) + 4 запасных (is_starter=false).
+Позиции стартового состава: 1 GK, 4 DEF, 4 MID, 2 FWD.
+
+Используй ТОЧНО эти country code для photo_path игроков:
+kazakhstan, argentina, brazil, france, germany,
+spain, england, portugal, usa, morocco,
+netherlands, senegal, mexico, australia, south_korea
+
+── СТРАНЫ (реалистичные рейтинги) ────────────
+
+INSERT INTO countries (name, code, ovr_attack, ovr_defense) VALUES
+('Kazakhstan',   'kazakhstan',   58, 56),
+('Argentina',    'argentina',    90, 83),
+('Brazil',       'brazil',       88, 82),
+('France',       'france',       89, 85),
+('Germany',      'germany',      84, 82),
+('Spain',        'spain',        86, 83),
+('England',      'england',      85, 81),
+('Portugal',     'portugal',     87, 80),
+('USA',          'usa',          73, 70),
+('Morocco',      'morocco',      76, 78),
+('Netherlands',  'netherlands',  84, 79),
+('Senegal',      'senegal',      77, 74),
+('Mexico',       'mexico',       74, 72),
+('Australia',    'australia',    71, 69),
+('South Korea',  'south_korea',  75, 72);
+
+── ИГРОКИ — реальные имена и рейтинги ────────
+
+Аргентина (country_id=2):
+GK:  Emiliano Martinez        overall=88  starter=true
+DEF: Nahuel Molina            overall=80  starter=true
+DEF: Cristian Romero          overall=85  starter=true
+DEF: Nicolas Otamendi         overall=82  starter=true
+DEF: Nicolas Tagliafico       overall=79  starter=true
+MID: Rodrigo De Paul          overall=84  starter=true
+MID: Enzo Fernandez           overall=83  starter=true
+MID: Alexis Mac Allister      overall=83  starter=true
+MID: Angel Di Maria           overall=82  starter=true
+FWD: Lautaro Martinez         overall=87  starter=true
+FWD: Lionel Messi             overall=93  starter=true
+SUB: Geronimo Rulli           overall=78  starter=false
+SUB: Marcos Acuna             overall=79  starter=false
+SUB: Julian Alvarez           overall=84  starter=false
+SUB: Paulo Dybala             overall=83  starter=false
+
+Бразилия (country_id=3):
+GK:  Alisson Becker           overall=90  starter=true
+DEF: Danilo                   overall=80  starter=true
+DEF: Marquinhos              overall=87  starter=true
+DEF: Gabriel Magalhaes        overall=84  starter=true
+DEF: Guilherme Arana          overall=78  starter=true
+MID: Casemiro                 overall=85  starter=true
+MID: Bruno Guimaraes          overall=85  starter=true
+MID: Lucas Paqueta            overall=84  starter=true
+MID: Raphinha                 overall=84  starter=true
+FWD: Vinicius Junior          overall=91  starter=true
+FWD: Rodrygo                  overall=83  starter=true
+SUB: Ederson                  overall=88  starter=false
+SUB: Militao                  overall=85  starter=false
+SUB: Endrick                  overall=78  starter=false
+SUB: Gabriel Martinelli        overall=82  starter=false
+
+Франция (country_id=4):
+GK:  Mike Maignan             overall=88  starter=true
+DEF: Jules Kounde             overall=84  starter=true
+DEF: Dayot Upamecano          overall=84  starter=true
+DEF: William Saliba           overall=85  starter=true
+DEF: Theo Hernandez           overall=84  starter=true
+MID: Aurelien Tchouameni      overall=84  starter=true
+MID: Adrien Rabiot            overall=81  starter=true
+MID: Antoine Griezmann        overall=86  starter=true
+MID: Ousmane Dembele          overall=85  starter=true
+FWD: Kylian Mbappe            overall=92  starter=true
+FWD: Marcus Thuram            overall=82  starter=true
+SUB: Alphonse Areola          overall=80  starter=false
+SUB: Benjamin Pavard          overall=82  starter=false
+SUB: Eduardo Camavinga        overall=83  starter=false
+SUB: Randal Kolo Muani        overall=81  starter=false
+
+Германия (country_id=5):
+GK:  Manuel Neuer             overall=87  starter=true
+DEF: Joshua Kimmich           overall=87  starter=true
+DEF: Antonio Rudiger          overall=85  starter=true
+DEF: Jonathan Tah             overall=82  starter=true
+DEF: Maximilian Mittelstadt   overall=78  starter=true
+MID: Toni Kroos               overall=87  starter=true
+MID: Florian Wirtz            overall=87  starter=true
+MID: Jamal Musiala            overall=87  starter=true
+MID: Ilkay Gundogan           overall=85  starter=true
+FWD: Kai Havertz              overall=83  starter=true
+FWD: Niclas Fullkrug          overall=80  starter=true
+SUB: Marc-Andre ter Stegen    overall=88  starter=false
+SUB: David Raum               overall=79  starter=false
+SUB: Thomas Muller            overall=82  starter=false
+SUB: Leroy Sane               overall=84  starter=false
+
+Испания (country_id=6):
+GK:  Unai Simon               overall=84  starter=true
+DEF: Dani Carvajal            overall=83  starter=true
+DEF: Robin Le Normand         overall=82  starter=true
+DEF: Aymeric Laporte          overall=83  starter=true
+DEF: Marc Cucurella           overall=80  starter=true
+MID: Rodri                    overall=91  starter=true
+MID: Pedri                    overall=87  starter=true
+MID: Fabian Ruiz              overall=83  starter=true
+MID: Lamine Yamal             overall=86  starter=true
+FWD: Alvaro Morata            overall=82  starter=true
+FWD: Nico Williams            overall=84  starter=true
+SUB: David Raya               overall=85  starter=false
+SUB: Dani Olmo                overall=84  starter=false
+SUB: Mikel Merino             overall=82  starter=false
+SUB: Ferran Torres            overall=81  starter=false
+
+Англия (country_id=7):
+GK:  Jordan Pickford          overall=83  starter=true
+DEF: Kyle Walker              overall=83  starter=true
+DEF: John Stones              overall=84  starter=true
+DEF: Marc Guehi               overall=81  starter=true
+DEF: Luke Shaw                overall=80  starter=true
+MID: Declan Rice              overall=87  starter=true
+MID: Jude Bellingham          overall=89  starter=true
+MID: Phil Foden               overall=88  starter=true
+MID: Bukayo Saka              overall=87  starter=true
+FWD: Harry Kane               overall=90  starter=true
+FWD: Marcus Rashford          overall=82  starter=true
+SUB: Aaron Ramsdale           overall=80  starter=false
+SUB: Trent Alexander-Arnold   overall=86  starter=false
+SUB: Conor Gallagher          overall=80  starter=false
+SUB: Ollie Watkins            overall=82  starter=false
+
+Португалия (country_id=8):
+GK:  Diogo Costa              overall=84  starter=true
+DEF: Joao Cancelo             overall=84  starter=true
+DEF: Ruben Dias               overall=88  starter=true
+DEF: Antonio Silva            overall=81  starter=true
+DEF: Nuno Mendes              overall=83  starter=true
+MID: Joao Palinha             overall=82  starter=true
+MID: Vitinha                  overall=83  starter=true
+MID: Bruno Fernandes          overall=87  starter=true
+MID: Bernardo Silva           overall=87  starter=true
+FWD: Rafael Leao              overall=85  starter=true
+FWD: Cristiano Ronaldo        overall=88  starter=true
+SUB: Rui Patricio             overall=81  starter=false
+SUB: Pepe                     overall=79  starter=false
+SUB: Joao Felix               overall=83  starter=false
+SUB: Goncalo Ramos            overall=81  starter=false
+
+США (country_id=9):
+GK:  Matt Turner              overall=76  starter=true
+DEF: Sergino Dest             overall=77  starter=true
+DEF: Chris Richards           overall=75  starter=true
+DEF: Tim Ream                 overall=74  starter=true
+DEF: Antonee Robinson         overall=78  starter=true
+MID: Tyler Adams              overall=79  starter=true
+MID: Weston McKennie          overall=78  starter=true
+MID: Yunus Musah              overall=77  starter=true
+MID: Christian Pulisic        overall=82  starter=true
+FWD: Ricardo Pepi             overall=75  starter=true
+FWD: Folarin Balogun          overall=76  starter=true
+SUB: Ethan Horvath            overall=72  starter=false
+SUB: DeAndre Yedlin           overall=73  starter=false
+SUB: Gio Reyna                overall=76  starter=false
+SUB: Josh Sargent             overall=74  starter=false
+
+Марокко (country_id=10):
+GK:  Yassine Bounou           overall=85  starter=true
+DEF: Achraf Hakimi            overall=87  starter=true
+DEF: Nayef Aguerd             overall=80  starter=true
+DEF: Romain Saiss             overall=79  starter=true
+DEF: Noussair Mazraoui        overall=81  starter=true
+MID: Sofyan Amrabat           overall=82  starter=true
+MID: Azzedine Ounahi          overall=78  starter=true
+MID: Selim Amallah            overall=75  starter=true
+MID: Hakim Ziyech             overall=82  starter=true
+FWD: Youssef En-Nesyri        overall=80  starter=true
+FWD: Sofiane Boufal           overall=78  starter=true
+SUB: Ahmed Reda Tagnaouti     overall=76  starter=false
+SUB: Jawad El Yamiq           overall=77  starter=false
+SUB: Abdessamad Ezzalzouli    overall=76  starter=false
+SUB: Walid Cheddira           overall=75  starter=false
+
+Нидерланды (country_id=11):
+GK:  Bart Verbruggen          overall=80  starter=true
+DEF: Denzel Dumfries          overall=82  starter=true
+DEF: Stefan de Vrij           overall=82  starter=true
+DEF: Virgil van Dijk          overall=89  starter=true
+DEF: Nathan Ake               overall=82  starter=true
+MID: Frenkie de Jong          overall=86  starter=true
+MID: Tijjani Reijnders        overall=82  starter=true
+MID: Xavi Simons              overall=83  starter=true
+MID: Cody Gakpo               overall=83  starter=true
+FWD: Memphis Depay            overall=82  starter=true
+FWD: Donyell Malen            overall=80  starter=true
+SUB: Mark Flekken             overall=78  starter=false
+SUB: Daley Blind              overall=78  starter=false
+SUB: Wout Weghorst            overall=79  starter=false
+SUB: Steven Berghuis          overall=79  starter=false
+
+Сенегал (country_id=12):
+GK:  Edouard Mendy            overall=83  starter=true
+DEF: Youssouf Sabaly          overall=76  starter=true
+DEF: Kalidou Koulibaly        overall=84  starter=true
+DEF: Abdou Diallo             overall=77  starter=true
+DEF: Ismail Jakobs            overall=74  starter=true
+MID: Nampalys Mendy           overall=74  starter=true
+MID: Pape Gueye               overall=75  starter=true
+MID: Idrissa Gueye            overall=79  starter=true
+MID: Sadio Mane               overall=86  starter=true
+FWD: Ismaila Sarr             overall=80  starter=true
+FWD: Boulaye Dia              overall=77  starter=true
+SUB: Seny Dieng               overall=76  starter=false
+SUB: Formose Mendy            overall=72  starter=false
+SUB: Nicolas Jackson          overall=78  starter=false
+SUB: Habib Diallo             overall=75  starter=false
+
+Мексика (country_id=13):
+GK:  Guillermo Ochoa          overall=82  starter=true
+DEF: Jorge Sanchez            overall=74  starter=true
+DEF: Cesar Montes             overall=76  starter=true
+DEF: Johan Vasquez            overall=74  starter=true
+DEF: Gerardo Arteaga          overall=74  starter=true
+MID: Edson Alvarez            overall=80  starter=true
+MID: Hector Herrera           overall=77  starter=true
+MID: Andres Guardado          overall=76  starter=true
+MID: Hirving Lozano           overall=80  starter=true
+FWD: Raul Jimenez             overall=79  starter=true
+FWD: Henry Martin             overall=76  starter=true
+SUB: Rodolfo Cota             overall=76  starter=false
+SUB: Luis Rodriguez           overall=72  starter=false
+SUB: Roberto Alvarado         overall=76  starter=false
+SUB: Santiago Gimenez         overall=78  starter=false
+
+Австралия (country_id=14):
+GK:  Mathew Ryan              overall=78  starter=true
+DEF: Nathaniel Atkinson       overall=70  starter=true
+DEF: Harry Souttar            overall=75  starter=true
+DEF: Kye Rowles               overall=72  starter=true
+DEF: Aziz Behich              overall=71  starter=true
+MID: Jackson Irvine           overall=74  starter=true
+MID: Riley McGree             overall=73  starter=true
+MID: Ajdin Hrustic            overall=73  starter=true
+MID: Craig Goodwin            overall=72  starter=true
+FWD: Mathew Leckie            overall=76  starter=true
+FWD: Mitchell Duke            overall=73  starter=true
+SUB: Danny Vukovic            overall=72  starter=false
+SUB: Milos Degenek            overall=70  starter=false
+SUB: Martin Boyle             overall=72  starter=false
+SUB: Jamie Maclaren           overall=73  starter=false
+
+Южная Корея (country_id=15):
+GK:  Kim Seung-gyu            overall=76  starter=true
+DEF: Kim Moon-hwan            overall=72  starter=true
+DEF: Kim Min-jae              overall=87  starter=true
+DEF: Kim Young-gwon           overall=74  starter=true
+DEF: Kim Jin-su               overall=73  starter=true
+MID: Jung Woo-young           overall=74  starter=true
+MID: Son Jun-ho               overall=75  starter=true
+MID: Lee Jae-sung             overall=75  starter=true
+MID: Hwang In-beom            overall=76  starter=true
+FWD: Son Heung-min            overall=88  starter=true
+FWD: Hwang Hee-chan           overall=78  starter=true
+SUB: Cho Hyun-woo             overall=74  starter=false
+SUB: Hong Chul                overall=70  starter=false
+SUB: Kwon Chang-hoon          overall=73  starter=false
+SUB: Cho Gue-sung             overall=75  starter=false
+
+Казахстан (country_id=1):
+GK:  Igor Shatskiy            overall=65  starter=true
+DEF: Gafurzhan Suyumbayev     overall=64  starter=true
+DEF: Yuri Logvinenko          overall=67  starter=true
+DEF: Nuraly Alip              overall=63  starter=true
+DEF: Sergazy Bayzhanov        overall=62  starter=true
+MID: Baktiyor Zaynutdinov     overall=72  starter=true
+MID: Islambek Kuat            overall=68  starter=true
+MID: Yerlan Seitkali          overall=65  starter=true
+MID: Askhat Tagybergen        overall=64  starter=true
+FWD: Abat Aimbetov            overall=66  starter=true
+FWD: Marin Tomasov            overall=70  starter=true
+SUB: Aleksandr Mokin          overall=63  starter=false
+SUB: Aleksandr Marochkin      overall=62  starter=false
+SUB: Serikzhan Muzhikov       overall=64  starter=false
+SUB: Temirlan Yerlanov        overall=63  starter=false
+
+── ПОСЛЕ СОЗДАНИЯ SQL ФАЙЛОВ ─────────────────
+
+Выполни в терминале:
+psql -U postgres -d fifa_card_game -f src/main/resources/db/init.sql
+psql -U postgres -d fifa_card_game -f src/main/resources/db/seed.sql
+
+После выполнения напиши сколько записей добавлено в каждую таблицу.
