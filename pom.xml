@@ -21,7 +21,7 @@
     </properties>
 
     <dependencies>
-        <!-- JavaFX modules -->
+        
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -48,14 +48,14 @@
             <version>${javafx.version}</version>
         </dependency>
 
-        <!-- PostgreSQL JDBC Driver -->
+        
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.6.0</version>
         </dependency>
 
-        <!-- JSON Parser -->
+        
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
@@ -76,7 +76,7 @@
                 </configuration>
             </plugin>
 
-            <!-- JavaFX Maven Plugin -->
+            
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
@@ -86,7 +86,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Shade Plugin for Fat JAR -->
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>

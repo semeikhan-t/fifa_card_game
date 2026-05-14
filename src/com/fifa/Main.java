@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
-        // Инициализируем БД перед запуском UI
+        
         DatabaseInitializer.initialize();
         
         SceneManager.setPrimaryStage(primaryStage);

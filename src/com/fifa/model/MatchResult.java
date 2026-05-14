@@ -12,7 +12,7 @@ public class MatchResult extends Entity {
     private LocalDateTime playedAt;
     private List<MatchEvent> events = new ArrayList<>();
 
-    // Дополнительные поля для удобства отображения
+    
     private String homeName;
     private String awayName;
 

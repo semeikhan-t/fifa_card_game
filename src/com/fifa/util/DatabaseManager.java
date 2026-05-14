@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DatabaseManager {
     private static final String URL = "jdbc:postgresql://localhost:5432/fifa_card_game";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "helloworld"; // Пользователю нужно будет поменять на свой
+    private static final String PASSWORD = "helloworld"; 
 
     private static Connection connection;
 
@@ -18,8 +18,8 @@ public class DatabaseManager {
                 try {
                     connection = DriverManager.getConnection(URL, USER, PASSWORD);
                 } catch (SQLException e) {
-                    // Если база не существует, попробуем её создать
-                    if (e.getSQLState().equals("3D000")) { // 3D000 - invalid_catalog_name (database does not exist)
+                    
+                    if (e.getSQLState().equals("3D000")) { 
                         checkAndCreateDatabase();
                         connection = DriverManager.getConnection(URL, USER, PASSWORD);
                     } else {
@@ -39,15 +39,15 @@ public class DatabaseManager {
         try (Connection conn = DriverManager.getConnection(baseUri, USER, PASSWORD);
              java.sql.Statement stmt = conn.createStatement()) {
             
-            // Проверяем существование базы
+            
             java.sql.ResultSet rs = stmt.executeQuery("SELECT 1 FROM pg_database WHERE datname = 'fifa_card_game'");
             if (!rs.next()) {
-                System.out.println("📦 База данных не найдена. Создаю 'fifa_card_game'...");
+                System.out.println(" База данных не найдена. Создаю 'fifa_card_game'...");
                 stmt.executeUpdate("CREATE DATABASE fifa_card_game");
-                System.out.println("✅ База данных создана.");
+                System.out.println(" База данных создана.");
             }
         } catch (SQLException e) {
-            System.err.println("❌ Ошибка при создании базы данных: " + e.getMessage());
+            System.err.println(" Ошибка при создании базы данных: " + e.getMessage());
         }
     }
 

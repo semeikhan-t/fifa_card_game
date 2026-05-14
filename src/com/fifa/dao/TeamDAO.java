@@ -46,11 +46,11 @@ public class TeamDAO extends AbstractDAO<Team> {
 
     @Override
     public void save(Team entity) {
-        // Implementation for saving team if needed
+        
     }
 
     @Override
     public void delete(int id) {
-        // Implementation for deleting team if needed
+        
     }
 }

@@ -46,11 +46,11 @@ public class DownloadAssets {
             String teamCode = entry.getKey();
             int teamId = entry.getValue();
 
-            System.out.println("📥 " + teamCode + " (id=" + teamId + ")");
+            System.out.println(" " + teamCode + " (id=" + teamId + ")");
 
             downloadFlag(teamId, teamCode);
             int downloaded = downloadSquad(teamId, teamCode);
-            System.out.println("   ✅ Игроков скачано: " + downloaded + "\n");
+            System.out.println("    Игроков скачано: " + downloaded + "\n");
         }
 
         CSV_WRITER.close();
@@ -67,26 +67,26 @@ public class DownloadAssets {
 
     private static void downloadFlag(int teamId, String teamCode) {
         try {
-            // План А: Sportmonks
+            
             String json = apiGet(BASE_URL + "/teams/" + teamId + "?api_token=" + API_KEY);
             JSONObject team = new JSONObject(json).getJSONObject("data");
             String imgUrl = team.optString("image_path", "");
             
             if (!imgUrl.isEmpty() && !imgUrl.contains("placeholder")) {
                 downloadFile(imgUrl, FLAGS_DIR + teamCode + ".png");
-                System.out.println("   🏳 Flag: From Sportmonks");
+                System.out.println("    Flag: From Sportmonks");
                 return;
             }
             
-            // План Б: FlagCDN
+            
             String iso = ISO_CODES.get(teamCode);
             if (iso != null) {
                 String flagUrl = "https://flagcdn.com/w320/" + iso + ".png";
                 downloadFile(flagUrl, FLAGS_DIR + teamCode + ".png");
-                System.out.println("   🏳 Flag: From FlagCDN (" + iso + ")");
+                System.out.println("    Flag: From FlagCDN (" + iso + ")");
             }
         } catch (Exception e) {
-            System.err.println("   ⚠️ Flag error: " + e.getMessage());
+            System.err.println("   ️ Flag error: " + e.getMessage());
         }
     }
 
@@ -126,7 +126,7 @@ public class DownloadAssets {
                     }
 
                     String pos = mapPosition(player.optInt("position_id", 0));
-                    int rating = 75 + (int)(Math.random() * 15); // Default rating
+                    int rating = 75 + (int)(Math.random() * 15); 
                     
                     CSV_WRITER.println(teamCode + "," + fullName + "," + pos + "," + rating + "," + fileName);
                     count++;
@@ -138,7 +138,7 @@ public class DownloadAssets {
                 Thread.sleep(300);
             }
         } catch (Exception e) {
-            System.err.println("   ⚠️ Squad error: " + e.getMessage());
+            System.err.println("   ️ Squad error: " + e.getMessage());
         }
         return count;
     }

@@ -3,7 +3,7 @@ package com.fifa.model;
 public class MatchEvent {
     private int minute;
     private String playerName;
-    private String type; // GOAL, YELLOW_CARD, RED_CARD
+    private String type; 
     private boolean isHomeTeam;
 
     public MatchEvent(int minute, String playerName, String type, boolean isHomeTeam) {

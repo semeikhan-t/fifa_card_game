@@ -1,24 +1,21 @@
 #!/bin/bash
 
-# Exit on error
 set -e
 
 echo "Checking Java version..."
 java -version
 
-# Define paths
 JAVAFX_LIB="lib"
 LIB_DIR="lib"
 OUT_DIR="out"
 
-# Check if JavaFX libraries exist
 if [ ! -f "$JAVAFX_LIB/javafx.controls.jar" ]; then
     echo "Error: JavaFX libraries not found in $JAVAFX_LIB"
     exit 1
 fi
 
 echo "Compiling Java files..."
-# Find all java files and compile them
+
 find src -name "*.java" > sources.txt
 javac --module-path "$JAVAFX_LIB" --add-modules javafx.controls,javafx.fxml,javafx.media \
       -cp "$OUT_DIR:$LIB_DIR/postgresql-42.6.0.jar:$LIB_DIR/json-20240303.jar" \
@@ -42,7 +39,7 @@ if [ -d "src/main/resources/images" ]; then
 fi
 
 echo "Build complete! Launching application..."
-# Added -Dprism.order=sw to fix "Graphics Device initialization failed"
+
 java -Dprism.order=sw --module-path "$JAVAFX_LIB" --add-modules javafx.controls,javafx.fxml,javafx.media \
      -cp "$OUT_DIR:$LIB_DIR/postgresql-42.6.0.jar:$LIB_DIR/json-20240303.jar" \
      com.fifa.Launcher

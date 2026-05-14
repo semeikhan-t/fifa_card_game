@@ -66,7 +66,7 @@ public class AudioManager {
             Media media = new Media(resource.toExternalForm());
             MediaPlayer player = new MediaPlayer(media);
             
-            // Add error listener
+            
             player.setOnError(() -> {
                 System.err.println("MediaPlayer error for " + fileName + ": " + player.getError().getMessage());
             });

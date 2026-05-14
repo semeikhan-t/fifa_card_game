@@ -5,13 +5,9 @@ import java.nio.file.*;
 import java.util.*;
 import org.json.*;
 
-/**
- * FIFA Card Game 2026 — Asset Downloader
- * Запусти ОДИН РАЗ. Скачает фото игроков + флаги в resources/images/
- */
 public class DownloadAssets {
 
-    // ✅ ВСТАВЬ СВОЙ КЛЮЧ СЮДА
+    
     private static final String API_KEY = "YOUR_API_KEY_HERE";
     private static final String BASE_URL = "https://v3.football.api-sports.io";
 
@@ -53,7 +49,7 @@ public class DownloadAssets {
             String teamName = entry.getKey();
             int    teamId   = entry.getValue();
 
-            System.out.println("📥 Загружаю: " + teamName + " (id=" + teamId + ")");
+            System.out.println(" Загружаю: " + teamName + " (id=" + teamId + ")");
 
             boolean flagOk = downloadFlag(client, teamId, teamName);
             if (flagOk) totalFlags++;
@@ -63,7 +59,7 @@ public class DownloadAssets {
             int downloaded = downloadPlayers(client, teamId, teamName);
             totalPlayers += downloaded;
 
-            System.out.println("   ✅ Флаг: " + (flagOk ? "OK" : "FAIL")
+            System.out.println("    Флаг: " + (flagOk ? "OK" : "FAIL")
                              + " | Игроков: " + downloaded + "\n");
 
             Thread.sleep(6500);
@@ -89,7 +85,7 @@ public class DownloadAssets {
             downloadFile(flagUrl, FLAGS_DIR + teamName + ".png");
             return true;
         } catch (Exception e) {
-            System.out.println("   ⚠️  Флаг ошибка: " + e.getMessage());
+            System.out.println("   ️  Флаг ошибка: " + e.getMessage());
             return false;
         }
     }
@@ -125,7 +121,7 @@ public class DownloadAssets {
                 Thread.sleep(300);
             }
         } catch (Exception e) {
-            System.out.println("   ⚠️  Игроки ошибка: " + e.getMessage());
+            System.out.println("   ️  Игроки ошибка: " + e.getMessage());
         }
         return count;
     }

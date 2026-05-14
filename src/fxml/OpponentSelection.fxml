@@ -9,7 +9,7 @@
            fx:controller="com.fifa.controller.OpponentSelectionController"
            styleClass="country-selection-bg" prefHeight="1000.0" prefWidth="1600.0">
     <children>
-        <!-- Background Overlay for depth -->
+        
         <Pane style="-fx-background-color: radial-gradient(center 50% 50%, radius 70%, rgba(0, 255, 136, 0.05), transparent);" />
 
         <VBox alignment="TOP_CENTER" spacing="40.0">

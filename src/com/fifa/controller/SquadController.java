@@ -24,13 +24,13 @@ import java.util.*;
 
 public class SquadController {
     
-    // UI Elements
+    
     @FXML private Label startersCountLabel;
     @FXML private AnchorPane starterSlotsPane;
     @FXML private HBox benchBox;
     @FXML private Button playButton;
     
-    // Rating UI
+    
     @FXML private Circle ratingProgressRing;
     @FXML private Label teamRatingLabel;
 
@@ -43,7 +43,7 @@ public class SquadController {
     private List<Player> starters = new ArrayList<>();
     private List<Player> bench = new ArrayList<>();
 
-    // Expanded Positions for 4-3-3 Formation to match larger UI (1286x480)
+    
     private static final Map<String, Position> FORMATION_433 = new LinkedHashMap<>() {{
         put("GK", new Position(603, 380));
         put("LB", new Position(200, 280));
@@ -130,7 +130,7 @@ public class SquadController {
         AnchorPane.setLeftAnchor(slot, pos.x);
         AnchorPane.setTopAnchor(slot, pos.y);
         
-        // Futuristic slot placeholder
+        
         Label lbl = new Label(posName);
         lbl.setStyle("-fx-text-fill: rgba(0, 255, 102, 0.3); -fx-font-weight: 900; -fx-font-size: 18px; -fx-effect: dropshadow(gaussian, rgba(0,255,102,0.5), 10, 0, 0, 0);");
         
@@ -140,7 +140,7 @@ public class SquadController {
         slotRing.setStrokeDashOffset(10);
         slotRing.getStrokeDashArray().addAll(10d, 5d);
         
-        // Pulse animation for empty slots
+        
         ScaleTransition pulse = new ScaleTransition(Duration.millis(1500), slotRing);
         pulse.setByX(0.1);
         pulse.setByY(0.1);
@@ -341,14 +341,14 @@ public class SquadController {
         startersCountLabel.setText("SELECTED: " + starters.size() + "/11");
         playButton.setDisable(starters.size() != 11);
         
-        // Calculate Rating
+        
         int totalRating = 0;
         for (Player p : starters) {
             totalRating += p.getOverall();
         }
         int avgRating = starters.isEmpty() ? 0 : totalRating / starters.size();
         
-        // Animate the rating ring and label
+        
         teamRatingLabel.setText(String.valueOf(avgRating));
         double targetDashOffset = 120.0 - ((avgRating / 100.0) * 120.0);
         
@@ -376,7 +376,7 @@ public class SquadController {
             tt.setToY(0);
             toggleBenchBtn.setText("▼ SUBSTITUTES ▼");
         } else {
-            tt.setToY(200); // Height of the benchContainer
+            tt.setToY(200); 
             toggleBenchBtn.setText("▲ SUBSTITUTES ▲");
         }
         tt.play();

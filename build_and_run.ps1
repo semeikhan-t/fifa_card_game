@@ -3,7 +3,6 @@ param(
 )
 $ErrorActionPreference = "Stop"
 
-# Use JDK 21 explicitly
 $env:JAVA_HOME = "C:\Program Files\Java\jdk-21.0.10"
 $env:PATH = "$env:JAVA_HOME\bin;$env:PATH"
 
@@ -12,7 +11,7 @@ Write-Host "Checking PostgreSQL..." -ForegroundColor Cyan
 $pgPath = "C:\Program Files\PostgreSQL\18\bin\pg_ctl.exe"
 $pgData = "C:\Program Files\PostgreSQL\18\data"
 if (Test-Path $pgPath) {
-    # Пытаемся запустить, если не запущен. Игнорируем ошибки если уже работает.
+    
     $status = & $pgPath -D $pgData status
     if ($status -match "no server running") {
         & $pgPath -D $pgData start

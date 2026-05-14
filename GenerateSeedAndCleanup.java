@@ -11,14 +11,14 @@ public class GenerateSeedAndCleanup {
         System.out.println("=== Database Seeder (From Downloaded Assets) ===\n");
 
         if (!Files.exists(Paths.get(CSV_INPUT))) {
-            System.err.println("❌ Ошибка: Файл " + CSV_INPUT + " не найден. Сначала запустите DownloadAssets.");
+            System.err.println(" Ошибка: Файл " + CSV_INPUT + " не найден. Сначала запустите DownloadAssets.");
             return;
         }
 
         Map<String, List<Player>> teams = new LinkedHashMap<>();
         
         try (BufferedReader br = new BufferedReader(new FileReader(CSV_INPUT))) {
-            String line = br.readLine(); // Header
+            String line = br.readLine(); 
             while ((line = br.readLine()) != null) {
                 String[] p = line.split(",");
                 if (p.length < 5) continue;
@@ -34,7 +34,7 @@ public class GenerateSeedAndCleanup {
         sql.append("-- Auto-generated seed.sql from Downloaded Assets\n");
         sql.append("DELETE FROM matches;\nDELETE FROM players;\nDELETE FROM countries;\n\n");
 
-        // 1. Countries
+        
         sql.append("-- 1. COUNTRIES\n");
         sql.append("INSERT INTO countries (id, name, code, flag_path, ovr_attack, ovr_defense) VALUES \n");
         
@@ -47,7 +47,7 @@ public class GenerateSeedAndCleanup {
         }
         sql.append("\n");
 
-        // 2. Players
+        
         sql.append("-- 2. PLAYERS\n");
         sql.append("INSERT INTO players (name, country_id, position, overall, is_starter, photo_path) VALUES\n");
 
@@ -55,12 +55,12 @@ public class GenerateSeedAndCleanup {
             String country = countryNames.get(i);
             List<Player> squad = teams.get(country);
             
-            // Сортируем по рейтингу и берем лучших (или всех)
+            
             squad.sort((a, b) -> b.overall - a.overall);
             
             for (int j = 0; j < squad.size(); j++) {
                 Player p = squad.get(j);
-                boolean isStarter = (j < 11); // Первые 11 - стартовый состав
+                boolean isStarter = (j < 11); 
                 
                 sql.append(String.format("('%s', %d, '%s', %d, %s, '%s')%s\n",
                     p.name.replace("'", "''"), i + 1, p.position, p.overall, isStarter, p.photo,
@@ -71,7 +71,7 @@ public class GenerateSeedAndCleanup {
         Files.writeString(Paths.get(SEED_SQL), sql.toString());
         Files.copy(Paths.get(SEED_SQL), Paths.get("resources/db/seed.sql"), StandardCopyOption.REPLACE_EXISTING);
         
-        System.out.println("✅ Готово! seed.sql создан.");
+        System.out.println(" Готово! seed.sql создан.");
         System.out.println("Всего стран: " + countryNames.size());
         System.out.println("Всего игроков: " + teams.values().stream().mapToInt(List::size).sum());
     }

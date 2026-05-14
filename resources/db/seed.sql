@@ -1,9 +1,8 @@
--- Auto-generated seed.sql from Downloaded Assets
+
 DELETE FROM matches;
 DELETE FROM players;
 DELETE FROM countries;
 
--- 1. COUNTRIES
 INSERT INTO countries (id, name, code, flag_path, ovr_attack, ovr_defense) VALUES 
 (1, 'Kazakhstan', 'kazakhstan', 'kazakhstan.png', 80, 80),
 (2, 'Argentina', 'argentina', 'argentina.png', 80, 80),
@@ -20,7 +19,6 @@ INSERT INTO countries (id, name, code, flag_path, ovr_attack, ovr_defense) VALUE
 (13, 'Morocco', 'morocco', 'morocco.png', 80, 80),
 (14, 'Australia', 'australia', 'australia.png', 80, 80);
 
--- 2. PLAYERS
 INSERT INTO players (name, country_id, position, overall, is_starter, photo_path) VALUES
 ('A. Aymbetov', 1, 'FWD', 88, true, 'kazakhstan_a_aymbetov_135526.png'),
 ('Bekkhan Shayzada', 1, 'GK', 88, true, 'kazakhstan_bekkhan_shayzada_7387375.png'),

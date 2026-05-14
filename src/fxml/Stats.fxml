@@ -7,23 +7,23 @@
 
 <StackPane prefHeight="600.0" prefWidth="800.0" styleClass="main-menu-bg" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fifa.controller.StatsController">
     <children>
-        <!-- Background Layer -->
+        
         <Pane styleClass="country-selection-bg" />
         <Pane styleClass="cinematic-overlay" />
         
-        <!-- Content Layer -->
+        
         <VBox spacing="30.0">
             <padding>
                 <Insets bottom="40.0" left="50.0" right="50.0" top="40.0" />
             </padding>
             <children>
-                <!-- Header -->
+                
                 <VBox spacing="5">
                     <Label styleClass="title-primary" text="MATCH" />
                     <Label styleClass="title-secondary" text="STATISTICS" />
                 </VBox>
                 
-                <!-- Summary Dashboard -->
+                
                 <HBox spacing="20.0" alignment="CENTER">
                     <children>
                         <VBox alignment="CENTER" spacing="5.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
@@ -45,7 +45,7 @@
                     </children>
                 </HBox>
                 
-                <!-- Table Section -->
+                
                 <TableView fx:id="statsTable" VBox.vgrow="ALWAYS" styleClass="premium-table-view">
                     <columns>
                         <TableColumn fx:id="dateCol" prefWidth="120" text="DATE" />
@@ -60,7 +60,7 @@
                 </TableView>
 
                 
-                <!-- Footer Navigation -->
+                
                 <HBox alignment="CENTER_LEFT">
                     <Button onAction="#onBackClicked" styleClass="premium-menu-btn-exit" text="← RETURN TO MAIN MENU" />
                 </HBox>

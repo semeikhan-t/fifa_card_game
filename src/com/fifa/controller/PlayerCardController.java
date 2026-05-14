@@ -12,9 +12,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-/**
- * AAA Cinematic Player Card Controller
- */
 public class PlayerCardController {
     
     @FXML private StackPane cardRoot;
@@ -39,14 +36,14 @@ public class PlayerCardController {
     }
 
     private void setupAnimations() {
-        // Idle floating animation (subtle continuous vertical movement)
+        
         idleFloat = new TranslateTransition(Duration.millis(1500 + Math.random() * 500), cardBody);
-        idleFloat.setByY(-5f); // Move up slightly
+        idleFloat.setByY(-5f); 
         idleFloat.setCycleCount(Animation.INDEFINITE);
         idleFloat.setAutoReverse(true);
         idleFloat.play();
 
-        // Hover scale animation
+        
         hoverScale = new ScaleTransition(Duration.millis(200), cardRoot);
         
         cardRoot.setOnMouseEntered(e -> {
@@ -54,7 +51,7 @@ public class PlayerCardController {
             hoverScale.setToX(1.08);
             hoverScale.setToY(1.08);
             hoverScale.play();
-            // Subtle shift in reflection for depth
+            
             reflectionOverlay.setTranslateX(10);
             reflectionOverlay.setTranslateY(-10);
         });

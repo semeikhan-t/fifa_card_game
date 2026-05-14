@@ -21,7 +21,6 @@ public class StatsController {
     @FXML private TableColumn<MatchResult, String> scoreCol;
     @FXML private TableColumn<MatchResult, String> awayCol;
 
-
     @FXML private Label totalMatchesLabel;
     @FXML private Label winsLabel;
     @FXML private Label lossesLabel;
@@ -69,7 +68,6 @@ public class StatsController {
         calculateStats(matches);
     }
 
-
     private void calculateStats(List<MatchResult> matches) {
         int total = matches.size();
         int wins = 0;
@@ -94,7 +92,6 @@ public class StatsController {
             winRateLabel.setText("0%");
         }
     }
-
 
     @FXML
     private void onBackClicked() {

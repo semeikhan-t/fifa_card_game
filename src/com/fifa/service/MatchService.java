@@ -21,17 +21,17 @@ public class MatchService {
         int homeAvg = home.calculateAverageOverall();
         int awayAvg = away.calculateAverageOverall();
 
-        // Базовая вероятность гола зависит от разницы рейтингов
+        
         double homeProb = 0.5 + (homeAvg - awayAvg) / 100.0;
         
-        // Симуляция голов
+        
         int homeGoals = simulateGoals(homeProb);
         int awayGoals = simulateGoals(1.0 - homeProb);
 
         result.setHomeScore(homeGoals);
         result.setAwayScore(awayGoals);
 
-        // Генерация событий (кто забил и на какой минуте)
+        
         generateEvents(result, home, away, homeGoals, awayGoals);
 
         return result;
@@ -39,13 +39,13 @@ public class MatchService {
 
     private int simulateGoals(double probability) {
         int goals = 0;
-        // 4 попытки забить за матч
+        
         for (int i = 0; i < 4; i++) {
             if (random.nextDouble() < (probability * 0.4)) {
                 goals++;
             }
         }
-        // Случайный фактор +/- 1 гол
+        
         if (random.nextDouble() < 0.1) goals++;
         return goals;
     }
@@ -60,7 +60,7 @@ public class MatchService {
             events.add(new MatchEvent(random.nextInt(90) + 1, getRandomScorer(away), "GOAL", false));
         }
         
-        // Сортировка по минутам
+        
         events.sort((e1, e2) -> Integer.compare(e1.getMinute(), e2.getMinute()));
         result.setEvents(events);
     }

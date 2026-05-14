@@ -86,11 +86,11 @@ critical
   
   3. Test flow:
      Start game with controller only:
-     ✓ Main menu -> Options -> All submenus -> Back
-     ✓ Game -> Pause -> All menu items -> Resume
-     ✓ Inventory -> All slots -> Equip -> Exit
-     ✓ Shop -> Browse -> Buy -> Exit
-     ✓ Dialogue -> All choices -> Advance
+      Main menu -> Options -> All submenus -> Back
+      Game -> Pause -> All menu items -> Resume
+      Inventory -> All slots -> Equip -> Exit
+      Shop -> Browse -> Buy -> Exit
+      Dialogue -> All choices -> Advance
   
   4. Focus traps to fix:
      - Modal dialogs must trap then release focus

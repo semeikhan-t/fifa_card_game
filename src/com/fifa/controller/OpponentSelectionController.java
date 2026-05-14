@@ -49,7 +49,7 @@ public class OpponentSelectionController {
         flagView.setFitWidth(60);
         flagView.setFitHeight(40);
         flagView.setPreserveRatio(true);
-        // "South Korea" -> "south_korea"
+        
         String flagName = team.getName().toLowerCase().replace(" ", "_");
         flagView.setImage(ImageLoader.loadFlag(flagName));
         flagView.setEffect(new javafx.scene.effect.DropShadow(15, javafx.scene.paint.Color.BLACK));
@@ -77,7 +77,7 @@ public class OpponentSelectionController {
             selectedOpponent = team;
             nextButton.setDisable(false);
             
-            // Highlight selected card
+            
             countriesPane.getChildren().forEach(n -> {
                 n.getStyleClass().remove("country-card-selected");
                 n.setTranslateY(0);

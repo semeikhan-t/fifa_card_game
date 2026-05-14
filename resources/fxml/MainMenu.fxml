@@ -10,7 +10,7 @@
 <StackPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
            fx:controller="com.fifa.controller.MainMenuController">
     <children>
-        <!-- Fallback background image -->
+        
         <ImageView fx:id="fallbackImageView" fitHeight="600.0" fitWidth="800.0" preserveRatio="false">
             <image>
                 <Image url="@/images/wc2026.png" />
@@ -20,7 +20,7 @@
         <MediaView fx:id="backgroundMediaView" fitHeight="600.0" fitWidth="800.0" preserveRatio="false" />
 
         
-        <!-- Cinematic gradient overlay -->
+        
         <Region styleClass="cinematic-overlay" />
         
         <BorderPane>

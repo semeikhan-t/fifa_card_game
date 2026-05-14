@@ -8,7 +8,7 @@
 - Данные загружены через `seed.sql` — **16 стран** и **19 игроков** (Kazakhstan: 11, Argentina: 8)
 - Пароль пользователя `postgres` установлен на `helloworld` (совпадает с `DatabaseManager.java`)
 - JavaFX SDK 21.0.2 лежит в `javafx-sdk-21.0.2/`
-- Библиотеки `lib/postgresql-42.6.0.jar` и `lib/json-20240303.jar` на месте
+- Библиотеки `lib/postgresql-42.7.11.jar` и `lib/json-20240303.jar` на месте
 
 ### Исходный код (src/com/fifa/)
 - **Launcher.java** → точка входа, вызывает `Main.main()`
@@ -35,19 +35,19 @@
 
 ## 2. Текущие проблемы и недоработки
 
-### 🔴 Критические
+###  Критические
 1. **seed.sql неполный** — загружены игроки только для Kazakhstan (11) и Argentina (8). Остальные 14 стран (**Brazil, France, England, Germany, Spain, Portugal, Netherlands, Italy, Japan, USA, Morocco, Croatia, Uruguay, Belgium**) не имеют ни одного игрока в БД. Без них игра не работает — выбор этих стран даст пустой состав.
 2. **Поле `photo_path` не заполнено** — в seed.sql нет `photo_path` ни у одного игрока. Колонка `photo_path` существует в таблице `players`, но `PlayerDAO` не читает её, а `Player.java` не имеет поля `photoPath`.
 3. **Фото скачаны с ошибками** — многие фото привязаны к неправильным странам (например, `australia_*.png` содержит польских игроков, `japan_*.png` — коста-риканских, `kazakhstan_*.png` — украинских, `south_korea_*.png` — перуанских, `usa_*.png` — французских). Предыдущий агент скачал фото из API FUTDB, но привязка страна→игрок сломана.
 
-### 🟡 Средние
+###  Средние
 4. **`SquadController.createPlayerCard()` не использует `PlayerCardController`** — вместо этого напрямую через `card.lookup()` ищет элементы. Метод `setPlayer()` в `PlayerCardController` никогда не вызывается.
 5. **`ImageLoader` загружает из classpath** (`getResourceAsStream`), но фото лежат в `src/main/resources/images/`, а `out/images/` — это другая папка. Нужно проверить, что при компиляции фото копируются в `out/`.
 6. **`CountrySelectionController` не показывает флаги** — в карточке страны только текстовая `Label`, нет `ImageView` для флага.
 7. **CSS-класс `player-card-bg-gold` описан в `PlayerCardController.applyCardTheme()`, но не определён в `style.css`** — есть только `.player-card-bg` (gold по умолчанию) и `.player-card-bg-silver`.
 8. **`player-card-bg-bronze`** используется в `PlayerCardController`, но нет в CSS.
 
-### 🟢 Мелкие
+###  Мелкие
 9. **`PlayerDAO.findAll()` возвращает `null`** — заглушка, нужна реализация.
 10. **`MatchDAO.save()` и `TeamDAO.save()/delete()` — заглушки**.
 11. **Нет отдельного `SceneManager` для передачи `countryName` в `PlayerCardController`** — `setPlayer()` ожидает `countryName`, но нигде не передаётся.
@@ -59,7 +59,7 @@ c:\project\fifa_card_game\
 ├── pom.xml                     # Maven (Java 21, JavaFX 21.0.2, PostgreSQL, JSON)
 ├── Launcher.java / Main.java   # Точка входа
 ├── javafx-sdk-21.0.2/          # JavaFX SDK
-├── lib/                        # postgresql-42.6.0.jar, json-20240303.jar
+├── lib/                        # postgresql-42.7.11.jar, json-20240303.jar
 ├── out/                        # Скомпилированные файлы
 ├── resources/
 │   ├── css/style.css
@@ -99,12 +99,12 @@ c:\project\fifa_card_game\
 
 ### Компиляция (из корня проекта)
 ```powershell
-javac --module-path "javafx-sdk-21.0.2\lib" --add-modules javafx.controls,javafx.fxml -cp "lib\postgresql-42.6.0.jar" -d out -sourcepath src src\com\fifa\Launcher.java
+javac --module-path "javafx-sdk-21.0.2\lib" --add-modules javafx.controls,javafx.fxml -cp "lib\postgresql-42.7.11.jar" -d out -sourcepath src src\com\fifa\Launcher.java
 ```
 
 ### Запуск приложения
 ```powershell
-java --module-path "javafx-sdk-21.0.2\lib" --add-modules javafx.controls,javafx.fxml -cp "out;lib\postgresql-42.6.0.jar" com.fifa.Launcher
+java --module-path "javafx-sdk-21.0.2\lib" --add-modules javafx.controls,javafx.fxml -cp "out;lib\postgresql-42.7.11.jar" com.fifa.Launcher
 ```
 
 ## 6. Состояние базы данных
@@ -160,7 +160,7 @@ matches:   0 записей
 ### Шаг 8: Перекомпиляция
 - После всех изменений перекомпилировать:
 ```powershell
-javac --module-path "javafx-sdk-21.0.2\lib" --add-modules javafx.controls,javafx.fxml -cp "lib\postgresql-42.6.0.jar" -d out -sourcepath src src\com\fifa\Launcher.java
+javac --module-path "javafx-sdk-21.0.2\lib" --add-modules javafx.controls,javafx.fxml -cp "lib\postgresql-42.7.11.jar" -d out -sourcepath src src\com\fifa\Launcher.java
 ```
 - Скопировать ресурсы:
 ```powershell

@@ -19,7 +19,7 @@ public class Player extends Entity {
         this.photoPath = photoPath;
     }
 
-    // Getters and Setters
+    
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 

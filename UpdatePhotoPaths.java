@@ -59,11 +59,11 @@ public class UpdatePhotoPaths {
                     
                     int score = 0;
                     
-                    // Rule 1: Super strict match
+                    
                     if (superCleanDbName.equals(superCleanFile)) {
                         score = 300;
                     } else {
-                        // Rule 2: Word-based matching
+                        
                         String[] dbWords = cleanDbName.split(" ");
                         String[] fileWords = cleanFile.split(" ");
                         String dbLast = dbWords[dbWords.length - 1];
@@ -78,7 +78,7 @@ public class UpdatePhotoPaths {
                         
                         if (lastMatch) {
                             score += 100;
-                            // Add points for first name / initial
+                            
                             if (dbWords[0].charAt(0) == fileWords[0].charAt(0)) {
                                 score += 50;
                             }
@@ -121,7 +121,7 @@ public class UpdatePhotoPaths {
                 total++;
             }
             
-            System.out.println("🚀 Success! Perfectly matched " + total + " players.");
+            System.out.println(" Success! Perfectly matched " + total + " players.");
             
         } catch (Exception e) {
             e.printStackTrace();

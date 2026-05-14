@@ -47,7 +47,7 @@ public class SceneManager {
             FXMLLoader loader = new FXMLLoader(fxmlUrl);
             Parent root = loader.load();
             
-            // Set the scene background to a deep dark green to avoid white flicker
+            
             Scene scene = new Scene(root, Color.web("#051005"));
             
             var cssUrl = SceneManager.class.getResource("/css/style.css");

@@ -11,7 +11,7 @@
            fx:controller="com.fifa.controller.OpponentSquadController" prefHeight="768.0" prefWidth="1366.0"
            style="-fx-background-color: #050a0f;">
 
-    <!-- LAYER 1: Stadium Background -->
+    
     <ImageView fitWidth="1366.0" fitHeight="768.0" preserveRatio="false">
         <image>
             <Image url="@/images/stadium_bg.png" />
@@ -21,16 +21,16 @@
         </effect>
     </ImageView>
 
-    <!-- LAYER 2: Ambient FX Pane -->
+    
     <Pane fx:id="ambientFxPane" prefWidth="1366.0" prefHeight="768.0" mouseTransparent="true" />
 
-    <!-- LAYER 3: Pitch glow -->
+    
     <Region styleClass="pitch-glow" mouseTransparent="true"/>
 
-    <!-- LAYER 4: Main UI -->
+    
     <BorderPane>
 
-        <!-- TOP NAVIGATION -->
+        
         <top>
             <VBox spacing="10">
                 <padding>
@@ -51,7 +51,7 @@
             </VBox>
         </top>
 
-        <!-- CENTER: Pitch -->
+        
         <center>
             <StackPane alignment="CENTER">
                 <padding>
@@ -74,10 +74,10 @@
         </center>
     </BorderPane>
 
-    <!-- LAYER 5: Vignette -->
+    
     <Region styleClass="vignette-overlay" mouseTransparent="true" />
 
-    <!-- LAYER 6: Bench -->
+    
     <VBox fx:id="benchDrawer" alignment="BOTTOM_CENTER" StackPane.alignment="BOTTOM_CENTER" pickOnBounds="false">
 
         <HBox alignment="CENTER" pickOnBounds="false">

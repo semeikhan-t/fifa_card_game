@@ -84,7 +84,7 @@ public class MatchController {
     private void addEventToLog(MatchEvent event) {
         Label logLabel = new Label(event.toString());
         logLabel.setStyle("-fx-text-fill: #d4af37; -fx-font-weight: bold;");
-        eventLog.getChildren().add(0, logLabel); // Добавляем сверху
+        eventLog.getChildren().add(0, logLabel); 
         if (eventLog.getChildren().size() > 5) {
             eventLog.getChildren().remove(5);
         }
@@ -97,7 +97,7 @@ public class MatchController {
         eventLog.getChildren().add(0, endLabel);
         resultButton.setVisible(true);
         
-        // Сохраняем в БД
+        
         matchDAO.save(finalResult);
     }
 

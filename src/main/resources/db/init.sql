@@ -15,7 +15,7 @@ CREATE TABLE players (
     id          SERIAL PRIMARY KEY,
     name        VARCHAR(100) NOT NULL,
     country_id  INT REFERENCES countries(id),
-    position    VARCHAR(5)   NOT NULL, -- e.g., GK, LB, CM, ST, etc.
+    position    VARCHAR(5)   NOT NULL, 
     overall     INT          NOT NULL CHECK (overall BETWEEN 0 AND 99),
     is_starter  BOOLEAN      NOT NULL DEFAULT true,
     photo_path  VARCHAR(255)

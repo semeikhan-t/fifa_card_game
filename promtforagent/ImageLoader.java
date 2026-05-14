@@ -5,10 +5,6 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Загрузчик изображений для FIFA Card Game 2026
- * Загружает фото игроков и флаги из resources/images/
- */
 public class ImageLoader {
 
     private static final Map<String, Image> cache = new HashMap<>();
@@ -17,18 +13,12 @@ public class ImageLoader {
     private static final String FLAGS_PATH   = "/images/flags/";
     private static final String PLACEHOLDER  = "/images/placeholder_player.png";
 
-    /**
-     * Загрузить фото игрока
-     * Пример: loadPlayer("argentina_lionel_messi_154.png")
-     */
+    
     public static Image loadPlayer(String filename) {
         return loadFromResources(PLAYERS_PATH + filename, PLACEHOLDER);
     }
 
-    /**
-     * Загрузить флаг страны
-     * Пример: loadFlag("argentina")
-     */
+    
     public static Image loadFlag(String countryName) {
         return loadFromResources(FLAGS_PATH + countryName + ".png", null);
     }
@@ -53,7 +43,7 @@ public class ImageLoader {
             }
         }
 
-        System.err.println("⚠️  Изображение не найдено: " + resourcePath);
+        System.err.println("️  Изображение не найдено: " + resourcePath);
         return null;
     }
 

@@ -25,18 +25,18 @@ public class DownloadFlags {
             String url = "https://flagcdn.com/w320/" + iso + ".png";
             String path = FLAGS_DIR + team + ".png";
 
-            System.out.print("📥 Downloading flag for " + team + "... ");
+            System.out.print(" Downloading flag for " + team + "... ");
             try {
                 HttpRequest req = HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
                 HttpResponse<byte[]> resp = client.send(req, HttpResponse.BodyHandlers.ofByteArray());
                 if (resp.statusCode() == 200) {
                     Files.write(Paths.get(path), resp.body());
-                    System.out.println("✅ DONE");
+                    System.out.println(" DONE");
                 } else {
-                    System.out.println("❌ HTTP " + resp.statusCode());
+                    System.out.println(" HTTP " + resp.statusCode());
                 }
             } catch (Exception e) {
-                System.out.println("⚠️ Error: " + e.getMessage());
+                System.out.println("️ Error: " + e.getMessage());
             }
         }
         System.out.println("\n=== FLAGS DOWNLOADED ===");

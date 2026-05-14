@@ -9,7 +9,7 @@
            fx:controller="com.fifa.controller.CountrySelectionController" 
            styleClass="country-selection-bg" prefHeight="600.0" prefWidth="800.0">
     <children>
-        <!-- Background Overlay for depth and darkening -->
+        
         <Pane style="-fx-background-color: rgba(0, 0, 0, 0.75);" />
         
         <VBox alignment="TOP_CENTER" spacing="15.0">

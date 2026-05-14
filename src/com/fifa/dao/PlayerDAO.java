@@ -48,7 +48,7 @@ public class PlayerDAO extends AbstractDAO<Player> {
 
     @Override
     public List<Player> findAll() {
-        return null; // Not needed for now
+        return null; 
     }
 
     @Override

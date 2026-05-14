@@ -36,9 +36,9 @@ public class MainMenuController {
     @FXML
     public void initialize() {
         System.out.println("MainMenuController initialized!");
-        AudioManager.stopAll(); // Ensure no other music plays on main menu
+        AudioManager.stopAll(); 
         
-        // Setup background video
+        
         boolean videoLoaded = false;
         try {
             URL videoUrl = getClass().getResource("/video/bg_video.mp4");
@@ -51,13 +51,13 @@ public class MainMenuController {
                     fallbackImageView.setVisible(false);
                     
                     if (hasPlayedVideo) {
-                        // Skip to end if already played once
+                        
                         mediaPlayer.seek(media.getDuration());
                         menuItemsBox.setOpacity(1.0);
                         replayButton.setVisible(true);
                         startPulsingEffect();
                     } else {
-                        // First time: play and dim buttons
+                        
                         menuItemsBox.setOpacity(0.4);
                         replayButton.setVisible(false);
                         mediaPlayer.play();
@@ -142,12 +142,12 @@ public class MainMenuController {
     private void startPulsingEffect() {
         if (pulse != null) pulse.stop();
 
-        // First, smoothly increase brightness (opacity)
+        
         FadeTransition fadeIn = new FadeTransition(Duration.seconds(1.5), menuItemsBox);
         fadeIn.setFromValue(menuItemsBox.getOpacity());
         fadeIn.setToValue(1.0);
         
-        // Then start the pulsing effect
+        
         pulse = new ScaleTransition(Duration.seconds(1.2), menuItemsBox);
         pulse.setToX(1.05);
         pulse.setToY(1.05);
